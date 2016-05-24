@@ -28,6 +28,7 @@ public class BackToLife
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
+    	PROXY.preInit();
     }
     
     @EventHandler
@@ -45,11 +46,12 @@ public class BackToLife
     		
     	};
     	ModItems.init();
-    	PROXY.render();
+    	PROXY.init();
     }
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event){
-    	
+    	PROXY.postInit();
+
     }
 }
