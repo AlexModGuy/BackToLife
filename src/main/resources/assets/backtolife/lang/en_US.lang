@@ -1,0 +1,6 @@
+itemGroup.backtolife=Back To Life
+
+item.backtolife.unknown_fossil.name=Unidentified fossil
+item.backtolife.unknown_fossil_carnivore_dinosaur.desc=Carnivorous Dinosaur
+item.backtolife.unknown_fossil_herbivore_dinosaur.desc=Herbivorous Dinosaur
+item.backtolife.unknown_fossil_pterosaur.desc=Pterosaur
