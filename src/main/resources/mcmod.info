@@ -1,0 +1,16 @@
+[
+{
+  "modid": "backtolife",
+  "name": "Back to Life",
+  "description": "Use fossil hunting techniques and modern science to recreate extinct species.",
+  "version": "1.0.0",
+  "mcversion": "1.9.4",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Alexthe666", "AndrewPlayz"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
