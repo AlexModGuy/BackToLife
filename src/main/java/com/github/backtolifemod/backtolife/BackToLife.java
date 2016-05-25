@@ -1,8 +1,5 @@
 package com.github.backtolifemod.backtolife;
 
-import com.github.backtolifemod.backtolife.core.ModItems;
-import com.github.backtolifemod.backtolife.enums.EnumFossil;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
@@ -12,6 +9,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import com.github.backtolifemod.backtolife.core.ModItems;
 
 @Mod(modid = BackToLife.MODID, name = BackToLife.NAME, version = BackToLife.VERSION)
 public class BackToLife
@@ -28,16 +27,11 @@ public class BackToLife
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event){
-    	PROXY.preInit();
-    }
-    
-    @EventHandler
-    public void init(FMLInitializationEvent event){
     	tab = new CreativeTabs(MODID){
 
 			@Override
 			public Item getTabIconItem() {
-				return EnumFossil.CARNIVORE_DINOSAUR.fossil;
+				return ModItems.unknown_fossil_carnivore_dinosaur;
 			}
 			
 		    public int getIconItemDamage(){
@@ -46,6 +40,11 @@ public class BackToLife
     		
     	};
     	ModItems.init();
+    	PROXY.preInit();
+    }
+    
+    @EventHandler
+    public void init(FMLInitializationEvent event){
     	PROXY.init();
     }
     
