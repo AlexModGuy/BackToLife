@@ -32,10 +32,6 @@ public class ClientProxy extends CommonProxy{
 	}
 
 	public void addItemRender(Item item, String name){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation("backtolife:" + name, "inventory"));
-	}
-
-	public void addItemRenderWithMeta(Item item, String name, int meta){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation("backtolife:" + name, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("backtolife:" + name));
 	}
 }

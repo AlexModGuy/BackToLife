@@ -12,6 +12,4 @@ public class CommonProxy {
 	
 	public void addItemRender(Item item, String name) {}
 	
-	public void addItemRenderWithMeta(Item item, int meta, String name) {}
-
 }

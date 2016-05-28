@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.github.backtolifemod.backtolife.core.ModItems;
+import com.github.backtolifemod.backtolife.core.ModRecipes;
 
 @Mod(modid = BackToLife.MODID, name = BackToLife.NAME, version = BackToLife.VERSION)
 public class BackToLife
@@ -40,6 +41,8 @@ public class BackToLife
     		
     	};
     	ModItems.init();
+    	ModRecipes.init();
+
     	PROXY.preInit();
     }
     
