@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -20,7 +21,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 	private static final int[] slotsTop = new int[] {0};
 	private static final int[] slotsBottom = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	private int currentGrind;
-	private int gearTurnTimer;
+	public int gearTurnTimer;
 	private Random random = new Random();
 
 	@Override
@@ -156,7 +157,12 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 		boolean flag1 = false;
 
 
-
+		if(isGrinding()){
+			this.gearTurnTimer++;
+			if(gearTurnTimer % 20 == 0){
+				this.worldObj.playRecord(this.pos, SoundEvents.BLOCK_METAL_HIT);
+			}
+		}
 		if (!this.worldObj.isRemote)
 		{
 			if (!this.isGrinding() && (this.stacks[0] == null))
@@ -217,7 +223,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			boolean isNondescriptFossil = !isCarnivoreFossil && !isHerbivoreFossil && !isPterosaurFossil && isAnyFossil;
 			int chanceInt = random.nextInt(99) + 1;
 			if(chanceInt <= 50){
-				result = new ItemStack(random.nextBoolean() ? ModItems.dust : ModItems.rocks, random.nextInt(1) + 1, 1);
+				result = new ItemStack(random.nextBoolean() ? ModItems.dust : ModItems.rocks, random.nextInt(1) + 1);
 			}else if(chanceInt <= 75){
 				result = new ItemStack(Items.DYE, random.nextInt(1) + 1, 15);
 			}else if(chanceInt <= 85){
@@ -229,23 +235,23 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			}
 		}
 		if(result != null){
-			for(int slots = 1; slots < 10; slots++){
-				ItemStack stackInSlot = this.stacks[slots];
+			this.worldObj.playRecord(this.pos, SoundEvents.BLOCK_METAL_BREAK);
+			int slots = 1;
+			ItemStack stackInSlot = this.stacks[slots];
+			if(stackInSlot != null){
+				if(stackInSlot.isItemEqual(result) && stackInSlot.stackSize + result.stackSize < 64){
+					stackInSlot.stackSize += result.stackSize;
+				}
+				slots++;
+				stackInSlot = this.stacks[slots];
+			}
+			if(stackInSlot == null){
 				this.stacks[slots] = result;
-				break;
-
-				/*if(stackInSlot != null){
-					if(stackInSlot.getItem() == result.getItem() && result.isStackable() && stackInSlot.stackSize + result.stackSize <= 64){
-						stackInSlot.stackSize += result.stackSize;
-						break;
-					}else{
-						this.stacks[slots] = result;
-						break;
-					}
-				}*/
 			}
 		}
 	}
+
+
 
 	public boolean isGrinding(){
 		return this.currentGrind > 0;

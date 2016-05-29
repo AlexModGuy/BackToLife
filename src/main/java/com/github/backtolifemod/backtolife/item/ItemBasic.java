@@ -18,7 +18,7 @@ public class ItemBasic extends Item {
 	public ItemBasic(String name){
 		this.setUnlocalizedName("backtolife." + name);
 		this.setCreativeTab(BackToLife.tab);
-		GameRegistry.registerItem(this, "unknown_fossil_" + name);
+		GameRegistry.registerItem(this, name);
 		BackToLife.PROXY.addItemRender(this, name);
 	}
 }

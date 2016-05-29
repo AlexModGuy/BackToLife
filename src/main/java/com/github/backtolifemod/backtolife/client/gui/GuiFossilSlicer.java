@@ -41,7 +41,7 @@ public class GuiFossilSlicer extends GuiContainer
 		GL11.glPushMatrix();
 		GL11.glTranslatef(70, 43, 0);
 		GL11.glScalef(2.55F, 2.55F, 2.55F);
-		GL11.glRotatef(Minecraft.getMinecraft().thePlayer.ticksExisted * 4, 0, 0, 1);
+		GL11.glRotatef(((TileEntityFossilSlicer) this.fossilslicer).gearTurnTimer * 4, 0, 0, 1);
 		GL11.glTranslatef(-8, -8, 0);
 		this.drawItemStack(new ItemStack(ModItems.gear), 0, 0, (String)null);
 		GL11.glPopMatrix();

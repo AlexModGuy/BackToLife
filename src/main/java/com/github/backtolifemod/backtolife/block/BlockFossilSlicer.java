@@ -16,7 +16,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -35,12 +37,18 @@ public class BlockFossilSlicer extends BlockContainer {
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		this.setSoundType(SoundType.WOOD);
+		this.setSoundType(SoundType.METAL);
 		this.setCreativeTab(BackToLife.tab);
 		this.setUnlocalizedName("backtolife.fossil_slicer");
 		GameRegistry.registerBlock(this, "fossil_slicer");
 		BackToLife.PROXY.addItemRender(Item.getItemFromBlock(this), "fossil_slicer");
 		GameRegistry.registerTileEntity(TileEntityFossilSlicer.class, "fossil_slicer");
+	}
+	
+	public static final AxisAlignedBB BOUNDINGBOX = new AxisAlignedBB(0F, 0, 0F, 1F, 0.875F, 1F);
+
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
+		return BOUNDINGBOX;
 	}
 	
 	public boolean isOpaqueCube(IBlockState blockstate){
