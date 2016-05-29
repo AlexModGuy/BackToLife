@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 
 import com.github.backtolifemod.backtolife.item.ItemBasic;
 import com.github.backtolifemod.backtolife.item.ItemFossil;
+import com.github.backtolifemod.backtolife.item.ItemSoftTissue;
 
 public class ModItems {
 
@@ -13,6 +14,8 @@ public class ModItems {
 	public static Item gear;
 	public static Item dust;
 	public static Item rocks;
+	public static Item soft_tissue;
+	public static Item fossil_cells;
 
 	public static void init(){
 		unknown_fossil_carnivore_dinosaur = new ItemFossil("carnivore_dinosaur");
@@ -21,5 +24,7 @@ public class ModItems {
 		gear = new ItemBasic("gear");
 		dust = new ItemBasic("dust");
 		rocks = new ItemBasic("rocks");
+		soft_tissue = new ItemSoftTissue(false);
+		fossil_cells = new ItemSoftTissue(true);
 	}
 }

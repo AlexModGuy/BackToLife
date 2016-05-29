@@ -17,6 +17,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import com.github.backtolifemod.backtolife.core.ModItems;
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType.EnumPrehistoricFossilType;
 
 public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISidedInventory{
 
@@ -151,7 +153,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-		return index == 0;
+		return index != 0;
 	}
 
 	@Override
@@ -166,7 +168,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			this.gearTurnTimer++;
 
 			if(gearTurnTimer % 5 == 0){
-				worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.BLOCK_SAND_BREAK, SoundCategory.BLOCKS, 0.5F, 0.7F);
+				worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.BLOCK_SAND_BREAK, SoundCategory.BLOCKS, 0.7F, 0.7F);
 			}
 		}
 
@@ -236,7 +238,20 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			}else if(chanceInt <= 85){
 				result = new ItemStack(Items.BONE, random.nextInt(1) + 1);
 			}else if(chanceInt <= 95){
-				result = new ItemStack(Items.BEEF);
+				EnumPrehistoricType type = null;
+				if(isCarnivoreFossil){
+					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.CARNIVORE_DINOSAUR);
+				}
+				else if(isHerbivoreFossil){
+					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.HERBIVORE_DINOSAUR);
+				}
+				else if(isPterosaurFossil){
+					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.PTEROSAUR);
+				}
+				else{
+					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.values()[random.nextInt(EnumPrehistoricFossilType.values().length)]);
+				}
+				result = new ItemStack(ModItems.soft_tissue, 1, type.ordinal());
 			}else{
 				result = new ItemStack(Items.SKULL, 1, random.nextInt(1));
 			}

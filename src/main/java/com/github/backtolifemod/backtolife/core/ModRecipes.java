@@ -15,5 +15,6 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ItemStack(Blocks.GRAVEL), new Object[]{"XX", "XX", 'X', ModItems.rocks});
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.gear), new Object[]{" X ", "XYX", " X ", 'X', Blocks.IRON_BARS, 'Y', "ingotIron"}));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fossil_slicer), new Object[]{"XXX", "YZY", "YYY", 'X', "paneGlass", 'Y', "ingotIron", 'Z', "gearIron"}));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.tissue_analyzer), new Object[]{"VXV", "ZXZ", "XYX", 'X', "ingotIron", 'Y', Items.WATER_BUCKET.setContainerItem(null), 'Z', "gearIron", 'V', "dustGlowstone"}));
 	}
 }

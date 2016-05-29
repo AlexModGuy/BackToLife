@@ -15,7 +15,6 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -28,27 +27,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.github.backtolifemod.backtolife.BackToLife;
-import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
+import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
 
 
-public class BlockFossilSlicer extends BlockContainer {
+public class BlockTissueAnalyzer extends BlockContainer {
 
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-	public BlockFossilSlicer() {
+	public BlockTissueAnalyzer() {
 		super(Material.IRON);
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.setSoundType(SoundType.METAL);
 		this.setCreativeTab(BackToLife.tab);
-		this.setUnlocalizedName("backtolife.fossil_slicer");
-		GameRegistry.registerBlock(this, "fossil_slicer");
-		BackToLife.PROXY.addItemRender(Item.getItemFromBlock(this), "fossil_slicer");
-		GameRegistry.registerTileEntity(TileEntityFossilSlicer.class, "fossil_slicer");
+		this.setUnlocalizedName("backtolife.tissue_analyzer");
+		GameRegistry.registerBlock(this, "tissue_analyzer");
+		BackToLife.PROXY.addItemRender(Item.getItemFromBlock(this), "tissue_analyzer");
+		GameRegistry.registerTileEntity(TileEntityTissueAnalyzer.class, "tissue_analyzer");
 	}
 
-	public static final AxisAlignedBB BOUNDINGBOX = new AxisAlignedBB(0F, 0, 0F, 1F, 0.875F, 1F);
+	public static final AxisAlignedBB BOUNDINGBOX = new AxisAlignedBB(0F, 0, 0F, 1F, 0.9375F, 1F);
 
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
 		return BOUNDINGBOX;
@@ -84,8 +83,8 @@ public class BlockFossilSlicer extends BlockContainer {
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state){
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-		if (tileentity instanceof TileEntityFossilSlicer){
-			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityFossilSlicer)tileentity);
+		if (tileentity instanceof TileEntityTissueAnalyzer){
+			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityTissueAnalyzer)tileentity);
 			worldIn.updateComparatorOutputLevel(pos, this);
 		}
 		super.breakBlock(worldIn, pos, state);
@@ -116,14 +115,14 @@ public class BlockFossilSlicer extends BlockContainer {
 		if(playerIn.isSneaking()){
 			return false;
 		}else{
-			playerIn.openGui(BackToLife.INSTANCE, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(BackToLife.INSTANCE, 1, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityFossilSlicer();
+		return new TileEntityTissueAnalyzer();
 	}
 
 }

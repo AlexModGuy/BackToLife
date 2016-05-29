@@ -1,4 +1,4 @@
-itemGroup.backtolife=Back To Life
+itemGroup.backtolife=Back to Life
 
 item.backtolife.unknown_fossil.name=Unidentified fossil
 item.backtolife.unknown_fossil_carnivore_dinosaur.desc=Carnivorous Dinosaur
@@ -7,5 +7,12 @@ item.backtolife.unknown_fossil_pterosaur.desc=Pterosaur
 item.backtolife.gear.name=Gear
 item.backtolife.dust.name=Dust
 item.backtolife.rocks.name=Pebbles
+item.backtolife.soft_tissue.name=Soft Tissue
+item.backtolife.fossil_cells.name=Fossilized Cells
 
 tile.backtolife.fossil_slicer.name=Fossil Slicer
+tile.backtolife.tissue_analyzer.name=Tissue Analyzer
+
+entity.backtolife.velociraptor.name=Velociraptor
+entity.backtolife.protoceratops.name=Protoceratops
+entity.backtolife.tarbosaurus.name=Tarbosaurus

@@ -6,8 +6,11 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
+import com.github.backtolifemod.backtolife.client.render.tile.RenderTissueAnalyzer;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
+import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 
 public class ClientProxy extends CommonProxy{
 
@@ -21,10 +24,15 @@ public class ClientProxy extends CommonProxy{
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_pterosaur, 0, new ModelResourceLocation("backtolife:unknown_fossil_pterosaur_0"));
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_pterosaur, 1, new ModelResourceLocation("backtolife:unknown_fossil_pterosaur_1"));
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_pterosaur, 2, new ModelResourceLocation("backtolife:unknown_fossil_pterosaur_2"));
+		for(EnumPrehistoricType prehistoric : EnumPrehistoricType.values()){
+			ModelLoader.setCustomModelResourceLocation(ModItems.soft_tissue, prehistoric.ordinal(), new ModelResourceLocation("backtolife:soft_tissue"));
+			ModelLoader.setCustomModelResourceLocation(ModItems.fossil_cells, prehistoric.ordinal(), new ModelResourceLocation("backtolife:fossil_cells"));
+		}
 	}
 	
 	public void init(){
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTissueAnalyzer.class, new RenderTissueAnalyzer());
 	}
 	
 	public void postInit(){
