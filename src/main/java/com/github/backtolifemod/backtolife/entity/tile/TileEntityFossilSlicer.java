@@ -7,9 +7,12 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
@@ -156,13 +159,17 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 		boolean flag = this.isGrinding();
 		boolean flag1 = false;
 
-
+		if(this.currentGrind == 1){
+			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ENTITY_SKELETON_HURT, SoundCategory.BLOCKS, 0.5F, 0.2F);
+		}
 		if(isGrinding()){
 			this.gearTurnTimer++;
-			if(gearTurnTimer % 20 == 0){
-				this.worldObj.playRecord(this.pos, SoundEvents.BLOCK_METAL_HIT);
+
+			if(gearTurnTimer % 5 == 0){
+				worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.BLOCK_SAND_BREAK, SoundCategory.BLOCKS, 0.5F, 0.7F);
 			}
 		}
+
 		if (!this.worldObj.isRemote)
 		{
 			if (!this.isGrinding() && (this.stacks[0] == null))
@@ -235,18 +242,18 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			}
 		}
 		if(result != null){
-			this.worldObj.playRecord(this.pos, SoundEvents.BLOCK_METAL_BREAK);
-			int slots = 1;
-			ItemStack stackInSlot = this.stacks[slots];
-			if(stackInSlot != null){
-				if(stackInSlot.isItemEqual(result) && stackInSlot.stackSize + result.stackSize < 64){
-					stackInSlot.stackSize += result.stackSize;
+			for(int slots = 1; slots < 10; slots++){
+				ItemStack stackInSlot = this.stacks[slots];
+				if(stackInSlot != null){
+					if(stackInSlot.isItemEqual(result) && stackInSlot.stackSize + result.stackSize < 64){
+						stackInSlot.stackSize += result.stackSize;
+						break;
+					}
 				}
-				slots++;
-				stackInSlot = this.stacks[slots];
-			}
-			if(stackInSlot == null){
-				this.stacks[slots] = result;
+				if(stackInSlot == null){
+					this.stacks[slots] = result;
+					break;
+				}
 			}
 		}
 	}
@@ -256,12 +263,42 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 	public boolean isGrinding(){
 		return this.currentGrind > 0;
 	}
+	
+	public void readFromNBT(NBTTagCompound compound){
+		super.readFromNBT(compound);
+		NBTTagList nbttaglist = compound.getTagList("Items", 10);
+		this.stacks = new ItemStack[this.getSizeInventory()];
+		for (int i = 0; i < nbttaglist.tagCount(); ++i){
+			NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+			int j = nbttagcompound.getByte("Slot");
+			if (j >= 0 && j < this.stacks.length){
+				this.stacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+			}
+		}
+		this.currentGrind = compound.getInteger("GrindTime");
+	}
+	
+	public NBTTagCompound writeToNBT(NBTTagCompound compound){
+        super.writeToNBT(compound);
+        compound.setInteger("GrindTime", this.currentGrind);
+        NBTTagList nbttaglist = new NBTTagList();
+        for (int i = 0; i < this.stacks.length; ++i){
+            if (this.stacks[i] != null){
+                NBTTagCompound nbttagcompound = new NBTTagCompound();
+                nbttagcompound.setByte("Slot", (byte)i);
+                this.stacks[i].writeToNBT(nbttagcompound);
+                nbttaglist.appendTag(nbttagcompound);
+            }
+        }
+        compound.setTag("Items", nbttaglist);
+        return compound;
+    }
 
 	public boolean canMakeFossil(){
-		for(int slots = 1; slots < 9; slots++){
+		for(int slots = 1; slots < 10; slots++){
 			ItemStack stackInSlot = this.stacks[slots];
 			if(stackInSlot != null){
-				if(stackInSlot.isStackable()){
+				if(stackInSlot.isStackable() && stackInSlot.stackSize < 64){
 					break;
 				}else{
 					return false;

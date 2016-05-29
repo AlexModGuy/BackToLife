@@ -1,8 +1,8 @@
 {
     "variants": {
-        "facing=north": { "model": "backtolife:fossil_slicer", "y": 180  },
-        "facing=south": { "model": "backtolife:fossil_slicer", "y": 0 },
-        "facing=west":  { "model": "backtolife:fossil_slicer", "y": -270 },
-        "facing=east":  { "model": "backtolife:fossil_slicer" , "y": -90 }
+        "facing=north": { "model": "backtolife:fossil_slicer"},
+        "facing=south": { "model": "backtolife:fossil_slicer"},
+        "facing=west":  { "model": "backtolife:fossil_slicer"},
+        "facing=east":  { "model": "backtolife:fossil_slicer"}
     }
 }
