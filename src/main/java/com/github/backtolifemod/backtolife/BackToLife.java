@@ -9,7 +9,10 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import com.github.backtolifemod.backtolife.client.GuiHandler;
+import com.github.backtolifemod.backtolife.core.ModBlocks;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.core.ModRecipes;
 
@@ -41,14 +44,15 @@ public class BackToLife
     		
     	};
     	ModItems.init();
+    	ModBlocks.init();
     	ModRecipes.init();
-
     	PROXY.preInit();
     }
     
     @EventHandler
     public void init(FMLInitializationEvent event){
     	PROXY.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
     
     @EventHandler

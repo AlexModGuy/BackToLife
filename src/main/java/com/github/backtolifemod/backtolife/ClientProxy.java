@@ -1,13 +1,13 @@
 package com.github.backtolifemod.backtolife;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 
+import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
 import com.github.backtolifemod.backtolife.core.ModItems;
+import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 
 public class ClientProxy extends CommonProxy{
 
@@ -24,7 +24,7 @@ public class ClientProxy extends CommonProxy{
 	}
 	
 	public void init(){
-		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
 	}
 	
 	public void postInit(){

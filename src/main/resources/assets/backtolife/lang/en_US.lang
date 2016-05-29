@@ -7,3 +7,5 @@ item.backtolife.unknown_fossil_pterosaur.desc=Pterosaur
 item.backtolife.gear.name=Gear
 item.backtolife.dust.name=Dust
 item.backtolife.rocks.name=Pebbles
+
+tile.backtolife.fossil_slicer.name=Fossil Slicer

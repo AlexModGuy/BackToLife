@@ -18,7 +18,6 @@ public class ItemFossil extends Item {
 	private String fossil;
 
 	public ItemFossil(String name){
-		this.maxStackSize = 1;
 		this.fossil = name;
 		this.setUnlocalizedName("backtolife.unknown_fossil");
 		this.setCreativeTab(BackToLife.tab);
