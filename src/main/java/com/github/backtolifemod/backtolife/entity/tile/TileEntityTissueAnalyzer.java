@@ -211,7 +211,6 @@ public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, I
 	}
 
 	private void makeCell() {
-		this.decrStackSize(0, 1);
 		ItemStack stack = this.stacks[0];
 		ItemStack result = null;
 		if(stack != null && stack.getItem() != null && stack.getItem() == ModItems.soft_tissue){
@@ -228,6 +227,7 @@ public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, I
 				this.stacks[1] = result;
 			}
 		}
+		this.decrStackSize(0, 1);
 	}
 
 
@@ -238,7 +238,7 @@ public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, I
 
 	public void readFromNBT(NBTTagCompound compound){
 		super.readFromNBT(compound);
-		NBTTagList nbttaglist = compound.getTagList("Items", 2);
+		NBTTagList nbttaglist = compound.getTagList("Items", 10);
 		this.stacks = new ItemStack[this.getSizeInventory()];
 		for (int i = 0; i < nbttaglist.tagCount(); ++i){
 			NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);

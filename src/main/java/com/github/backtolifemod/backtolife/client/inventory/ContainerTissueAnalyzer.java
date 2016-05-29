@@ -82,7 +82,7 @@ public class ContainerTissueAnalyzer extends Container
 
 	            if (index == 2)
 	            {
-	                if (!this.mergeItemStack(itemstack1, 3, 39, true))
+	                if (!this.mergeItemStack(itemstack1, 3, 38, true))
 	                {
 	                    return null;
 	                }

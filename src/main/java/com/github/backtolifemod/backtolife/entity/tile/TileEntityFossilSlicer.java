@@ -221,7 +221,6 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 	}
 
 	private void makeFossil() {
-		this.decrStackSize(0, 1);
 		ItemStack stack = this.stacks[0];
 		ItemStack result = null;
 		if(stack != null && stack.getItem() != null){
@@ -271,6 +270,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 				}
 			}
 		}
+		this.decrStackSize(0, 1);
 	}
 
 
