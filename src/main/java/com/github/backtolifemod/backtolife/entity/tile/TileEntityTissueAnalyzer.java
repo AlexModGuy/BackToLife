@@ -159,7 +159,10 @@ public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, I
 		boolean flag1 = false;
 
 		if(this.currentProgress == 1){
-			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ENTITY_SKELETON_HURT, SoundCategory.BLOCKS, 0.5F, 0.2F);
+			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.BLOCKS, 0.5F, 0.2F);
+		}
+		if(currentProgress % 3 == 0 && this.isProgressing()){
+			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 0.5F, 0.2F);
 		}
 
 		if (!this.worldObj.isRemote)

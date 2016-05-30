@@ -32,10 +32,12 @@ public class RenderFossilSlicer extends TileEntitySpecialRenderer<TileEntityFoss
 		GL11.glPushMatrix();
 		GL11.glRotatef(-180, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(this.getRotation(tile), 0.0F, 1.0F, 0.0F);
+		GL11.glDisable(GL11.GL_CULL_FACE);
 		GL11.glPushMatrix();
 		this.bindTexture(TEXTURE);
 		MODEL.render(0.0625F);
 		GL11.glPopMatrix();
+		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glPopMatrix();
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();

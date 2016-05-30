@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -16,6 +17,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import com.github.backtolifemod.backtolife.core.ModBlocks;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType.EnumPrehistoricFossilType;
@@ -321,7 +323,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			}
 		}
 		ItemStack stack = this.stacks[0];
-		if(stack != null && stack.getItem() != null){
+		if(stack != null && stack.getItem() != null && stack.getItem() != Item.getItemFromBlock(ModBlocks.fossil_slicer)){
 			return stack.getItem().getUnlocalizedName().contains("fossil") || stack.getItem().getUnlocalizedName().contains("Fossil") || stack.getItem().getUnlocalizedName().contains("FOSSIL");
 		}
 		return false;

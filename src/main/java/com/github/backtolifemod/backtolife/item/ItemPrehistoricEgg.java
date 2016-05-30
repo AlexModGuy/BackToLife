@@ -12,28 +12,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.github.backtolifemod.backtolife.BackToLife;
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 
-public class ItemFossil extends Item {
+public class ItemPrehistoricEgg extends Item {
 
-	private String fossil;
-
-	public ItemFossil(String name){
-		this.fossil = name;
+	public ItemPrehistoricEgg(){
 		this.setHasSubtypes(true);
-		this.setUnlocalizedName("backtolife.unknown_fossil");
+		this.setUnlocalizedName("backtolife.prehistoric_egg");
 		this.setCreativeTab(BackToLife.tab);
-		GameRegistry.registerItem(this, "unknown_fossil_" + name);
+		GameRegistry.registerItem(this, "prehistoric_egg");
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced){
-		tooltip.add(I18n.translateToLocal("item.backtolife.unknown_fossil_" + fossil + ".desc"));
+		String fossil = EnumPrehistoricType.values()[stack.getItemDamage()].name().toLowerCase();
+		tooltip.add(I18n.translateToLocal("entity.backtolife." + fossil + ".name"));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems){
-		subItems.add(new ItemStack(itemIn, 1, 0));
-		subItems.add(new ItemStack(itemIn, 1, 1));
-		subItems.add(new ItemStack(itemIn, 1, 2));
+		for(EnumPrehistoricType prehistoric : EnumPrehistoricType.values()){
+			subItems.add(new ItemStack(itemIn, 1, prehistoric.ordinal()));
+		}
 	}
 }

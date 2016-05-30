@@ -5,14 +5,16 @@ import java.util.List;
 import java.util.Random;
 
 public enum EnumPrehistoricType {
-	VELOCIRAPTOR(EnumPrehistoricFossilType.CARNIVORE_DINOSAUR),
-	PROTOCERATOPS(EnumPrehistoricFossilType.HERBIVORE_DINOSAUR),
-	TARBOSAURUS(EnumPrehistoricFossilType.CARNIVORE_DINOSAUR);
+	VELOCIRAPTOR(EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID),
+	PROTOCERATOPS(EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN),
+	TARBOSAURUS(EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL);
 	
-	EnumPrehistoricFossilType fossilType;
-	
-	private EnumPrehistoricType(EnumPrehistoricFossilType fossilType){
+	public EnumPrehistoricFossilType fossilType;
+	public EnumPrehistoricEggType eggType;
+
+	private EnumPrehistoricType(EnumPrehistoricFossilType fossilType, EnumPrehistoricEggType eggType){
 		this.fossilType = fossilType;
+		this.eggType = eggType;
 	}
 	
 	public static EnumPrehistoricType getOneOfFossilType(EnumPrehistoricFossilType fossilType_0){
@@ -29,5 +31,14 @@ public enum EnumPrehistoricType {
 		CARNIVORE_DINOSAUR,
 		HERBIVORE_DINOSAUR,
 		PTEROSAUR;
+	}
+	
+	public enum EnumPrehistoricEggType {
+		BIG_CERATOPSIAN,
+		SMALL_CERATOPSIAN,
+		DROMEOSAURID,
+		OVIRAPTORID,
+		SAUROPOD,
+		NORMAL;
 	}
 }

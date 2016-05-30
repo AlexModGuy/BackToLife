@@ -9,7 +9,10 @@ item.backtolife.dust.name=Dust
 item.backtolife.rocks.name=Pebbles
 item.backtolife.soft_tissue.name=Soft Tissue
 item.backtolife.fossil_cells.name=Fossilized Cells
+item.backtolife.prehistoric_egg.name=Fertilized Egg
 
+tile.backtolife.laboratory_block.name=Laboratory Block
+tile.backtolife.laboratory_light_panel.name=Laboratory Light Panel
 tile.backtolife.fossil_slicer.name=Fossil Slicer
 tile.backtolife.tissue_analyzer.name=Tissue Analyzer
 

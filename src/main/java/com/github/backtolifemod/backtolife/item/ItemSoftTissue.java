@@ -17,6 +17,7 @@ import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 public class ItemSoftTissue extends Item {
 
 	public ItemSoftTissue(boolean isCells){
+		this.setHasSubtypes(true);
 		this.setUnlocalizedName(isCells ? "backtolife.fossil_cells" : "backtolife.soft_tissue");
 		this.setCreativeTab(BackToLife.tab);
 		GameRegistry.registerItem(this, isCells ? "fossil_cells" : "soft_tissue");
