@@ -169,8 +169,8 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 		if(isGrinding()){
 			this.gearTurnTimer++;
 
-			if(gearTurnTimer % 5 == 0){
-				worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.BLOCK_SAND_BREAK, SoundCategory.BLOCKS, 0.7F, 0.7F);
+			if(gearTurnTimer % 10 == 0){
+				worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ENTITY_PLAYER_BREATH, SoundCategory.BLOCKS, 0.2F, 0.2F);
 			}
 		}
 

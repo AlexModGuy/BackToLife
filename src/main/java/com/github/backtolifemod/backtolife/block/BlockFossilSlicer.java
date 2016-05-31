@@ -19,6 +19,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.github.backtolifemod.backtolife.BackToLife;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
+import com.github.backtolifemod.backtolife.world.StructureUtils;
 
 
 public class BlockFossilSlicer extends BlockContainer {
@@ -48,6 +50,11 @@ public class BlockFossilSlicer extends BlockContainer {
 		GameRegistry.registerTileEntity(TileEntityFossilSlicer.class, "fossil_slicer");
 	}
 
+	public IBlockState withRotation(IBlockState state, Rotation rot)
+	{
+		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+	}
+
 	public static final AxisAlignedBB BOUNDINGBOX = new AxisAlignedBB(0F, 0, 0F, 1F, 0.875F, 1F);
 
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
@@ -62,12 +69,12 @@ public class BlockFossilSlicer extends BlockContainer {
 		return false;
 	}
 
-    public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
 		IBlockState iblockstate = worldIn.getBlockState(pos.down());
 		return iblockstate.getBlock() != Blocks.AIR;
 	}
 
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn){
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn){
 		this.checkAndDropBlock(worldIn, pos, worldIn.getBlockState(pos.down()));
 	}
 
@@ -113,6 +120,8 @@ public class BlockFossilSlicer extends BlockContainer {
 	}
 
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
+		System.out.println((EnumFacing)state.getValue(FACING));
+		System.out.println(((EnumFacing)state.getValue(FACING)).getHorizontalIndex());
 		if(playerIn.isSneaking()){
 			return false;
 		}else{

@@ -18,6 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -53,6 +54,11 @@ public class BlockTissueAnalyzer extends BlockContainer {
 		return BOUNDINGBOX;
 	}
 
+	public IBlockState withRotation(IBlockState state, Rotation rot)
+	{
+		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+	}
+
 	public boolean isOpaqueCube(IBlockState blockstate){
 		return false;
 	}
@@ -61,12 +67,12 @@ public class BlockTissueAnalyzer extends BlockContainer {
 		return false;
 	}
 
-    public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
 		IBlockState iblockstate = worldIn.getBlockState(pos.down());
 		return iblockstate.getBlock() != Blocks.AIR;
 	}
 
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn){
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn){
 		this.checkAndDropBlock(worldIn, pos, worldIn.getBlockState(pos.down()));
 	}
 
