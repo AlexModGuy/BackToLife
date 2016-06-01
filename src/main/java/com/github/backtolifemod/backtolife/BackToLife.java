@@ -1,8 +1,10 @@
 package com.github.backtolifemod.backtolife;
 
+import net.ilexiconn.llibrary.server.config.ConfigHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -16,6 +18,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 
 import com.github.backtolifemod.backtolife.client.GuiHandler;
 import com.github.backtolifemod.backtolife.core.ModBlocks;
+import com.github.backtolifemod.backtolife.core.ModConfig;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.core.ModRecipes;
 import com.github.backtolifemod.backtolife.core.ModVillagers;
@@ -51,7 +54,11 @@ public class BackToLife
 		ModBlocks.init();
 		ModRecipes.init();
 		ModVillagers.init();
-		PROXY.preInit();
+        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+        config.load();
+        ModConfig.load(config);
+        config.save();
+        PROXY.preInit();
 	}
 
 	@EventHandler

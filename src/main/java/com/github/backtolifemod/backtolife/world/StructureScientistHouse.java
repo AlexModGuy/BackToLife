@@ -14,24 +14,20 @@ public class StructureScientistHouse{
 
 	public static boolean generate(World world, Random rand, int x, int y, int z, EnumFacing facing){
 		if(facing == EnumFacing.NORTH){
-			generateNorth(world, rand, x - 10, y - 5, z - 10);
+			generateNorth(world, rand, x - 5, y - 5, z - 5);
 		}
 
 		if(facing == EnumFacing.WEST){
-			generateWest(world, rand, x - 10, y - 5, z - 10);
+			generateWest(world, rand, x - 5, y - 5, z - 5);
 		}
 
 		if(facing == EnumFacing.EAST){
-			generateEast(world, rand, x - 10, y - 5, z - 10);
+			generateEast(world, rand, x - 5, y - 5, z - 5);
 		}
 
 		if(facing == EnumFacing.SOUTH){
-			generateSouth(world, rand, x - 10, y - 5, z - 10);
+			generateSouth(world, rand, x - 5, y - 5, z - 5);
 		}
-		EntityVillager villager = new EntityVillager(world);
-		villager.setProfession(ModVillagers.proffesion);
-		villager.setLocationAndAngles(x - 12, y - 6, z - 12, 0, 0);
-		world.spawnEntityInWorld(villager);
 		return true;
 	}
 

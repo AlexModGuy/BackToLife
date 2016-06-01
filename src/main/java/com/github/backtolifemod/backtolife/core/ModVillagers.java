@@ -5,7 +5,9 @@ import java.util.logging.Level;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
+import net.minecraftforge.fml.common.registry.FMLControlledNamespacedRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
@@ -21,7 +23,7 @@ public class ModVillagers{
 
 		proffesion = new VillagerProfession("backtolife:scientist", "backtolife:textures/models/scientist.png");
 		{
-			registry.register(proffesion);
+			((FMLControlledNamespacedRegistry)registry.getRegistry()).register(ModConfig.VILLAGER_ID, new ResourceLocation("backtolife:scientist"), proffesion);
 			VillagerCareer career = new VillagerCareer(proffesion, "scientist");
 			career.addTrade(1, new EntityVillager.EmeraldForItems(Item.getItemFromBlock(ModBlocks.laboratory_block),  new EntityVillager.PriceInfo(16, 32)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(Item.getItemFromBlock(ModBlocks.laboratory_light_panel),  new EntityVillager.PriceInfo(8, 24)));
