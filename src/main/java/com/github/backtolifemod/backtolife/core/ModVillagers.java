@@ -25,8 +25,8 @@ public class ModVillagers{
 		{
 			((FMLControlledNamespacedRegistry)registry.getRegistry()).register(ModConfig.VILLAGER_ID, new ResourceLocation("backtolife:scientist"), proffesion);
 			VillagerCareer career = new VillagerCareer(proffesion, "scientist");
-			career.addTrade(1, new EntityVillager.EmeraldForItems(Item.getItemFromBlock(ModBlocks.laboratory_block),  new EntityVillager.PriceInfo(16, 32)));
-			career.addTrade(1, new EntityVillager.EmeraldForItems(Item.getItemFromBlock(ModBlocks.laboratory_light_panel),  new EntityVillager.PriceInfo(8, 24)));
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(Item.getItemFromBlock(ModBlocks.laboratory_block),  new EntityVillager.PriceInfo(32, 16)));
+			career.addTrade(1, new EntityVillager.ListItemForEmeralds(Item.getItemFromBlock(ModBlocks.laboratory_light_panel),  new EntityVillager.PriceInfo(24, 8)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(Items.IRON_INGOT,  new EntityVillager.PriceInfo(8, 10)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(ModItems.dust,  new EntityVillager.PriceInfo(20, 30)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(ModItems.rocks,  new EntityVillager.PriceInfo(20, 30)));

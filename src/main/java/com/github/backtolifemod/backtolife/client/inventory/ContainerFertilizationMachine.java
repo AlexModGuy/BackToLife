@@ -96,11 +96,19 @@ public class ContainerFertilizationMachine extends Container{
 			}
 			else if (index != 1 && index != 0)
 			{
-				boolean isTissue = itemstack1.getItem() == ModItems.soft_tissue;
+				boolean isTissue = itemstack1.getItem() == ModItems.fossil_cells;
+				boolean isEgg = itemstack1.getItem() == Items.EGG || itemstack1.getItem() instanceof ItemPrehistoricEgg;
 
 				if (itemstack1 != null && isTissue)
 				{
 					if (!this.mergeItemStack(itemstack1, 0, 1, false))
+					{
+						return null;
+					}
+				}
+				else if (itemstack1 != null && isEgg)
+				{
+					if (!this.mergeItemStack(itemstack1, 1, 2, false))
 					{
 						return null;
 					}

@@ -2,9 +2,11 @@ package com.github.backtolifemod.backtolife.world;
 
 import java.util.Random;
 
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.github.backtolifemod.backtolife.core.ModBlocks;
@@ -829,6 +831,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 7, y + 5, z + 7, Blocks.STONE_BUTTON, 0, 3);
 		StructureUtils.setBlock(world, x + 7, y + 5, z + 8, Blocks.LADDER, 2, 3);
 		StructureUtils.setBlock(world, x + 7, y + 7, z + 8, Blocks.STONE_BUTTON, 4, 3);
+		makeVillager(world, new BlockPos(x + 7, y + 7, z + 8));
 		return true;
 	}
 	
@@ -1630,6 +1633,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 7, y + 5, z + 1, Blocks.STONE_BUTTON, 0, 3);
 		StructureUtils.setBlock(world, x + 8, y + 5, z + 1, Blocks.LADDER, 4, 3);
 		StructureUtils.setBlock(world, x + 8, y + 7, z + 1, Blocks.STONE_BUTTON, 2, 3);
+		makeVillager(world, new BlockPos(x + 8, y + 7, z + 1));
 		return true;
 
 	}
@@ -2430,6 +2434,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 1, y + 5, z + 3, Blocks.STONE_BUTTON, 0, 3);
 		StructureUtils.setBlock(world, x + 1, y + 5, z + 2, Blocks.LADDER, 3, 3);
 		StructureUtils.setBlock(world, x + 1, y + 7, z + 2, Blocks.STONE_BUTTON, 1, 3);
+		makeVillager(world, new BlockPos(x + 1, y + 7, z + 2));
 		return true;
 	}
 
@@ -3231,7 +3236,18 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 3, y + 5, z + 7, Blocks.STONE_BUTTON, 0, 3);
 		StructureUtils.setBlock(world, x + 2, y + 5, z + 7, Blocks.LADDER, 5, 3);
 		StructureUtils.setBlock(world, x + 2, y + 7, z + 7, Blocks.STONE_BUTTON, 1, 3);
+		makeVillager(world, new BlockPos(x + 2, y + 7, z +7));
 		return true;
+	}
+	
+	public static void makeVillager(World world, BlockPos blockpos){
+		EntityVillager villager = new EntityVillager(world);
+		villager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(villager)), (IEntityLivingData)null);
+		villager.setProfession(ModVillagers.proffesion);
+		villager.setLocationAndAngles(blockpos.getX(), blockpos.getY(), blockpos.getZ(), 0, 0);
+		if(!world.isRemote){
+			world.spawnEntityInWorld(villager);
+		}
 	}
 
 }

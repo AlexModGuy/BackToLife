@@ -18,8 +18,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 public class StructureUtils {
 
 	public static Random rand = new Random();
-	//assets.backtolife.loot_tables.chests
-    public static final ResourceLocation SCIENTIST_CHEST = LootTableList.register(new ResourceLocation("backtolife", "village_scientist.json"));
+	public static final ResourceLocation SCIENTIST_CHEST = LootTableList.register(new ResourceLocation("backtolife", "village_scientist"));
     
 	public static void setBlock(World world, int x, int y, int z, Block block, int meta, int flags){
 		BlockPos pos = new BlockPos(x, y, z);
