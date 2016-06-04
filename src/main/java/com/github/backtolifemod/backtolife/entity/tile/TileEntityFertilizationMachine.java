@@ -181,7 +181,7 @@ public class TileEntityFertilizationMachine extends TileEntity implements ITicka
 		boolean flag = this.isProgressing();
 		boolean flag1 = false;
 		if(this.currentProgress == 1){
-			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ENTITY_FIREWORK_BLAST_FAR, SoundCategory.BLOCKS, 0.5F, 0.2F);
+			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 0.7F);
 		}
 		if(currentProgress % 3 == 0 && this.isProgressing()){
 			worldObj.playSound((EntityPlayer)null, this.getPos(), SoundEvents.ENTITY_ELDER_GUARDIAN_AMBIENT, SoundCategory.BLOCKS, 0.1F, 0.4F);

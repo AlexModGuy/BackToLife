@@ -13,19 +13,19 @@ import com.github.backtolifemod.backtolife.core.ModVillagers;
 public class StructureScientistHouse{
 
 	public static boolean generate(World world, Random rand, int x, int y, int z, EnumFacing facing){
-		if(facing == EnumFacing.NORTH){
+		if(facing == EnumFacing.SOUTH){
 			generateNorth(world, rand, x - 5, y - 5, z - 5);
 		}
 
-		if(facing == EnumFacing.WEST){
+		if(facing == EnumFacing.EAST){
 			generateWest(world, rand, x - 5, y - 5, z - 5);
 		}
 
-		if(facing == EnumFacing.EAST){
+		if(facing == EnumFacing.WEST){
 			generateEast(world, rand, x - 5, y - 5, z - 5);
 		}
 
-		if(facing == EnumFacing.SOUTH){
+		if(facing == EnumFacing.NORTH){
 			generateSouth(world, rand, x - 5, y - 5, z - 5);
 		}
 		return true;
