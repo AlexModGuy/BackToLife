@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "backtolife:fossil_slicer"},
+        "facing=south": { "model": "backtolife:fossil_slicer"},
+        "facing=west":  { "model": "backtolife:fossil_slicer"},
+        "facing=east":  { "model": "backtolife:fossil_slicer"}
+    }
+}

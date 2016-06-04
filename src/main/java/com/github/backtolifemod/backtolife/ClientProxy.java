@@ -5,9 +5,11 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
+import com.github.backtolifemod.backtolife.client.render.tile.RenderFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderTissueAnalyzer;
 import com.github.backtolifemod.backtolife.core.ModItems;
+import com.github.backtolifemod.backtolife.entity.tile.TileEntityFertilizationMachine;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
@@ -34,6 +36,7 @@ public class ClientProxy extends CommonProxy{
 	public void init(){
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTissueAnalyzer.class, new RenderTissueAnalyzer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFertilizationMachine.class, new RenderFertilizationMachine());
 	}
 	
 	public void postInit(){

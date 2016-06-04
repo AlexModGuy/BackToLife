@@ -19,6 +19,10 @@ public class ComponentScientistHouse extends StructureVillagePieces.Village{
 
 	private int averageGroundLevel = -1;
 
+	public ComponentScientistHouse() {
+		super();
+	}
+	
 	public ComponentScientistHouse(StructureVillagePieces.Start startPiece, int p2, Random random, StructureBoundingBox structureBox, EnumFacing facing) {
 		super();
 		this.setCoordBaseMode(facing);

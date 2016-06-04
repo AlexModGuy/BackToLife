@@ -165,7 +165,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 0, y + 1, z + 8, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 1, y + 1, z + 8, Blocks.CHEST, 5, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 8, Blocks.AIR, 0, 3);
-		StructureUtils.setBlock(world, x + 3, y + 1, z + 8, Blocks.LIT_PUMPKIN, 2, 3);
+		StructureUtils.setBlock(world, x + 3, y + 1, z + 8, ModBlocks.fertilization_machine, 2, 3);
 		StructureUtils.setBlock(world, x + 4, y + 1, z + 8, Blocks.AIR, 0, 3);
 		StructureUtils.setBlock(world, x + 5, y + 1, z + 8, ModBlocks.tissue_analyzer, 2, 3);
 		StructureUtils.setBlock(world, x + 6, y + 1, z + 8, Blocks.AIR, 0, 3);
@@ -966,7 +966,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 8, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 7, Blocks.CHEST, 2, 3);
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 6, Blocks.AIR, 0, 3);
-		StructureUtils.setBlock(world, x + 8, y + 1, z + 5, Blocks.LIT_PUMPKIN, 1, 3);
+		StructureUtils.setBlock(world, x + 8, y + 1, z + 5, ModBlocks.fertilization_machine, 1, 3);
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 4, Blocks.AIR, 0, 3);
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 3, ModBlocks.tissue_analyzer, 1, 3);
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 2, Blocks.AIR, 0, 3);
@@ -1767,7 +1767,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 2, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 7, y + 1, z + 2, Blocks.CHEST, 4, 3);
 		StructureUtils.setBlock(world, x + 6, y + 1, z + 2, Blocks.AIR, 0, 3);
-		StructureUtils.setBlock(world, x + 5, y + 1, z + 2, Blocks.LIT_PUMPKIN, 0, 3);
+		StructureUtils.setBlock(world, x + 5, y + 1, z + 2, ModBlocks.fertilization_machine, 0, 3);
 		StructureUtils.setBlock(world, x + 4, y + 1, z + 2, Blocks.AIR, 0, 3);
 		StructureUtils.setBlock(world, x + 3, y + 1, z + 2, ModBlocks.tissue_analyzer, 0, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 2, Blocks.AIR, 0, 3);
@@ -2567,7 +2567,7 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 0, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 1, Blocks.CHEST, 3, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 2, Blocks.AIR, 0, 3);
-		StructureUtils.setBlock(world, x + 2, y + 1, z + 3, Blocks.LIT_PUMPKIN, 3, 3);
+		StructureUtils.setBlock(world, x + 2, y + 1, z + 3, ModBlocks.fertilization_machine, 3, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 4, Blocks.AIR, 0, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 5, ModBlocks.tissue_analyzer, 3, 3);
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 6, Blocks.AIR, 0, 3);

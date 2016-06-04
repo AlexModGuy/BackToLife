@@ -6,10 +6,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
+import com.github.backtolifemod.backtolife.client.gui.GuiFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.gui.GuiFossilSlicer;
 import com.github.backtolifemod.backtolife.client.gui.GuiTissueAnalyzer;
+import com.github.backtolifemod.backtolife.client.inventory.ContainerFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.inventory.ContainerFossilSlicer;
 import com.github.backtolifemod.backtolife.client.inventory.ContainerTissueAnalyzer;
+import com.github.backtolifemod.backtolife.entity.tile.TileEntityFertilizationMachine;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
 
@@ -23,6 +26,8 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerFossilSlicer(player.inventory, (TileEntityFossilSlicer)tileentity);
 		case 1:
 			return new ContainerTissueAnalyzer(player.inventory, (TileEntityTissueAnalyzer)tileentity);
+		case 2:
+			return new ContainerFertilizationMachine(player.inventory, (TileEntityFertilizationMachine)tileentity);
 		}
 		return null;
 		
@@ -36,6 +41,8 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiFossilSlicer(player.inventory, (TileEntityFossilSlicer)tileentity);
 		case 1:
 			return new GuiTissueAnalyzer(player.inventory, (TileEntityTissueAnalyzer)tileentity);
+		case 2:
+			return new GuiFertilizationMachine(player.inventory, (TileEntityFertilizationMachine)tileentity);
 		}
 		return null;
 	}

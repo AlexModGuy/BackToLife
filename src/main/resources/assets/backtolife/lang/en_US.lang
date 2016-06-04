@@ -15,6 +15,7 @@ tile.backtolife.laboratory_block.name=Laboratory Block
 tile.backtolife.laboratory_light_panel.name=Laboratory Light Panel
 tile.backtolife.fossil_slicer.name=Fossil Slicer
 tile.backtolife.tissue_analyzer.name=Tissue Analyzer
+tile.backtolife.fertilization_machine.name=Fertilization Machine
 
 entity.backtolife.velociraptor.name=Velociraptor
 entity.backtolife.protoceratops.name=Protoceratops
