@@ -32,7 +32,6 @@ import com.github.backtolifemod.backtolife.BackToLife;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.world.StructureUtils;
 
-
 public class BlockFossilSlicer extends BlockContainer {
 
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
@@ -50,79 +49,77 @@ public class BlockFossilSlicer extends BlockContainer {
 		GameRegistry.registerTileEntity(TileEntityFossilSlicer.class, "fossil_slicer");
 	}
 
-	public IBlockState withRotation(IBlockState state, Rotation rot)
-	{
-		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+	public IBlockState withRotation(IBlockState state, Rotation rot) {
+		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
 	}
 
 	public static final AxisAlignedBB BOUNDINGBOX = new AxisAlignedBB(0F, 0, 0F, 1F, 0.875F, 1F);
 
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOUNDINGBOX;
 	}
 
-	public boolean isOpaqueCube(IBlockState blockstate){
+	public boolean isOpaqueCube(IBlockState blockstate) {
 		return false;
 	}
 
-	public boolean isFullCube(IBlockState blockstate){
+	public boolean isFullCube(IBlockState blockstate) {
 		return false;
 	}
 
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		IBlockState iblockstate = worldIn.getBlockState(pos.down());
 		return iblockstate.getBlock() != Blocks.AIR;
 	}
 
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn){
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
 		this.checkAndDropBlock(worldIn, pos, worldIn.getBlockState(pos.down()));
 	}
 
-	private boolean checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state){
-		if (!this.canPlaceBlockAt(worldIn, pos)){
+	private boolean checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state) {
+		if (!this.canPlaceBlockAt(worldIn, pos)) {
 			worldIn.destroyBlock(pos, true);
 			return false;
-		}
-		else{
+		} else {
 			return true;
 		}
 	}
 
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state){
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
-		if (tileentity instanceof TileEntityFossilSlicer){
-			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityFossilSlicer)tileentity);
+		if (tileentity instanceof TileEntityFossilSlicer) {
+			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityFossilSlicer) tileentity);
 			worldIn.updateComparatorOutputLevel(pos, this);
 		}
 		super.breakBlock(worldIn, pos, state);
 	}
 
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer){
+	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
-	public IBlockState getStateFromMeta(int meta){
+	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
 	}
 
-	public int getMetaFromState(IBlockState state){
-		return ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
+	public int getMetaFromState(IBlockState state) {
+		return ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
 	}
 
-	protected BlockStateContainer createBlockState(){
-		return new BlockStateContainer(this, new IProperty[] {FACING});
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[]{FACING});
 	}
 
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer(){
+	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ){
-		if(playerIn.isSneaking()){
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (playerIn.isSneaking()) {
 			return false;
-		}else{
+		} else {
 			playerIn.openGui(BackToLife.INSTANCE, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}

@@ -22,7 +22,7 @@ public class RenderTissueAnalyzer extends TileEntitySpecialRenderer<TileEntityTi
 	@Override
 	public void renderTileEntityAt(TileEntityTissueAnalyzer tile, double x, double y, double z, float partialTicks, int destroyStage) {
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float) x + 0.5F, (float) y +  1.475F, (float) z + 0.5F);
+		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.475F, (float) z + 0.5F);
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -42,11 +42,15 @@ public class RenderTissueAnalyzer extends TileEntitySpecialRenderer<TileEntityTi
 	}
 
 	private float getRotation(TileEntityTissueAnalyzer tile) {
-		switch(tile.getBlockMetadata()){
-		default: return 0;
-		case 1: return 90;
-		case 2: return 180;
-		case 3: return -90;
+		switch (tile.getBlockMetadata()) {
+			default :
+				return 0;
+			case 1 :
+				return 90;
+			case 2 :
+				return 180;
+			case 3 :
+				return -90;
 		}
 	}
 }

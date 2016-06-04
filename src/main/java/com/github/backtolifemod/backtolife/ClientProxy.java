@@ -14,9 +14,9 @@ import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 
-public class ClientProxy extends CommonProxy{
+public class ClientProxy extends CommonProxy {
 
-	public void preInit(){
+	public void preInit() {
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_carnivore_dinosaur, 0, new ModelResourceLocation("backtolife:unknown_fossil_carnivore_dinosaur_0"));
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_carnivore_dinosaur, 1, new ModelResourceLocation("backtolife:unknown_fossil_carnivore_dinosaur_1"));
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_carnivore_dinosaur, 2, new ModelResourceLocation("backtolife:unknown_fossil_carnivore_dinosaur_2"));
@@ -26,24 +26,24 @@ public class ClientProxy extends CommonProxy{
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_pterosaur, 0, new ModelResourceLocation("backtolife:unknown_fossil_pterosaur_0"));
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_pterosaur, 1, new ModelResourceLocation("backtolife:unknown_fossil_pterosaur_1"));
 		ModelLoader.setCustomModelResourceLocation(ModItems.unknown_fossil_pterosaur, 2, new ModelResourceLocation("backtolife:unknown_fossil_pterosaur_2"));
-		for(EnumPrehistoricType prehistoric : EnumPrehistoricType.values()){
+		for (EnumPrehistoricType prehistoric : EnumPrehistoricType.values()) {
 			ModelLoader.setCustomModelResourceLocation(ModItems.soft_tissue, prehistoric.ordinal(), new ModelResourceLocation("backtolife:soft_tissue"));
 			ModelLoader.setCustomModelResourceLocation(ModItems.fossil_cells, prehistoric.ordinal(), new ModelResourceLocation("backtolife:fossil_cells"));
 			ModelLoader.setCustomModelResourceLocation(ModItems.prehistoric_egg, prehistoric.ordinal(), new ModelResourceLocation("backtolife:egg_" + prehistoric.eggType.toString().toLowerCase()));
 		}
 	}
-	
-	public void init(){
+
+	public void init() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTissueAnalyzer.class, new RenderTissueAnalyzer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFertilizationMachine.class, new RenderFertilizationMachine());
 	}
-	
-	public void postInit(){
+
+	public void postInit() {
 
 	}
 
-	public void addItemRender(Item item, String name){
+	public void addItemRender(Item item, String name) {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("backtolife:" + name));
 	}
 }

@@ -16,7 +16,7 @@ import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 
 public class ItemSoftTissue extends Item {
 
-	public ItemSoftTissue(boolean isCells){
+	public ItemSoftTissue(boolean isCells) {
 		this.setHasSubtypes(true);
 		this.setUnlocalizedName(isCells ? "backtolife.fossil_cells" : "backtolife.soft_tissue");
 		this.setCreativeTab(BackToLife.tab);
@@ -24,14 +24,14 @@ public class ItemSoftTissue extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced){
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		String fossil = EnumPrehistoricType.values()[stack.getItemDamage()].name().toLowerCase();
 		tooltip.add(I18n.translateToLocal("entity.backtolife." + fossil + ".name"));
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems){
-		for(EnumPrehistoricType prehistoric : EnumPrehistoricType.values()){
+	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
+		for (EnumPrehistoricType prehistoric : EnumPrehistoricType.values()) {
 			subItems.add(new ItemStack(itemIn, 1, prehistoric.ordinal()));
 		}
 	}

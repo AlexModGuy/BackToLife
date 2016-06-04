@@ -12,28 +12,28 @@ import net.minecraft.world.World;
 import com.github.backtolifemod.backtolife.core.ModBlocks;
 import com.github.backtolifemod.backtolife.core.ModVillagers;
 
-public class StructureScientistHouse{
+public class StructureScientistHouse {
 
-	public static boolean generate(World world, Random rand, int x, int y, int z, EnumFacing facing){
-		if(facing == EnumFacing.SOUTH){
+	public static boolean generate(World world, Random rand, int x, int y, int z, EnumFacing facing) {
+		if (facing == EnumFacing.SOUTH) {
 			generateNorth(world, rand, x - 5, y - 5, z - 5);
 		}
 
-		if(facing == EnumFacing.EAST){
+		if (facing == EnumFacing.EAST) {
 			generateWest(world, rand, x - 5, y - 5, z - 5);
 		}
 
-		if(facing == EnumFacing.WEST){
+		if (facing == EnumFacing.WEST) {
 			generateEast(world, rand, x - 5, y - 5, z - 5);
 		}
 
-		if(facing == EnumFacing.NORTH){
+		if (facing == EnumFacing.NORTH) {
 			generateSouth(world, rand, x - 5, y - 5, z - 5);
 		}
 		return true;
 	}
 
-	public static boolean generateSouth(World world, Random rand, int x, int y, int z){
+	public static boolean generateSouth(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 2, y + 0, z + 0, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 3, y + 0, z + 0, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 4, y + 0, z + 0, ModBlocks.laboratory_block, 0, 3);
@@ -822,8 +822,8 @@ public class StructureScientistHouse{
 		return true;
 
 	}
-	
-	public static boolean generate_r02_last(World world, Random rand, int x, int y, int z){
+
+	public static boolean generate_r02_last(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 7, y + 1, z + 8, Blocks.LADDER, 2, 3);
 		StructureUtils.setBlock(world, x + 7, y + 2, z + 8, Blocks.LADDER, 2, 3);
 		StructureUtils.setBlock(world, x + 7, y + 3, z + 8, Blocks.LADDER, 2, 3);
@@ -834,8 +834,8 @@ public class StructureScientistHouse{
 		makeVillager(world, new BlockPos(x + 7, y + 7, z + 8));
 		return true;
 	}
-	
-	public static boolean generateEast(World world, Random rand, int x, int y, int z){
+
+	public static boolean generateEast(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 0, y + 0, z + 6, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 0, y + 0, z + 5, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 0, y + 0, z + 4, ModBlocks.laboratory_block, 0, 3);
@@ -1624,8 +1624,8 @@ public class StructureScientistHouse{
 		return true;
 
 	}
-	
-	public static boolean generate_r13_last(World world, Random rand, int x, int y, int z){
+
+	public static boolean generate_r13_last(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 8, y + 1, z + 1, Blocks.LADDER, 4, 3);
 		StructureUtils.setBlock(world, x + 8, y + 2, z + 1, Blocks.LADDER, 4, 3);
 		StructureUtils.setBlock(world, x + 8, y + 3, z + 1, Blocks.LADDER, 4, 3);
@@ -1637,7 +1637,8 @@ public class StructureScientistHouse{
 		return true;
 
 	}
-	public static boolean generateNorth(World world, Random rand, int x, int y, int z){
+
+	public static boolean generateNorth(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 6, y + 0, z + 10, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 5, y + 0, z + 10, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 4, y + 0, z + 10, ModBlocks.laboratory_block, 0, 3);
@@ -2425,8 +2426,8 @@ public class StructureScientistHouse{
 		generate_r24_last(world, rand, x, y, z);
 		return true;
 	}
-	
-	public static boolean generate_r24_last(World world, Random rand, int x, int y, int z){
+
+	public static boolean generate_r24_last(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 1, y + 1, z + 2, Blocks.LADDER, 3, 3);
 		StructureUtils.setBlock(world, x + 1, y + 2, z + 2, Blocks.LADDER, 3, 3);
 		StructureUtils.setBlock(world, x + 1, y + 3, z + 2, Blocks.LADDER, 3, 3);
@@ -2438,7 +2439,7 @@ public class StructureScientistHouse{
 		return true;
 	}
 
-	public static boolean generateWest(World world, Random rand, int x, int y, int z){
+	public static boolean generateWest(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 10, y + 0, z + 2, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 10, y + 0, z + 3, ModBlocks.laboratory_block, 0, 3);
 		StructureUtils.setBlock(world, x + 10, y + 0, z + 4, ModBlocks.laboratory_block, 0, 3);
@@ -3227,8 +3228,8 @@ public class StructureScientistHouse{
 		return true;
 
 	}
-	
-	public static boolean generate_r35_last(World world, Random rand, int x, int y, int z){
+
+	public static boolean generate_r35_last(World world, Random rand, int x, int y, int z) {
 		StructureUtils.setBlock(world, x + 2, y + 1, z + 7, Blocks.LADDER, 5, 3);
 		StructureUtils.setBlock(world, x + 2, y + 2, z + 7, Blocks.LADDER, 5, 3);
 		StructureUtils.setBlock(world, x + 2, y + 3, z + 7, Blocks.LADDER, 5, 3);
@@ -3236,16 +3237,16 @@ public class StructureScientistHouse{
 		StructureUtils.setBlock(world, x + 3, y + 5, z + 7, Blocks.STONE_BUTTON, 0, 3);
 		StructureUtils.setBlock(world, x + 2, y + 5, z + 7, Blocks.LADDER, 5, 3);
 		StructureUtils.setBlock(world, x + 2, y + 7, z + 7, Blocks.STONE_BUTTON, 1, 3);
-		makeVillager(world, new BlockPos(x + 2, y + 7, z +7));
+		makeVillager(world, new BlockPos(x + 2, y + 7, z + 7));
 		return true;
 	}
-	
-	public static void makeVillager(World world, BlockPos blockpos){
+
+	public static void makeVillager(World world, BlockPos blockpos) {
 		EntityVillager villager = new EntityVillager(world);
-		villager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(villager)), (IEntityLivingData)null);
+		villager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(villager)), (IEntityLivingData) null);
 		villager.setProfession(ModVillagers.proffesion);
 		villager.setLocationAndAngles(blockpos.getX(), blockpos.getY(), blockpos.getZ(), 0, 0);
-		if(!world.isRemote){
+		if (!world.isRemote) {
 			world.spawnEntityInWorld(villager);
 		}
 	}

@@ -15,7 +15,7 @@ import com.github.backtolifemod.backtolife.BackToLife;
 
 public class ItemBasic extends Item {
 
-	public ItemBasic(String name){
+	public ItemBasic(String name) {
 		this.setUnlocalizedName("backtolife." + name);
 		this.setCreativeTab(BackToLife.tab);
 		GameRegistry.registerItem(this, name);

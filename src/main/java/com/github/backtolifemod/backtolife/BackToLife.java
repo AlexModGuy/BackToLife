@@ -19,13 +19,13 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 import com.github.backtolifemod.backtolife.client.GuiHandler;
 import com.github.backtolifemod.backtolife.core.ModBlocks;
 import com.github.backtolifemod.backtolife.core.ModConfig;
+import com.github.backtolifemod.backtolife.core.ModEntities;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.core.ModRecipes;
 import com.github.backtolifemod.backtolife.core.ModVillagers;
 
 @Mod(modid = BackToLife.MODID, name = BackToLife.NAME, version = BackToLife.VERSION)
-public class BackToLife
-{
+public class BackToLife {
 	public static final String MODID = "backtolife";
 	public static final String NAME = "Back To Life";
 	public static final String VERSION = "1.0";
@@ -37,15 +37,15 @@ public class BackToLife
 	public static CreativeTabs tab;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event){
-		tab = new CreativeTabs(MODID){
+	public void preInit(FMLPreInitializationEvent event) {
+		tab = new CreativeTabs(MODID) {
 
 			@Override
 			public Item getTabIconItem() {
 				return ModItems.unknown_fossil_carnivore_dinosaur;
 			}
 
-			public int getIconItemDamage(){
+			public int getIconItemDamage() {
 				return 2;
 			}
 
@@ -53,22 +53,23 @@ public class BackToLife
 		ModItems.init();
 		ModBlocks.init();
 		ModRecipes.init();
+		ModEntities.init();
 		ModVillagers.init();
-        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-        config.load();
-        ModConfig.load(config);
-        config.save();
-        PROXY.preInit();
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		ModConfig.load(config);
+		config.save();
+		PROXY.preInit();
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event){
+	public void init(FMLInitializationEvent event) {
 		PROXY.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event){
+	public void postInit(FMLPostInitializationEvent event) {
 		PROXY.postInit();
 
 	}

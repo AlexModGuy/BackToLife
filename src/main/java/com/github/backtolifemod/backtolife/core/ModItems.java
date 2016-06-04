@@ -19,7 +19,7 @@ public class ModItems {
 	public static Item fossil_cells;
 	public static Item prehistoric_egg;
 
-	public static void init(){
+	public static void init() {
 		unknown_fossil_carnivore_dinosaur = new ItemFossil("carnivore_dinosaur");
 		unknown_fossil_herbivore_dinosaur = new ItemFossil("herbivore_dinosaur");
 		unknown_fossil_pterosaur = new ItemFossil("pterosaur");

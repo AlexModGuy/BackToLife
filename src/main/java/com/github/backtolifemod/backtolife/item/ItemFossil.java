@@ -17,7 +17,7 @@ public class ItemFossil extends Item {
 
 	private String fossil;
 
-	public ItemFossil(String name){
+	public ItemFossil(String name) {
 		this.fossil = name;
 		this.setHasSubtypes(true);
 		this.setUnlocalizedName("backtolife.unknown_fossil");
@@ -26,12 +26,12 @@ public class ItemFossil extends Item {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced){
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		tooltip.add(I18n.translateToLocal("item.backtolife.unknown_fossil_" + fossil + ".desc"));
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems){
+	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
 		subItems.add(new ItemStack(itemIn, 1, 0));
 		subItems.add(new ItemStack(itemIn, 1, 1));
 		subItems.add(new ItemStack(itemIn, 1, 2));

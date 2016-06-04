@@ -16,14 +16,14 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 
-public class ComponentScientistHouse extends StructureVillagePieces.Village{
+public class ComponentScientistHouse extends StructureVillagePieces.Village {
 
 	private int averageGroundLevel = -1;
 
 	public ComponentScientistHouse() {
 		super();
 	}
-	
+
 	public ComponentScientistHouse(StructureVillagePieces.Start startPiece, int p2, Random random, StructureBoundingBox structureBox, EnumFacing facing) {
 		super();
 		this.setCoordBaseMode(facing);
@@ -43,7 +43,7 @@ public class ComponentScientistHouse extends StructureVillagePieces.Village{
 		return StructureScientistHouse.generate(world, random, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), this.getCoordBaseMode());
 	}
 
-	protected int chooseProfession(int villagersSpawnedIn, int currentVillagerProfession){
+	protected int chooseProfession(int villagersSpawnedIn, int currentVillagerProfession) {
 		return ModConfig.VILLAGER_ID;
 	}
 
