@@ -10,7 +10,7 @@ public class ModEntities {
 	public static void init() {
 		for (EnumPrehistoricType prehistoric : EnumPrehistoricType.values()) {
 			if (prehistoric.entityClass != null) {
-				EntityRegistry.registerModEntity(prehistoric.entityClass, prehistoric.toString().toLowerCase(), prehistoric.ordinal(), BackToLife.INSTANCE, 80, 3, true, 0x000001, 0x00ff0f);
+				EntityRegistry.registerModEntity(prehistoric.entityClass, prehistoric.toString().toLowerCase(), prehistoric.ordinal(), BackToLife.INSTANCE, 80, 3, true, prehistoric.colorA, prehistoric.colorB);
 			}
 		}
 	}

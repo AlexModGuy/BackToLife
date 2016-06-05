@@ -23,7 +23,7 @@ public class RenderBasicPrehistoric extends RenderLiving<EntityPrehistoric> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityPrehistoric entity) {
-		return new ResourceLocation(entity.getTexture());
+		return new ResourceLocation(entity.getTexture() + ".png");
 	}
 
 }

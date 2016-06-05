@@ -7,15 +7,21 @@ import java.util.Random;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 public enum EnumPrehistoricType {
-	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID), PROTOCERATOPS(null, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN), TARBOSAURUS(null, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL);
+	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, 0X392A22, 0X392A22),
+	PROTOCERATOPS(null, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, 0, 0),
+	TARBOSAURUS(null, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL, 0, 0);
 	public EnumPrehistoricFossilType fossilType;
 	public EnumPrehistoricEggType eggType;
 	public Class entityClass;
+	public int colorA;
+	public int colorB;
 
-	private EnumPrehistoricType(Class entityClass, EnumPrehistoricFossilType fossilType, EnumPrehistoricEggType eggType) {
+	private EnumPrehistoricType(Class entityClass, EnumPrehistoricFossilType fossilType, EnumPrehistoricEggType eggType, int colorA, int colorB) {
 		this.entityClass = entityClass;
 		this.fossilType = fossilType;
 		this.eggType = eggType;
+		this.colorA = colorA;
+		this.colorB = colorB;
 	}
 
 	public static EnumPrehistoricType getOneOfFossilType(EnumPrehistoricFossilType fossilType_0) {

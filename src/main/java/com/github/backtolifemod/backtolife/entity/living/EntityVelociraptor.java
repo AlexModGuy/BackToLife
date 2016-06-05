@@ -1,18 +1,13 @@
 package com.github.backtolifemod.backtolife.entity.living;
 
-import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
-
-import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.world.World;
+
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 
 public class EntityVelociraptor extends EntityLandPrehistoric {
 
@@ -26,10 +21,9 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 	protected void initEntityAI(){
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityLivingBase.class, 6.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
-
 
 	@Override
 	public int getGrownAge() {

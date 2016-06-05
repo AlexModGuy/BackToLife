@@ -140,7 +140,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public String getTexture() {
-		return "backtolife:textures/models/entity/" + this.type.toString().toLowerCase() + (this.isMale() ? "_male" : "_female") + ".png";
+		return "backtolife:textures/models/entity/" + this.type.toString().toLowerCase() + (this.isMale() ? "_male" : "_female");
 	}
 
 	@Override
