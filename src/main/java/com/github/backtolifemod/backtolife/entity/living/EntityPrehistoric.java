@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -14,11 +15,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType.EnumPrehistoricDietType;
 
 public abstract class EntityPrehistoric extends EntityTameable implements IAnimatedEntity {
 
@@ -36,8 +39,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	public double maximumHealth;
 	public double minimumSpeed;
 	public double maximumSpeed;
+	public EnumPrehistoricDietType diet;
 
-	public EntityPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed) {
+	public EntityPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed, EnumPrehistoricDietType diet) {
 		super(world);
 		this.type = type;
 		this.minimumDamage = minimumDamage;
@@ -46,7 +50,8 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		this.maximumHealth = maximumHealth;
 		this.minimumSpeed = minimumSpeed;
 		this.maximumSpeed = maximumSpeed;
-		updateSize();
+		this.diet = diet;
+		updateAttributes();
 	}
 
 	protected void entityInit() {
@@ -104,17 +109,17 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	public void onUpdate() {
 		this.setScale(getRenderSize());
 		super.onUpdate();
-		AnimationHandler.INSTANCE.updateAnimations(this);
 	}
 
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		AnimationHandler.INSTANCE.updateAnimations(this);
 		this.setAgeInTicks(this.getAgeInTicks() + 1);
 		if (this.getAgeInTicks() % 24000 == 0) {
-			this.updateSize();
+			this.updateAttributes();
 		}
 		if (this.getAgeInTicks() % 1200 == 0) {
-			if(this.getHunger() > 0){
+			if (this.getHunger() > 0) {
 				this.setHunger(this.getHunger() - 1);
 			}
 		}
@@ -140,7 +145,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		this.setGender(this.getRNG().nextBoolean());
 		this.setAgeInDays(this.getGrownAge());
 		this.setHunger(50);
-		this.updateSize();
+		this.updateAttributes();
 		return livingdata;
 	}
 
@@ -170,7 +175,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 
 	@Override
 	public Animation[] getAnimations() {
-		return new Animation[]{};
+		return new Animation[] {};
 	}
 
 	public int getHunger() {
@@ -210,7 +215,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
 	}
 
-	public void updateSize() {
+	public void updateAttributes() {
 		double healthStep = (maximumHealth - minimumHealth) / (this.getGrownAge() + 1);
 		double attackStep = (maximumDamage - minimumDamage) / (this.getGrownAge() + 1);
 		double speedStep = (maximumSpeed - minimumSpeed) / (this.getGrownAge() + 1);
@@ -219,6 +224,16 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 			this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(Math.round(minimumDamage + (attackStep * this.getAgeInDays())));
 			this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(minimumSpeed + (speedStep * this.getAgeInDays()));
 		}
+	}
+
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+
+		if (flag) {
+			this.applyEnchantments(this, entityIn);
+		}
+
+		return flag;
 	}
 
 	public boolean isMale() {

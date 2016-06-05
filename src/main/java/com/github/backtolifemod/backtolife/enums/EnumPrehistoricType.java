@@ -38,6 +38,10 @@ public enum EnumPrehistoricType {
 		CARNIVORE_DINOSAUR, HERBIVORE_DINOSAUR, PTEROSAUR;
 	}
 
+	public enum EnumPrehistoricDietType {
+		CARNIVORE, HERBIVORE, OMNIVORE;
+	}
+	
 	public enum EnumPrehistoricEggType {
 		BIG_CERATOPSIAN, SMALL_CERATOPSIAN, DROMEOSAURID, OVIRAPTORID, SAUROPOD, NORMAL;
 	}

@@ -1,5 +1,6 @@
 package com.github.backtolifemod.backtolife.client.model;
 
+import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 
@@ -21,5 +22,9 @@ public class ModelPrehistoric extends AdvancedModelBase{
     	model.rotationPointX += progress * (x - model.defaultPositionX) / 20.0F;
     	model.rotationPointY += progress * (y - model.defaultPositionY) / 20.0F;
         model.rotationPointZ += progress * (z - model.defaultPositionZ) / 20.0F;
+    }
+    
+    public void rotate(ModelAnimator animator, AdvancedModelRenderer model, float x, float y, float z){
+    	animator.rotate(model, (float)Math.toRadians(x), (float)Math.toRadians(y), (float)Math.toRadians(z));
     }
 }

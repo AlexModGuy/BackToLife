@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 
 import com.github.backtolifemod.backtolife.BackToLife;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
+import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType.EnumPrehistoricDietType;
 import com.github.backtolifemod.backtolife.message.MessageSetDay;
 
 public abstract class EntityLandPrehistoric extends EntityPrehistoric {
@@ -20,11 +21,12 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	public int sleepingTicks;
 	public float sleepProgress;
 	public boolean isDaytime;
-	private Animation SPEAK_ANIMATION;
+	public static Animation SPEAK_ANIMATION;
+	public static Animation ANIMATION_JUMP;
 	private static final DataParameter<Boolean> SLEEPING = EntityDataManager.<Boolean> createKey(EntityLandPrehistoric.class, DataSerializers.BOOLEAN);
 
-	public EntityLandPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed) {
-		super(world, type, minimumDamage, maximumDamage, minimumHealth, maximumHealth, minimumSpeed, maximumSpeed);
+	public EntityLandPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed, EnumPrehistoricDietType diet) {
+		super(world, type, minimumDamage, maximumDamage, minimumHealth, maximumHealth, minimumSpeed, maximumSpeed, diet);
 	}
 
 	protected void entityInit() {
@@ -94,12 +96,12 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate(){
 		super.onLivingUpdate();
-		if (!worldObj.isRemote && (!this.isSitting() && this.getRNG().nextInt(100) == 1 && (this.getAnimation() == NO_ANIMATION || this.getAnimation() == SPEAK_ANIMATION) && !this.isSleeping())) {
+		if (!worldObj.isRemote && (!this.isSitting() && this.getRNG().nextInt(1000) == 1 && (this.getAnimation() == NO_ANIMATION || this.getAnimation() == SPEAK_ANIMATION) && !this.isSleeping())) {
 			this.setSitting(true);
 			sittingTicks = 0;
 		}
 
-		if (!worldObj.isRemote && (this.isSitting() && sittingTicks > 100 && this.getRNG().nextInt(100) == 1 && !this.isSleeping())){ 
+		if (!worldObj.isRemote && ((this.isSitting() && sittingTicks > 100 && this.getRNG().nextInt(500) == 1 && !this.isSleeping()) || this.getAttackTarget() != null)){ 
 			this.setSitting(false);
 			sittingTicks = 0;
 		}
