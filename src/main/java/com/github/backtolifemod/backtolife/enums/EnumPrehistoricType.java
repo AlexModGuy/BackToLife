@@ -7,7 +7,7 @@ import java.util.Random;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 public enum EnumPrehistoricType {
-	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, 0X392A22, 0X392A22),
+	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, 0X392A22, 0XDAC9B9),
 	PROTOCERATOPS(null, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, 0, 0),
 	TARBOSAURUS(null, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL, 0, 0);
 	public EnumPrehistoricFossilType fossilType;

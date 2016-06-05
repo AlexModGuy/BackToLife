@@ -113,6 +113,11 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		if (this.getAgeInTicks() % 24000 == 0) {
 			this.updateSize();
 		}
+		if (this.getAgeInTicks() % 1200 == 0) {
+			if(this.getHunger() > 0){
+				this.setHunger(this.getHunger() - 1);
+			}
+		}
 	}
 
 	@Override
@@ -222,4 +227,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 
 	public abstract int getGrownAge();
 
+	public boolean isMovementCeased() {
+		return false;
+	}
 }

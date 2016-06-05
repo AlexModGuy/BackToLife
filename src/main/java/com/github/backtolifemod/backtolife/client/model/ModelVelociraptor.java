@@ -353,7 +353,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
             sitAnimationRotation(RightLeg1, progress, -((float)Math.toRadians(83.48D)), 0, (float)Math.toRadians(2.61D));
             sitAnimationRotation(RArmFeathers1, progress, (float)Math.toRadians(15.65D), 0, 0);
             sitAnimationRotation(RArmFeathers3, progress, -((float)Math.toRadians(60.0D)), 0, 0);
-            sitAnimationRotation(Head1, progress, -((float)Math.toRadians(20.870000000000005D)), 0, 0);
+            sitAnimationRotation(headPivot, progress, -((float)Math.toRadians(20.870000000000005D)), 0, 0);
             sitAnimationRotation(RightArm2, progress, -((float)Math.toRadians(143.48D)), 0, 0);
             sitAnimationRotation(HeadFeathers3, progress, (float)Math.toRadians(20.87D), (float)Math.toRadians(2.61D), -((float)Math.toRadians(2.61D)));
             sitAnimationRotation(RightFeet, progress, (float)Math.toRadians(70.43D), 0, -((float)Math.toRadians(2.61D)));
@@ -373,6 +373,9 @@ public class ModelVelociraptor extends ModelPrehistoric {
             sitAnimationRotation(Neck, progress, (float)Math.toRadians(46.96000000000005D), 0, 0);
             sitAnimationRotation(RightClaw2, progress, (float)Math.toRadians(36.52D), 0, 0);
             sitAnimationRotation(LeftClaw1, progress, (float)Math.toRadians(23.48D), 0, 0);
+	        sitAnimationPos(Body1, progress, 0, 13, 0);
+	        sitAnimationPos(RightLeg1, progress, -3, 15F, 1);
+	        sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
     	}
     	{
     		float progress = ((EntityLandPrehistoric)entity).sleepProgress;
@@ -386,7 +389,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
     	        sitAnimationRotation(Tailfeathers2, progress, (float)Math.toRadians(5.22D), 0, 0);
     	        sitAnimationRotation(HeadFeathers2, progress, (float)Math.toRadians(2.61D), -((float)Math.toRadians(2.61D)), (float)Math.toRadians(2.61D));
     	        sitAnimationRotation(LeftClaw2, progress, (float)Math.toRadians(36.52D), 0, 0);
-    	        sitAnimationRotation(Head1, progress, (float)Math.toRadians(41.74000000000004D), 0, 0);
+    	        sitAnimationRotation(headPivot, progress, (float)Math.toRadians(41.74000000000004D), 0, 0);
     	        sitAnimationRotation(LeftLeg1, progress, -((float)Math.toRadians(83.48D)), 0, -((float)Math.toRadians(2.61D)));
     	        sitAnimationRotation(Tailfeathers1, progress, (float)Math.toRadians(1.61D), 0, 0);
     	        sitAnimationRotation(RightClaw2, progress, (float)Math.toRadians(36.52D), 0, 0);
@@ -415,6 +418,9 @@ public class ModelVelociraptor extends ModelPrehistoric {
     	        sitAnimationRotation(RightHand, progress, (float)Math.toRadians(78.26D), (float)Math.toRadians(10.43D), 0);
     	        sitAnimationRotation(LowerJaw1, progress, -((float)Math.toRadians(3.552713678800501E-15D)), 0, 0);
     	        sitAnimationRotation(Tail3, progress, (float)Math.toRadians(2.61D), 0, 0);
+    	        sitAnimationPos(Body1, progress, 0, 13, 0);
+    	        sitAnimationPos(RightLeg1, progress, -3, 15F, 1);
+    	        sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
     	}
     }
 

@@ -94,12 +94,12 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate(){
 		super.onLivingUpdate();
-		if (!worldObj.isRemote && !this.isSitting() && this.getRNG().nextInt(100) == 1 && !this.isRiding() && (this.getAnimation() == NO_ANIMATION || this.getAnimation() == SPEAK_ANIMATION) && !this.isSleeping()) {
+		if (!worldObj.isRemote && (!this.isSitting() && this.getRNG().nextInt(100) == 1 && (this.getAnimation() == NO_ANIMATION || this.getAnimation() == SPEAK_ANIMATION) && !this.isSleeping())) {
 			this.setSitting(true);
 			sittingTicks = 0;
 		}
 
-		if (!worldObj.isRemote && (this.isSitting() && sittingTicks > 100 && this.getRNG().nextInt(100) == 1 || this.getAttackTarget() != null) && !this.isSleeping()) {
+		if (!worldObj.isRemote && (this.isSitting() && sittingTicks > 100 && this.getRNG().nextInt(100) == 1 && !this.isSleeping())){ 
 			this.setSitting(false);
 			sittingTicks = 0;
 		}
@@ -110,7 +110,6 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 		}
 
 		if (!worldObj.isRemote && ( !this.canSleep() || (this.isSleeping() && sleepingTicks > 200 && this.getRNG().nextInt(1000) == 1 || this.getAttackTarget() != null))) {
-			this.setSitting(false);
 			this.setSleeping(false);
 			sleepingTicks = 0;
 		}
@@ -154,5 +153,9 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 		}
 		if(sleeping)sleepingTicks++;
 		if(sitting)sittingTicks++;
+	}
+	
+	public boolean isMovementCeased() {
+		return this.isSleeping() || this.isSitting();
 	}
 }

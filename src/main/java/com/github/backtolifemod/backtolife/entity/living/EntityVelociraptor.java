@@ -1,5 +1,6 @@
 package com.github.backtolifemod.backtolife.entity.living;
 
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -7,6 +8,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.world.World;
 
+import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAIWander;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 
 public class EntityVelociraptor extends EntityLandPrehistoric {
@@ -20,7 +22,7 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 
 	protected void initEntityAI(){
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(5, new PrehistoricAIWander(this, 1.0D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityLivingBase.class, 6.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
