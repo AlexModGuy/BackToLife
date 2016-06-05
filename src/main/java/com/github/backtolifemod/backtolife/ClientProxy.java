@@ -1,14 +1,19 @@
 package com.github.backtolifemod.backtolife;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
+import com.github.backtolifemod.backtolife.client.model.ModelVelociraptor;
+import com.github.backtolifemod.backtolife.client.render.entity.RenderBasicPrehistoric;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderTissueAnalyzer;
 import com.github.backtolifemod.backtolife.core.ModItems;
+import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFertilizationMachine;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
@@ -37,6 +42,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTissueAnalyzer.class, new RenderTissueAnalyzer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFertilizationMachine.class, new RenderFertilizationMachine());
+		RenderingRegistry.registerEntityRenderingHandler(EntityVelociraptor.class, new RenderBasicPrehistoric(new ModelVelociraptor(), 0));
 	}
 
 	public void postInit() {

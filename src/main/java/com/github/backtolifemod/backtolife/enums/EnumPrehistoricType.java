@@ -8,7 +8,6 @@ import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 public enum EnumPrehistoricType {
 	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID), PROTOCERATOPS(null, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN), TARBOSAURUS(null, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL);
-
 	public EnumPrehistoricFossilType fossilType;
 	public EnumPrehistoricEggType eggType;
 	public Class entityClass;

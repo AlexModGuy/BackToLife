@@ -1,6 +1,7 @@
 {
     "pools": [
         {
+            "name": "scientist_village",
             "rolls": {
                 "min": 3,
                 "max": 8
@@ -28,15 +29,71 @@
                             "function": "set_count",
                             "count": {
                                 "min": 1,
+                                "max": 10
+                            }
+                        }
+                    ],
+                    "weight": 20
+                },
+                {
+                    "type": "item",
+                    "name": "backtolife:gear",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ],
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_bars",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 2,
                                 "max": 5
                             }
                         }
                     ],
-                    "weight": 10
+                    "weight": 15
                 },
                 {
                     "type": "item",
-                    "name": "minecraft:gold_ingot",
+                    "name": "backtolife:laboratory_block",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 23
+                            }
+                        }
+                    ],
+                    "weight": 15
+                },
+                 {
+                    "type": "item",
+                    "name": "backtolife:laboratory_light_panel",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 15
+                            }
+                        }
+                    ],
+                    "weight": 7
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:glowstone_dust",
                     "functions": [
                         {
                             "function": "set_count",
@@ -46,17 +103,32 @@
                             }
                         }
                     ],
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "type": "item",
-                    "name": "minecraft:bread",
+                    "name": "backtolife:fossil_slicer",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "backtolife:tissue_analyzer",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "backtolife:fertilization_machine",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "backtolife:dust",
                     "functions": [
                         {
                             "function": "set_count",
                             "count": {
                                 "min": 1,
-                                "max": 3
+                                "max": 23
                             }
                         }
                     ],
@@ -64,57 +136,13 @@
                 },
                 {
                     "type": "item",
-                    "name": "minecraft:apple",
+                    "name": "backtolife:rocks",
                     "functions": [
                         {
                             "function": "set_count",
                             "count": {
                                 "min": 1,
-                                "max": 3
-                            }
-                        }
-                    ],
-                    "weight": 15
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_pickaxe",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_sword",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_chestplate",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_helmet",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_leggings",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_boots",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:obsidian",
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 3,
-                                "max": 7
+                                "max": 23
                             }
                         }
                     ],
@@ -122,38 +150,9 @@
                 },
                 {
                     "type": "item",
-                    "name": "minecraft:sapling",
-                    "functions": [
-                        {
-                            "function": "set_count",
-                            "count": {
-                                "min": 3,
-                                "max": 7
-                            }
-                        }
-                    ],
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:saddle",
+                    "name": "minecraft:egg",
                     "weight": 3
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:iron_horse_armor",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:golden_horse_armor",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:diamond_horse_armor",
-                    "weight": 1
-                }
+                } 
             ]
         }
     ]
