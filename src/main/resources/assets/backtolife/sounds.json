@@ -1,0 +1,7 @@
+{
+    "velociraptor_idle": {"category": "neutral","sounds": ["backtolife:velociraptor_idle_0", "backtolife:velociraptor_idle_1", "backtolife:velociraptor_idle_2", "backtolife:velociraptor_idle_3", "backtolife:velociraptor_idle_4", "backtolife:velociraptor_idle_5", "backtolife:velociraptor_idle_6"]},
+    "velociraptor_hurt": {"category": "neutral","sounds": ["backtolife:velociraptor_hurt_0", "backtolife:velociraptor_hurt_1", "backtolife:velociraptor_hurt_2"]},
+    "velociraptor_death": {"category": "neutral","sounds": ["backtolife:velociraptor_death_0"]},
+    "velociraptor_threat": {"category": "neutral","sounds": ["backtolife:velociraptor_threat_0", "backtolife:velociraptor_threat_1", "backtolife:velociraptor_threat_2", "backtolife:velociraptor_threat_3", "backtolife:velociraptor_threat_4"]},
+    "velociraptor_attack": {"category": "neutral","sounds": ["backtolife:velociraptor_attack_0", "backtolife:velociraptor_attack_1", "backtolife:velociraptor_attack_2", "backtolife:velociraptor_attack_3"]}
+}

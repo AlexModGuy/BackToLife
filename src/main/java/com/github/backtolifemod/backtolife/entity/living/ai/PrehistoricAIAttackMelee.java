@@ -58,7 +58,10 @@ public class PrehistoricAIAttackMelee extends EntityAIBase {
 
 	public boolean continueExecuting() {
 		EntityLivingBase entitylivingbase = this.prehistoric.getAttackTarget();
-		
+		if (entitylivingbase != null && entitylivingbase.isDead) {
+			this.resetTask();
+			return false;
+		}
 		return entitylivingbase == null ? false : (!entitylivingbase.isEntityAlive() ? false : (!this.longMemory ? !this.prehistoric.getNavigator().noPath() : (!this.prehistoric.isWithinHomeDistanceFromPosition(new BlockPos(entitylivingbase)) ? false : !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer) entitylivingbase).isSpectator() && !((EntityPlayer) entitylivingbase).isCreative())));
 	}
 

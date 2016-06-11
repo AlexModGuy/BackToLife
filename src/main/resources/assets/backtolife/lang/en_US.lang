@@ -10,6 +10,7 @@ item.backtolife.rocks.name=Pebbles
 item.backtolife.soft_tissue.name=Soft Tissue
 item.backtolife.fossil_cells.name=Fossilized Cells
 item.backtolife.prehistoric_egg.name=Fertilized Egg
+item.backtolife.magnifying_glass.name=Magnifying Glass
 
 tile.backtolife.laboratory_block.name=Laboratory Block
 tile.backtolife.laboratory_light_panel.name=Laboratory Light Panel
@@ -20,3 +21,9 @@ tile.backtolife.fertilization_machine.name=Fertilization Machine
 entity.backtolife.velociraptor.name=Velociraptor
 entity.backtolife.protoceratops.name=Protoceratops
 entity.backtolife.tarbosaurus.name=Tarbosaurus
+
+entity.backtolife.hunger=Hunger: 
+entity.backtolife.age=Age:
+entity.backtolife.owner=Owner: 
+entity.backtolife.none=None
+entity.backtolife.min=Minutes

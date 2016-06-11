@@ -11,17 +11,23 @@ import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
-import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType.EnumPrehistoricDietType;
+
+import fossilsarcheology.api.FoodMappings;
 
 public abstract class EntityPrehistoric extends EntityTameable implements IAnimatedEntity {
 
@@ -39,9 +45,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	public double maximumHealth;
 	public double minimumSpeed;
 	public double maximumSpeed;
-	public EnumPrehistoricDietType diet;
+	public static Animation ANIMATION_EAT;
 
-	public EntityPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed, EnumPrehistoricDietType diet) {
+	public EntityPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed) {
 		super(world);
 		this.type = type;
 		this.minimumDamage = minimumDamage;
@@ -50,7 +56,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		this.maximumHealth = maximumHealth;
 		this.minimumSpeed = minimumSpeed;
 		this.maximumSpeed = maximumSpeed;
-		this.diet = diet;
 		updateAttributes();
 	}
 
@@ -109,6 +114,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	public void onUpdate() {
 		this.setScale(getRenderSize());
 		super.onUpdate();
+		if (this.getAttackTarget() != null && this.getRidingEntity() == null && this.getAttackTarget().isDead) {
+			this.setAttackTarget(null);
+		}
 	}
 
 	public void onLivingUpdate() {
@@ -216,9 +224,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public void updateAttributes() {
-		double healthStep = (maximumHealth - minimumHealth) / (this.getGrownAge() + 1);
-		double attackStep = (maximumDamage - minimumDamage) / (this.getGrownAge() + 1);
-		double speedStep = (maximumSpeed - minimumSpeed) / (this.getGrownAge() + 1);
+		double healthStep = (maximumHealth - minimumHealth) / (this.getGrownAge());
+		double attackStep = (maximumDamage - minimumDamage) / (this.getGrownAge());
+		double speedStep = (maximumSpeed - minimumSpeed) / (this.getGrownAge());
 		if (this.getAgeInDays() <= this.getGrownAge()) {
 			this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(Math.round(minimumHealth + (healthStep * this.getAgeInDays())));
 			this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(Math.round(minimumDamage + (attackStep * this.getAgeInDays())));
@@ -234,6 +242,33 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		}
 
 		return flag;
+	}
+
+	public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack) {
+		if(stack != null){
+			if(stack.getItem() != null){
+				if(FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType) > 0){
+					this.setHunger(Math.min(100, this.getHunger() + FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType)));
+					if(this.ANIMATION_EAT != null && this.getAnimation() != this.ANIMATION_EAT){
+						this.setAnimation(this.ANIMATION_EAT);
+					}
+					this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+					spawnItemCrackParticles(stack.getItem());
+					return true;
+				}
+			}
+		}
+		return super.processInteract(player, hand, stack);
+	}
+	
+	public void spawnItemCrackParticles(Item item) {
+		double motionX = getRNG().nextGaussian() * 0.07D;
+		double motionY = getRNG().nextGaussian() * 0.07D;
+		double motionZ = getRNG().nextGaussian() * 0.07D;
+		float f = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxX - this.getEntityBoundingBox().minX) + this.getEntityBoundingBox().minX);
+		float f1 = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) + this.getEntityBoundingBox().minY);
+		float f2 = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxZ - this.getEntityBoundingBox().minZ) + this.getEntityBoundingBox().minZ);
+		this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, f, f1, f2, motionX, motionY, motionZ, new int[]{Item.getIdFromItem(item)});
 	}
 
 	public boolean isMale() {

@@ -18,6 +18,7 @@ public class ModItems {
 	public static Item soft_tissue;
 	public static Item fossil_cells;
 	public static Item prehistoric_egg;
+	public static Item magnifying_glass;
 
 	public static void init() {
 		unknown_fossil_carnivore_dinosaur = new ItemFossil("carnivore_dinosaur");
@@ -29,6 +30,6 @@ public class ModItems {
 		soft_tissue = new ItemSoftTissue(false);
 		fossil_cells = new ItemSoftTissue(true);
 		prehistoric_egg = new ItemPrehistoricEgg();
-
+		magnifying_glass = new ItemBasic("magnifying_glass");
 	}
 }
