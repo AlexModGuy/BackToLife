@@ -33,16 +33,18 @@ public class ContainerTissueAnalyzer extends Container {
 		}
 	}
 
+	@Override
 	public void addListener(IContainerListener listener) {
 		super.addListener(listener);
 		listener.sendAllWindowProperties(this, this.tissueanalyzer);
 	}
 
+	@Override
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 
 		for (int i = 0; i < this.listeners.size(); ++i) {
-			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
+			IContainerListener icrafting = this.listeners.get(i);
 
 			if (this.field_178154_h != this.tissueanalyzer.getField(0)) {
 				icrafting.sendProgressBarUpdate(this, 0, this.tissueanalyzer.getField(0));
@@ -53,18 +55,21 @@ public class ContainerTissueAnalyzer extends Container {
 
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int id, int data) {
 		this.tissueanalyzer.setField(id, data);
 	}
 
+	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return this.tissueanalyzer.isUseableByPlayer(playerIn);
 	}
 
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(index);
+		Slot slot = this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();

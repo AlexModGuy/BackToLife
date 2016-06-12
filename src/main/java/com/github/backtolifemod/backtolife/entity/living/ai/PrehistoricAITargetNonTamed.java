@@ -3,6 +3,7 @@ package com.github.backtolifemod.backtolife.entity.living.ai;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 
+import com.github.backtolifemod.backtolife.entity.living.EntityLandPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
 import com.google.common.base.Predicate;
 
@@ -16,9 +17,10 @@ public class PrehistoricAITargetNonTamed<T extends EntityLivingBase> extends Ent
 		this.prehistoric = entityIn;
 	}
 
+	@Override
 	public boolean shouldExecute() {
 		if(super.shouldExecute() && this.targetEntity != null && this.prehistoric.getHunger() < 100 && !this.targetEntity.getClass().equals(this.prehistoric.getClass())){	
-			if(this.prehistoric.width >= this.targetEntity.width){
+			if(this.prehistoric.width >= this.targetEntity.width || this.prehistoric instanceof EntityLandPrehistoric && ((EntityLandPrehistoric)prehistoric).obligitate_prey.contains(this.targetEntity.getClass())){
 				if(this.targetEntity != prehistoric.getOwner() && FoodMappings.instance().getEntityFoodAmount(this.targetEntity.getClass(), this.prehistoric.type.dietType) > 0){
 					return true;
 				}

@@ -23,7 +23,8 @@ entity.backtolife.protoceratops.name=Protoceratops
 entity.backtolife.tarbosaurus.name=Tarbosaurus
 
 entity.backtolife.hunger=Hunger: 
-entity.backtolife.age=Age:
+entity.backtolife.age=Age: 
 entity.backtolife.owner=Owner: 
+entity.backtolife.health=Health: 
 entity.backtolife.none=None
 entity.backtolife.min=Minutes

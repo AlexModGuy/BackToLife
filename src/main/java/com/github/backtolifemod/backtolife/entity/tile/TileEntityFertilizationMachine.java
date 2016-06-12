@@ -263,6 +263,7 @@ public class TileEntityFertilizationMachine extends TileEntity implements ITicka
 		return this.currentSyringe > 0;
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		NBTTagList nbttaglist = compound.getTagList("Items", 10);
@@ -279,6 +280,7 @@ public class TileEntityFertilizationMachine extends TileEntity implements ITicka
 
 	}
 
+	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger("ProgressTime", this.currentProgress);

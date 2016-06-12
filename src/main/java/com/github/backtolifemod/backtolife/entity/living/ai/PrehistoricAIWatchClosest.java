@@ -12,6 +12,7 @@ public class PrehistoricAIWatchClosest extends EntityAIWatchClosest {
 		super(entitylivingIn, watchTargetClass, maxDistance);
 	}
 
+	@Override
 	public boolean shouldExecute(){
 		if(this.theWatcher instanceof EntityLandPrehistoric && ((EntityLandPrehistoric)this.theWatcher).isSleeping()){
 			return false;

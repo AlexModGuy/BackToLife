@@ -263,6 +263,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 		return this.currentGrind > 0;
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		NBTTagList nbttaglist = compound.getTagList("Items", 10);
@@ -277,6 +278,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 		this.currentGrind = compound.getInteger("GrindTime");
 	}
 
+	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger("GrindTime", this.currentGrind);

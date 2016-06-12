@@ -13,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
+import com.github.backtolifemod.backtolife.entity.living.EntityProtoceratops;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 import fossilsarcheology.api.FoodMappings;
@@ -70,6 +71,7 @@ public class ModFoods {
         FoodMappings.instance().addMeat(EntitySheep.class, 35);
         FoodMappings.instance().addMeat(EntityRabbit.class, 20);
         FoodMappings.instance().addMeat(EntityVelociraptor.class, 30);
+        FoodMappings.instance().addMeat(EntityProtoceratops.class, 60);
         FoodMappings.instance().addFish(EntitySquid.class, 30);
     }
 }

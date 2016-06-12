@@ -38,12 +38,14 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 		this.theNearestAttackableTargetSorter = new PrehistoricAIHuntItems.Sorter(creature);
 		this.setMutexBits(1);
 		this.targetEntitySelector = new Predicate<EntityItem>() {
+			@Override
 			public boolean apply(@Nullable EntityItem item) {
 				return item instanceof EntityItem && item.getEntityItem() != null && item.getEntityItem().getItem() != null && FoodMappings.instance().getItemFoodAmount(item.getEntityItem().getItem(), ((EntityPrehistoric)PrehistoricAIHuntItems.this.taskOwner).type.dietType) > 0;
 			}
 		};
 	}
 
+	@Override
 	public boolean shouldExecute() {
 		if(((EntityPrehistoric)this.taskOwner).getHunger() >= 100){
 			return false;
@@ -67,11 +69,13 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 		return this.taskOwner.getEntityBoundingBox().expand(targetDistance, 4.0D, targetDistance);
 	}
 
+	@Override
 	public void startExecuting() {
 		this.taskOwner.getNavigator().tryMoveToXYZ(this.targetEntity.posX, this.targetEntity.posY, this.targetEntity.posZ, 1);
 		super.startExecuting();
 	}
 
+	@Override
 	public void updateTask() {
 		super.updateTask();
 		if(this.targetEntity == null || this.targetEntity != null && this.targetEntity.isDead){
@@ -82,8 +86,9 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 			this.taskOwner.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1, 1);
 			int hunger = FoodMappings.instance().getItemFoodAmount(this.targetEntity.getEntityItem().getItem(), ((EntityPrehistoric)this.taskOwner).type.dietType);
 			((EntityPrehistoric)this.taskOwner).setHunger(Math.min(100, ((EntityPrehistoric)this.taskOwner).getHunger() + hunger));
-			if(((EntityPrehistoric)this.taskOwner).ANIMATION_EAT != null){
-				((EntityPrehistoric)this.taskOwner).setAnimation(((EntityPrehistoric)this.taskOwner).ANIMATION_EAT);
+			((EntityPrehistoric)this.taskOwner).onEatFood(this.targetEntity.getEntityItem());
+			if(EntityPrehistoric.ANIMATION_EAT != null){
+				((EntityPrehistoric)this.taskOwner).setAnimation(EntityPrehistoric.ANIMATION_EAT);
 			}
 			for(int i = 0; i < 4; i++){
 				((EntityPrehistoric)this.taskOwner).spawnItemCrackParticles(this.targetEntity.getEntityItem().getItem());
@@ -92,6 +97,7 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 		}
 	}
 
+	@Override
 	public boolean continueExecuting() {
 		return !this.taskOwner.getNavigator().noPath();
 	}
@@ -103,6 +109,7 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 			this.theEntity = theEntityIn;
 		}
 
+		@Override
 		public int compare(Entity entity_1, Entity entity_2) {
 			double d0 = this.theEntity.getDistanceSqToEntity(entity_1);
 			double d1 = this.theEntity.getDistanceSqToEntity(entity_2);

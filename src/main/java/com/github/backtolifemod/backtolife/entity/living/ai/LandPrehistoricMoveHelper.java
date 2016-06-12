@@ -11,6 +11,7 @@ public class LandPrehistoricMoveHelper extends EntityMoveHelper {
 		super(entitylivingIn);
 	}
 
+	@Override
 	public boolean isUpdating() {
 		return this.action == EntityMoveHelper.Action.MOVE_TO || (this.entity instanceof EntityLandPrehistoric && !((EntityLandPrehistoric) this.entity).isMovementCeased());
 	}

@@ -16,7 +16,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import com.github.backtolifemod.backtolife.core.ModItems;
-import com.github.backtolifemod.backtolife.item.ItemSoftTissue;
 
 public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, ISidedInventory {
 
@@ -224,6 +223,7 @@ public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, I
 		return this.currentProgress > 0;
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		NBTTagList nbttaglist = compound.getTagList("Items", 10);
@@ -238,6 +238,7 @@ public class TileEntityTissueAnalyzer extends TileEntity implements ITickable, I
 		this.currentProgress = compound.getInteger("ProgressTime");
 	}
 
+	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setInteger("ProgressTime", this.currentProgress);

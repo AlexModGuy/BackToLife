@@ -7,7 +7,6 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.github.backtolifemod.backtolife.BackToLife;
-import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 
 public class BlockLaboratory extends Block {
 

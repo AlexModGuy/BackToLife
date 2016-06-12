@@ -67,7 +67,7 @@ public class StructureUtils {
 		IBlockState state = world.getBlockState(pos);
 
 		if (block instanceof BlockRotatedPillar) {
-			if ((EnumFacing.Axis) state.getValue(BlockRotatedPillar.AXIS) == EnumFacing.Axis.X) {
+			if (state.getValue(BlockRotatedPillar.AXIS) == EnumFacing.Axis.X) {
 				((BlockRotatedPillar) block).rotateBlock(world, pos, direction);
 			}
 		} else {

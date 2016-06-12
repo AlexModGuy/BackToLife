@@ -6,6 +6,7 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 import com.github.backtolifemod.backtolife.entity.living.EntityLandPrehistoric;
+import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 public class ModelVelociraptor extends ModelPrehistoric {
@@ -300,12 +301,12 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.resetToDefaultPose();
 		animator.update(entity);
 		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
-		animator.setAnimation(EntityVelociraptor.ANIMATION_SPEAK);
+		animator.setAnimation(EntityLandPrehistoric.ANIMATION_SPEAK);
 		animator.startKeyframe(10);
 		rotate(animator, LowerJaw1, 15F, 0, 0);
 		animator.endKeyframe();
 		animator.resetKeyframe(10);
-		animator.setAnimation(EntityVelociraptor.ANIMATION_EAT);
+		animator.setAnimation(EntityPrehistoric.ANIMATION_EAT);
 		animator.startKeyframe(5);
 		rotate(animator, LowerJaw1, 15F, 0, 0);
 		animator.endKeyframe();
@@ -314,7 +315,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		rotate(animator, LowerJaw1, 15F, 0, 0);
 		animator.endKeyframe();
 		animator.resetKeyframe(5);
-		animator.setAnimation(EntityVelociraptor.ANIMATION_JUMP);
+		animator.setAnimation(EntityLandPrehistoric.ANIMATION_JUMP);
 		animator.startKeyframe(15);
 		rotate(animator, Body1, 13F, 0, 0);
 		rotate(animator, Tail1, 23F, 0, 0);

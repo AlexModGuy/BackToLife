@@ -1,6 +1,5 @@
 package com.github.backtolifemod.backtolife.entity.living.ai;
 
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,6 +33,7 @@ public class PrehistoricAIAttackMelee extends EntityAIBase {
 		this.setMutexBits(3);
 	}
 
+	@Override
 	public boolean shouldExecute() {
 		EntityLivingBase entitylivingbase = this.prehistoric.getAttackTarget();
 
@@ -56,6 +56,7 @@ public class PrehistoricAIAttackMelee extends EntityAIBase {
 		}
 	}
 
+	@Override
 	public boolean continueExecuting() {
 		EntityLivingBase entitylivingbase = this.prehistoric.getAttackTarget();
 		if (entitylivingbase != null && entitylivingbase.isDead) {
@@ -65,11 +66,13 @@ public class PrehistoricAIAttackMelee extends EntityAIBase {
 		return entitylivingbase == null ? false : (!entitylivingbase.isEntityAlive() ? false : (!this.longMemory ? !this.prehistoric.getNavigator().noPath() : (!this.prehistoric.isWithinHomeDistanceFromPosition(new BlockPos(entitylivingbase)) ? false : !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer) entitylivingbase).isSpectator() && !((EntityPlayer) entitylivingbase).isCreative())));
 	}
 
+	@Override
 	public void startExecuting() {
 		this.prehistoric.getNavigator().setPath(this.entityPathEntity, this.speedTowardsTarget);
 		this.delayCounter = 0;
 	}
 
+	@Override
 	public void resetTask() {
 		EntityLivingBase entitylivingbase = this.prehistoric.getAttackTarget();
 
@@ -80,6 +83,7 @@ public class PrehistoricAIAttackMelee extends EntityAIBase {
 		this.prehistoric.getNavigator().clearPathEntity();
 	}
 
+	@Override
 	public void updateTask() {
 		EntityLivingBase entitylivingbase = this.prehistoric.getAttackTarget();
 		this.prehistoric.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
@@ -127,6 +131,6 @@ public class PrehistoricAIAttackMelee extends EntityAIBase {
 	}
 
 	protected double getAttackReachSqr(EntityLivingBase attackTarget) {
-		return (double) (this.prehistoric.width * 2.0F * this.prehistoric.width * 2.0F + attackTarget.width);
+		return this.prehistoric.width * 2.0F * this.prehistoric.width * 2.0F + attackTarget.width;
 	}
 }

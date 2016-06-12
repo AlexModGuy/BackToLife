@@ -1,17 +1,11 @@
 package com.github.backtolifemod.backtolife.client.render.tile;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import com.github.backtolifemod.backtolife.client.model.ModelTissueAnalyzer;
-import com.github.backtolifemod.backtolife.core.ModItems;
-import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
 
 public class RenderTissueAnalyzer extends TileEntitySpecialRenderer<TileEntityTissueAnalyzer> {

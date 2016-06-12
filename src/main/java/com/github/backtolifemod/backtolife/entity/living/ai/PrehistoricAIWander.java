@@ -26,6 +26,7 @@ public class PrehistoricAIWander extends EntityAIBase {
 		this.setMutexBits(1);
 	}
 
+	@Override
 	public boolean shouldExecute() {
 		if(entity.isMovementCeased()){
 			return false;
@@ -53,10 +54,12 @@ public class PrehistoricAIWander extends EntityAIBase {
 		}
 	}
 
+	@Override
 	public boolean continueExecuting() {
 		return !this.entity.getNavigator().noPath();
 	}
 
+	@Override
 	public void startExecuting() {
 		this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
 	}

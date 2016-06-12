@@ -15,7 +15,6 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -30,7 +29,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.github.backtolifemod.backtolife.BackToLife;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
-import com.github.backtolifemod.backtolife.world.StructureUtils;
 
 public class BlockFossilSlicer extends BlockContainer {
 
@@ -49,29 +47,35 @@ public class BlockFossilSlicer extends BlockContainer {
 		GameRegistry.registerTileEntity(TileEntityFossilSlicer.class, "fossil_slicer");
 	}
 
+	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+		return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
 	public static final AxisAlignedBB BOUNDINGBOX = new AxisAlignedBB(0F, 0, 0F, 1F, 0.875F, 1F);
 
+	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return BOUNDINGBOX;
 	}
 
+	@Override
 	public boolean isOpaqueCube(IBlockState blockstate) {
 		return false;
 	}
 
+	@Override
 	public boolean isFullCube(IBlockState blockstate) {
 		return false;
 	}
 
+	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		IBlockState iblockstate = worldIn.getBlockState(pos.down());
 		return iblockstate.getBlock() != Blocks.AIR;
 	}
 
+	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
 		this.checkAndDropBlock(worldIn, pos, worldIn.getBlockState(pos.down()));
 	}
@@ -85,6 +89,7 @@ public class BlockFossilSlicer extends BlockContainer {
 		}
 	}
 
+	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
@@ -95,27 +100,33 @@ public class BlockFossilSlicer extends BlockContainer {
 		super.breakBlock(worldIn, pos, state);
 	}
 
+	@Override
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
 	}
 
+	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
+		return state.getValue(FACING).getHorizontalIndex();
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[]{FACING});
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 
+	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (playerIn.isSneaking()) {
 			return false;

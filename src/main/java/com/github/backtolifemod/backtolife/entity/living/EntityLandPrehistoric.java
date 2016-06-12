@@ -1,6 +1,10 @@
 package com.github.backtolifemod.backtolife.entity.living;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.ilexiconn.llibrary.server.animation.Animation;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,6 +30,8 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	public boolean isDaytime;
 	public static Animation ANIMATION_SPEAK;
 	public static Animation ANIMATION_JUMP;
+	public static List<Class<? extends Entity>> obligitate_prey = new ArrayList<Class<? extends Entity>>();
+	public static List<Class<? extends Entity>> obligitate_predators = new ArrayList<Class<? extends Entity>>();
 	private static final DataParameter<Boolean> SLEEPING = EntityDataManager.<Boolean> createKey(EntityLandPrehistoric.class, DataSerializers.BOOLEAN);
 
 	public EntityLandPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed) {
@@ -33,16 +39,19 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 		this.moveHelper = new LandPrehistoricMoveHelper(this);
 	}
 
+	@Override
 	protected void entityInit() {
 		super.entityInit();
 		this.dataManager.register(SLEEPING, Boolean.valueOf(false));
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setBoolean("Sleeping", this.isSleeping());
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.setSleeping(compound.getBoolean("Sleeping"));
@@ -57,7 +66,7 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 
 	public boolean isSleeping() {
 		if (worldObj.isRemote) {
-			boolean isSleeping = ((Boolean) this.dataManager.get(SLEEPING)).booleanValue();
+			boolean isSleeping = this.dataManager.get(SLEEPING).booleanValue();
 
 			if ((isSleeping != this.isSleeping)) {
 				sleepingTicks = 0;
@@ -74,7 +83,7 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	@Override
 	public boolean isSitting() {
 		if (worldObj.isRemote) {
-			boolean isSitting = (((Byte) this.dataManager.get(TAMED)).byteValue() & 1) != 0;
+			boolean isSitting = (this.dataManager.get(TAMED).byteValue() & 1) != 0;
 
 			if ((isSitting != this.isSitting)) {
 				sittingTicks = 0;
@@ -125,6 +134,7 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 		return !this.isDaytime();
 	}
 
+	@Override
 	public String getTexture() {
 		return super.getTexture() + (this.isSleeping() ? "_sleeping" : "");
 	}
@@ -167,20 +177,21 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 			sittingTicks++;
 	}
 
+	@Override
+	public boolean isMovementCeased() {
+		return this.isSleeping() || this.isSitting() || this.isDead;
+	}
+
+	@Override
 	public void playSound(SoundEvent soundIn, float volume, float pitch) {
-		if(!this.isSleeping())
+		if (!this.isSleeping())
 			if (!this.isSilent()) {
-				if(soundIn != null && soundIn != SoundEvents.ENTITY_GENERIC_EAT){
-					if(this.ANIMATION_SPEAK != null && this.getAnimation() != this.ANIMATION_SPEAK && this.worldObj.isRemote){
-						this.setAnimation(this.ANIMATION_SPEAK);
+				if (soundIn != null && soundIn != SoundEvents.ENTITY_GENERIC_EAT) {
+					if (EntityLandPrehistoric.ANIMATION_SPEAK != null && this.getAnimation() != EntityLandPrehistoric.ANIMATION_SPEAK && this.worldObj.isRemote) {
+						this.setAnimation(EntityLandPrehistoric.ANIMATION_SPEAK);
 					}
 				}
 				this.worldObj.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, soundIn, this.getSoundCategory(), volume, pitch);
 			}
 	}
-
-
-public boolean isMovementCeased() {
-	return this.isSleeping() || this.isSitting();
-}
 }

@@ -47,6 +47,7 @@ public class BackToLife {
 				return ModItems.unknown_fossil_carnivore_dinosaur;
 			}
 
+			@Override
 			public int getIconItemDamage() {
 				return 2;
 			}

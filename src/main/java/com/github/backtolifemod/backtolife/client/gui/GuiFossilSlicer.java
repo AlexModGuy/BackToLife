@@ -27,6 +27,7 @@ public class GuiFossilSlicer extends GuiContainer {
 		this.fossilslicer = fossilslicer;
 	}
 
+	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
@@ -60,6 +61,7 @@ public class GuiFossilSlicer extends GuiContainer {
 		this.itemRender.zLevel = 0.0F;
 	}
 
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(texture);

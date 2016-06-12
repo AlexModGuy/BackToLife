@@ -1,7 +1,5 @@
 package com.github.backtolifemod.backtolife.core;
 
-import java.util.logging.Level;
-
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

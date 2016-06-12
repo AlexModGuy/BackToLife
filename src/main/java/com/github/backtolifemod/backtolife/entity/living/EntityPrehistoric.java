@@ -59,6 +59,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		updateAttributes();
 	}
 
+	@Override
 	protected void entityInit() {
 		super.entityInit();
 		this.dataManager.register(HUNGER, Integer.valueOf(0));
@@ -66,6 +67,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		this.dataManager.register(GENDER, Boolean.valueOf(false));
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("Hunger", this.getHunger());
@@ -73,6 +75,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		compound.setBoolean("Gender", this.isMale());
 	}
 
+	@Override
 	protected void onDeathUpdate() {
 		++this.deathTime;
 
@@ -93,11 +96,12 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 				double d2 = this.rand.nextGaussian() * 0.02D;
 				double d0 = this.rand.nextGaussian() * 0.02D;
 				double d1 = this.rand.nextGaussian() * 0.02D;
-				this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d2, d0, d1, new int[0]);
+				this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX + this.rand.nextFloat() * this.width * 2.0F - this.width, this.posY + this.rand.nextFloat() * this.height, this.posZ + this.rand.nextFloat() * this.width * 2.0F - this.width, d2, d0, d1, new int[0]);
 			}
 		}
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.setHunger(compound.getInteger("Hunger"));
@@ -111,6 +115,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		return null;
 	}
 
+	@Override
 	public void onUpdate() {
 		this.setScale(getRenderSize());
 		super.onUpdate();
@@ -119,6 +124,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		}
 	}
 
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		AnimationHandler.INSTANCE.updateAnimations(this);
@@ -147,6 +153,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		return this.minimumModelSize + ((step * this.getAgeInTicks()));
 	}
 
+	@Override
 	@Nullable
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
@@ -187,7 +194,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public int getHunger() {
-		return ((Integer) this.dataManager.get(HUNGER)).intValue();
+		return this.dataManager.get(HUNGER).intValue();
 	}
 
 	public void setHunger(int hunger) {
@@ -195,7 +202,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public int getAgeInDays() {
-		return ((Integer) this.dataManager.get(AGE_TICKS)).intValue() / 24000;
+		return this.dataManager.get(AGE_TICKS).intValue() / 24000;
 	}
 
 	public void setAgeInDays(int age) {
@@ -203,7 +210,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public int getAgeInTicks() {
-		return ((Integer) this.dataManager.get(AGE_TICKS)).intValue();
+		return this.dataManager.get(AGE_TICKS).intValue();
 	}
 
 	public void setAgeInTicks(int age) {
@@ -218,9 +225,10 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30000001192092896D);
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
+		
 	}
 
 	public void updateAttributes() {
@@ -234,8 +242,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		}
 	}
 
+	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+		boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
 		if (flag) {
 			this.applyEnchantments(this, entityIn);
@@ -244,16 +253,18 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		return flag;
 	}
 
+	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack) {
 		if(stack != null){
 			if(stack.getItem() != null){
 				if(FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType) > 0){
 					this.setHunger(Math.min(100, this.getHunger() + FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType)));
-					if(this.ANIMATION_EAT != null && this.getAnimation() != this.ANIMATION_EAT){
-						this.setAnimation(this.ANIMATION_EAT);
+					if(EntityPrehistoric.ANIMATION_EAT != null && this.getAnimation() != EntityPrehistoric.ANIMATION_EAT){
+						this.setAnimation(EntityPrehistoric.ANIMATION_EAT);
 					}
 					this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
 					spawnItemCrackParticles(stack.getItem());
+					this.onEatFood(stack);
 					return true;
 				}
 			}
@@ -261,6 +272,10 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		return super.processInteract(player, hand, stack);
 	}
 	
+	public void onEatFood(ItemStack stack) {
+		
+	}
+
 	public void spawnItemCrackParticles(Item item) {
 		double motionX = getRNG().nextGaussian() * 0.07D;
 		double motionY = getRNG().nextGaussian() * 0.07D;
@@ -272,7 +287,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public boolean isMale() {
-		return ((Boolean) this.dataManager.get(GENDER)).booleanValue();
+		return this.dataManager.get(GENDER).booleanValue();
 	}
 
 	public abstract int getGrownAge();

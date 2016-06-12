@@ -4,14 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 import com.github.backtolifemod.backtolife.core.ModConfig;
-import com.github.backtolifemod.backtolife.core.ModVillagers;
-
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.structure.MapGenVillage.Start;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
@@ -43,6 +38,7 @@ public class ComponentScientistHouse extends StructureVillagePieces.Village {
 		return StructureScientistHouse.generate(world, random, blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), this.getCoordBaseMode());
 	}
 
+	@Override
 	protected int chooseProfession(int villagersSpawnedIn, int currentVillagerProfession) {
 		return ModConfig.VILLAGER_ID;
 	}

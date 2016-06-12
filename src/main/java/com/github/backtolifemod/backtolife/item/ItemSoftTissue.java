@@ -23,12 +23,14 @@ public class ItemSoftTissue extends Item {
 		GameRegistry.registerItem(this, isCells ? "fossil_cells" : "soft_tissue");
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		String fossil = EnumPrehistoricType.values()[stack.getItemDamage()].name().toLowerCase();
 		tooltip.add(I18n.translateToLocal("entity.backtolife." + fossil + ".name"));
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems) {
 		for (EnumPrehistoricType prehistoric : EnumPrehistoricType.values()) {

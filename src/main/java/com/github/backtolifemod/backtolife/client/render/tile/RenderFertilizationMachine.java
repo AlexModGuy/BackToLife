@@ -1,6 +1,5 @@
 package com.github.backtolifemod.backtolife.client.render.tile;
 
-import net.ilexiconn.llibrary.LLibrary;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -30,8 +29,8 @@ public class RenderFertilizationMachine extends TileEntitySpecialRenderer<TileEn
 		GL11.glPopMatrix();
 		if (tile.isSyringeProgressing()) {
 			GL11.glRotatef(-180, 1.0F, 0.0F, 0.0F);
-			float f3 = (((float) Minecraft.getMinecraft().thePlayer.ticksExisted) / 20.0F) * (180F / (float) Math.PI);
-			GL11.glTranslatef((float) 0F, (float) -1.02F, (float) 0.23F);
+			float f3 = ((Minecraft.getMinecraft().thePlayer.ticksExisted) / 20.0F) * (180F / (float) Math.PI);
+			GL11.glTranslatef(0F, -1.02F, 0.23F);
 			GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
 			GL11.glScalef(0.4F, 0.4F, 0.4F);
 			Minecraft.getMinecraft().getRenderItem().renderItem(new ItemStack(Items.EGG), ItemCameraTransforms.TransformType.FIXED);

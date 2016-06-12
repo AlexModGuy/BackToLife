@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.github.backtolifemod.backtolife.entity.living.EntityProtoceratops;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 import fossilsarcheology.api.EnumDiet;
 
 public enum EnumPrehistoricType {
 	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, EnumDiet.CARNIVORE_EGG, 0X392A22, 0XDAC9B9),
-	PROTOCERATOPS(null, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, EnumDiet.HERBIVORE, 0, 0),
+	PROTOCERATOPS(EntityProtoceratops.class, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, EnumDiet.HERBIVORE, 0X8D5027, 0XFA7723),
 	TARBOSAURUS(null, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL , EnumDiet.CARNIVORE, 0, 0);
 	public EnumPrehistoricFossilType fossilType;
 	public EnumPrehistoricEggType eggType;

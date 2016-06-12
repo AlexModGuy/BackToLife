@@ -11,8 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.github.backtolifemod.backtolife.core.ModItems;
-
 public class ContainerFossilSlicer extends Container {
 	private final IInventory fossilsplicer;
 	private int field_178154_h;
@@ -43,16 +41,18 @@ public class ContainerFossilSlicer extends Container {
 		}
 	}
 
+	@Override
 	public void addListener(IContainerListener listener) {
 		super.addListener(listener);
 		listener.sendAllWindowProperties(this, this.fossilsplicer);
 	}
 
+	@Override
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 
 		for (int i = 0; i < this.listeners.size(); ++i) {
-			IContainerListener icrafting = (IContainerListener) this.listeners.get(i);
+			IContainerListener icrafting = this.listeners.get(i);
 
 			if (this.field_178154_h != this.fossilsplicer.getField(0)) {
 				icrafting.sendProgressBarUpdate(this, 0, this.fossilsplicer.getField(0));
@@ -63,18 +63,21 @@ public class ContainerFossilSlicer extends Container {
 
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int id, int data) {
 		this.fossilsplicer.setField(id, data);
 	}
 
+	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return this.fossilsplicer.isUseableByPlayer(playerIn);
 	}
 
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(index);
+		Slot slot = this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
