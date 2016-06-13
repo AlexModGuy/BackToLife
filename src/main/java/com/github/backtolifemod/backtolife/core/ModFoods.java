@@ -37,6 +37,7 @@ public class ModFoods {
         FoodMappings.instance().addPlant(Items.BEETROOT_SEEDS, 5);
         FoodMappings.instance().addPlant(Blocks.CARROTS, 20);
         FoodMappings.instance().addPlant(Blocks.LEAVES, 20);
+        FoodMappings.instance().addPlant(Blocks.DEADBUSH, 20);
         FoodMappings.instance().addPlant(Blocks.LEAVES2, 20);
         FoodMappings.instance().addPlant(Blocks.MELON_BLOCK, 65);
         FoodMappings.instance().addPlant(Blocks.HAY_BLOCK, 150);

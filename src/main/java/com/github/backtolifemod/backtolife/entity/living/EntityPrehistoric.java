@@ -7,6 +7,7 @@ import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -39,6 +40,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	private static final DataParameter<Integer> HUNGER = EntityDataManager.<Integer> createKey(EntityPrehistoric.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> AGE_TICKS = EntityDataManager.<Integer> createKey(EntityPrehistoric.class, DataSerializers.VARINT);
 	private static final DataParameter<Boolean> GENDER = EntityDataManager.<Boolean> createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
+
 	public double minimumDamage;
 	public double maximumDamage;
 	public double minimumHealth;
@@ -228,7 +230,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
-		
+
 	}
 
 	public void updateAttributes() {
@@ -255,25 +257,29 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand, @Nullable ItemStack stack) {
-		if(stack != null){
-			if(stack.getItem() != null){
-				if(FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType) > 0){
+		if (stack != null) {
+			if (stack.getItem() != null) {
+				if (FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType) > 0 && this.getHunger() < 100) {
 					this.setHunger(Math.min(100, this.getHunger() + FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType)));
-					if(EntityPrehistoric.ANIMATION_EAT != null && this.getAnimation() != EntityPrehistoric.ANIMATION_EAT){
+					if (EntityPrehistoric.ANIMATION_EAT != null && this.getAnimation() != EntityPrehistoric.ANIMATION_EAT) {
 						this.setAnimation(EntityPrehistoric.ANIMATION_EAT);
 					}
+					this.setHealth(Math.min(this.getMaxHealth(), (int) (this.getHealth() + FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType) / 10)));
 					this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
 					spawnItemCrackParticles(stack.getItem());
 					this.onEatFood(stack);
+					if (!player.isCreative()) {
+						stack.stackSize--;
+					}
 					return true;
 				}
 			}
 		}
 		return super.processInteract(player, hand, stack);
 	}
-	
+
 	public void onEatFood(ItemStack stack) {
-		
+
 	}
 
 	public void spawnItemCrackParticles(Item item) {
@@ -283,7 +289,16 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		float f = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxX - this.getEntityBoundingBox().minX) + this.getEntityBoundingBox().minX);
 		float f1 = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) + this.getEntityBoundingBox().minY);
 		float f2 = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxZ - this.getEntityBoundingBox().minZ) + this.getEntityBoundingBox().minZ);
-		this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, f, f1, f2, motionX, motionY, motionZ, new int[]{Item.getIdFromItem(item)});
+		this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, f, f1, f2, motionX, motionY, motionZ, new int[] { Item.getIdFromItem(item) });
+	}
+
+	public void onKillEntity(EntityLivingBase entityLivingIn){
+		int hunger = FoodMappings.instance().getEntityFoodAmount(entityLivingIn.getClass(), type.dietType);
+		this.setHunger(Math.min(100, this.getHunger() + hunger));
+		this.setHealth(Math.min(this.getMaxHealth(), this.getHealth() +  (int) (hunger / 10)));
+		if(this.ANIMATION_EAT != null){
+			this.setAnimation(EntityPrehistoric.ANIMATION_EAT);
+		}
 	}
 
 	public boolean isMale() {

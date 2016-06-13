@@ -20,7 +20,7 @@ public class PrehistoricAITargetNonTamed<T extends EntityLivingBase> extends Ent
 	@Override
 	public boolean shouldExecute() {
 		if(super.shouldExecute() && this.targetEntity != null && this.prehistoric.getHunger() < 100 && !this.targetEntity.getClass().equals(this.prehistoric.getClass())){	
-			if(this.prehistoric.width >= this.targetEntity.width || this.prehistoric instanceof EntityLandPrehistoric && ((EntityLandPrehistoric)prehistoric).obligitate_prey.contains(this.targetEntity.getClass())){
+			if(this.prehistoric.width >= this.targetEntity.width || this.prehistoric instanceof EntityLandPrehistoric && EntityLandPrehistoric.obligitate_prey.contains(this.targetEntity.getClass())){
 				if(this.targetEntity != prehistoric.getOwner() && FoodMappings.instance().getEntityFoodAmount(this.targetEntity.getClass(), this.prehistoric.type.dietType) > 0){
 					return true;
 				}

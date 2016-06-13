@@ -50,6 +50,9 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 		if(((EntityPrehistoric)this.taskOwner).getHunger() >= 100){
 			return false;
 		}
+		if(((EntityPrehistoric)this.taskOwner).isMovementCeased()){
+			return false;
+		}
 		if (this.targetChance > 0 && this.taskOwner.getRNG().nextInt(this.targetChance) != 0) {
 			return false;
 		} else {
@@ -87,6 +90,7 @@ public class PrehistoricAIHuntItems<T extends EntityItem> extends EntityAITarget
 			int hunger = FoodMappings.instance().getItemFoodAmount(this.targetEntity.getEntityItem().getItem(), ((EntityPrehistoric)this.taskOwner).type.dietType);
 			((EntityPrehistoric)this.taskOwner).setHunger(Math.min(100, ((EntityPrehistoric)this.taskOwner).getHunger() + hunger));
 			((EntityPrehistoric)this.taskOwner).onEatFood(this.targetEntity.getEntityItem());
+			this.taskOwner.setHealth(Math.min(this.taskOwner.getMaxHealth(), (int) (this.taskOwner.getHealth() + FoodMappings.instance().getItemFoodAmount(this.targetEntity.getEntityItem().getItem(), ((EntityPrehistoric)this.taskOwner).type.dietType) / 10)));
 			if(EntityPrehistoric.ANIMATION_EAT != null){
 				((EntityPrehistoric)this.taskOwner).setAnimation(EntityPrehistoric.ANIMATION_EAT);
 			}

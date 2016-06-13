@@ -11,7 +11,6 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -50,7 +49,7 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 		EntityVelociraptor.ANIMATION_RIPAPART = Animation.create(20);
 		EntityPrehistoric.ANIMATION_EAT = Animation.create(20);
 		EntityLandPrehistoric.ANIMATION_SPEAK = Animation.create(20);
-		this.obligitate_prey.add(EntityProtoceratops.class);
+		EntityLandPrehistoric.obligitate_prey.add(EntityProtoceratops.class);
 	}
 
 	@Override
@@ -194,11 +193,11 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 	@Override
 	protected void collideWithEntity(Entity entityIn) {
 		if (this.getAttackTarget() != null && this.getAttackTarget() == entityIn && this.getAnimationTick() > 10) {
-			if (this.width > entityIn.width || this.obligitate_prey.contains(entityIn.getClass())) {
+			if (this.width > entityIn.width || EntityLandPrehistoric.obligitate_prey.contains(entityIn.getClass())) {
 				this.startRiding(entityIn);
-			} else if(entityIn instanceof EntityPlayer){
+			} else if(entityIn instanceof EntityLivingBase){
 				this.setBloody(true);
-				((EntityPlayer) entityIn).attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+				((EntityLivingBase) entityIn).attackEntityFrom(DamageSource.causeMobDamage(this), ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 			}
 		}
 		entityIn.applyEntityCollision(this);

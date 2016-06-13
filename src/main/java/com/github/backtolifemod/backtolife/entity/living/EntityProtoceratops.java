@@ -1,29 +1,25 @@
 package com.github.backtolifemod.backtolife.entity.living;
 
-import javax.annotation.Nullable;
-
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
+import com.github.backtolifemod.backtolife.core.ModSounds;
 import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAIAttackMelee;
 import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAIEatBlocks;
 import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAIHuntItems;
-import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAILeapAtTarget;
 import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAILookIdle;
-import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAITargetNonTamed;
 import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAIWander;
 import com.github.backtolifemod.backtolife.entity.living.ai.PrehistoricAIWatchClosest;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
-import com.google.common.base.Predicate;
 
 public class EntityProtoceratops extends EntityLandPrehistoric{
 
@@ -31,7 +27,7 @@ public class EntityProtoceratops extends EntityLandPrehistoric{
 	public static Animation ANIMATION_ATTACK;
 
 	public EntityProtoceratops(World world) {
-		super(world, EnumPrehistoricType.PROTOCERATOPS, 1, 4, 8, 25, 0.10000000149011612D, 0.3D);
+		super(world, EnumPrehistoricType.PROTOCERATOPS, 1, 2, 8, 25, 0.10000000149011612D, 0.3D);
 		this.setSize(1.9F, 1.7F);
 		this.maximumModelSize = 0.9F;
 		this.minimumModelSize = 0.3F;
@@ -39,7 +35,7 @@ public class EntityProtoceratops extends EntityLandPrehistoric{
 		ANIMATION_SPEAK = Animation.create(20);
 		ANIMATION_THROWOFF = Animation.create(30);
 		ANIMATION_ATTACK = Animation.create(15);
-		this.obligitate_predators.add(EntityVelociraptor.class);
+		EntityLandPrehistoric.obligitate_predators.add(EntityVelociraptor.class);
 	}
 
 	@Override
@@ -68,6 +64,7 @@ public class EntityProtoceratops extends EntityLandPrehistoric{
 		if (!this.getPassengers().isEmpty() && this.getAgeInTicks() % 60 == 0) {
 			if (this.getAnimation() != ANIMATION_THROWOFF) {
 				this.setAnimation(ANIMATION_THROWOFF);
+				this.playSound(ModSounds.protoceratops_attack, this.getSoundVolume(), this.getSoundPitch());
 			}
 		}
 		if (this.getAnimation() == ANIMATION_THROWOFF && !this.getPassengers().isEmpty() && this.getAnimationTick() == 15) {
@@ -82,11 +79,27 @@ public class EntityProtoceratops extends EntityLandPrehistoric{
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (this.getAnimation() != ANIMATION_ATTACK && this.getAnimation() != ANIMATION_THROWOFF) {
 			this.setAnimation(ANIMATION_ATTACK);
+			this.playSound(ModSounds.protoceratops_attack, this.getSoundVolume(), this.getSoundPitch());
 		}
 		entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
 		return true;
 	}
 
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return ModSounds.protoceratops_idle;
+	}
+
+	@Override
+	protected SoundEvent getHurtSound() {
+		return ModSounds.protoceratops_hurt;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return ModSounds.protoceratops_death;
+	}
+	
 	@Override
 	public Animation[] getAnimations() {
 		return new Animation[] { NO_ANIMATION, ANIMATION_JUMP, ANIMATION_THROWOFF, ANIMATION_ATTACK, ANIMATION_EAT };

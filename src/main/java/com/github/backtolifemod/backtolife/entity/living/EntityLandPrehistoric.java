@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -186,12 +187,21 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	public void playSound(SoundEvent soundIn, float volume, float pitch) {
 		if (!this.isSleeping())
 			if (!this.isSilent()) {
-				if (soundIn != null && soundIn != SoundEvents.ENTITY_GENERIC_EAT) {
+				if (soundIn != null && soundIn != SoundEvents.ENTITY_GENERIC_EAT && !soundIn.getRegistryName().getResourcePath().contains("attack")) {
 					if (EntityLandPrehistoric.ANIMATION_SPEAK != null && this.getAnimation() != EntityLandPrehistoric.ANIMATION_SPEAK && this.worldObj.isRemote) {
 						this.setAnimation(EntityLandPrehistoric.ANIMATION_SPEAK);
 					}
+					this.worldObj.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, soundIn, this.getSoundCategory(), volume, pitch);
 				}
-				this.worldObj.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, soundIn, this.getSoundCategory(), volume, pitch);
 			}
+	}
+
+	@Override
+	protected void damageEntity(DamageSource damageSrc, float damageAmount) {
+		super.damageEntity(damageSrc, damageAmount);
+		if(damageAmount > 0){
+			this.setSitting(false);
+			this.setSleeping(false);
+		}
 	}
 }

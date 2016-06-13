@@ -3,5 +3,14 @@
     "velociraptor_hurt": {"category": "neutral","sounds": ["backtolife:velociraptor_hurt_0", "backtolife:velociraptor_hurt_1", "backtolife:velociraptor_hurt_2"]},
     "velociraptor_death": {"category": "neutral","sounds": ["backtolife:velociraptor_death_0"]},
     "velociraptor_threat": {"category": "neutral","sounds": ["backtolife:velociraptor_threat_0", "backtolife:velociraptor_threat_1", "backtolife:velociraptor_threat_2", "backtolife:velociraptor_threat_3", "backtolife:velociraptor_threat_4"]},
-    "velociraptor_attack": {"category": "neutral","sounds": ["backtolife:velociraptor_attack_0", "backtolife:velociraptor_attack_1", "backtolife:velociraptor_attack_2", "backtolife:velociraptor_attack_3"]}
+    "velociraptor_attack": {"category": "neutral","sounds": ["backtolife:velociraptor_attack_0", "backtolife:velociraptor_attack_1", "backtolife:velociraptor_attack_2", "backtolife:velociraptor_attack_3"]},
+    "protoceratops_idle": {"category": "neutral","sounds": ["backtolife:protoceratops_idle_0", "backtolife:protoceratops_idle_1", "backtolife:protoceratops_idle_2", "backtolife:protoceratops_idle_3"]},
+    "protoceratops_hurt": {"category": "neutral","sounds": ["backtolife:protoceratops_hurt_0", "backtolife:protoceratops_hurt_1", "backtolife:protoceratops_hurt_2"]},
+    "protoceratops_death": {"category": "neutral","sounds": ["backtolife:protoceratops_death_0", "backtolife:protoceratops_death_1"]},
+    "protoceratops_attack": {"category": "neutral","sounds": ["backtolife:protoceratops_attack_0", "backtolife:protoceratops_attack_1"]},
+    "tarbosaurus_idle": {"category": "neutral","sounds": ["backtolife:tarbosaurus_idle_0", "backtolife:tarbosaurus_idle_1"]},
+    "tarbosaurus_hurt": {"category": "neutral","sounds": ["backtolife:tarbosaurus_hurt_0", "backtolife:tarbosaurus_hurt_1", "backtolife:tarbosaurus_hurt_2"]},
+    "tarbosaurus_death": {"category": "neutral","sounds": ["backtolife:tarbosaurus_death_0"]},
+    "tarbosaurus_attack": {"category": "neutral","sounds": ["backtolife:tarbosaurus_attack_0"]}
+
 }
