@@ -103,7 +103,7 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 	public boolean isBloody() {
 		return this.dataManager.get(BLOODY).booleanValue();
 	}
-
+	
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();

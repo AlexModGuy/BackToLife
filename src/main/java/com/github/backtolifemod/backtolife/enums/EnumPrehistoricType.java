@@ -32,6 +32,8 @@ public enum EnumPrehistoricType {
 		this.colorA = colorA;
 		this.colorB = colorB;
 		this.fossilSize = fossilSize;
+		this.minimumModelSize = minimumModelSize;
+		this.maximumModelSize = maximumModelSize;
 	}
 
 	public static EnumPrehistoricType getOneOfFossilType(EnumPrehistoricFossilType fossilType_0) {
