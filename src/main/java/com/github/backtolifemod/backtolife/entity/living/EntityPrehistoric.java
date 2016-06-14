@@ -35,8 +35,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	public EnumPrehistoricType type;
 	private Animation currentAnimation;
 	private int animationTicks;
-	public float maximumModelSize;
-	public float minimumModelSize;
 	private static final DataParameter<Integer> HUNGER = EntityDataManager.<Integer> createKey(EntityPrehistoric.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> AGE_TICKS = EntityDataManager.<Integer> createKey(EntityPrehistoric.class, DataSerializers.VARINT);
 	private static final DataParameter<Boolean> GENDER = EntityDataManager.<Boolean> createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
@@ -147,12 +145,12 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public float getRenderSize() {
-		float step = (this.maximumModelSize - this.minimumModelSize) / ((this.getGrownAge() * 24000) + 1);
+		float step = (this.type.maximumModelSize - this.type.minimumModelSize) / ((this.getGrownAge() * 24000) + 1);
 
 		if (this.getAgeInTicks() > this.getGrownAge() * 24000) {
-			return this.minimumModelSize + ((step) * this.getGrownAge() * 24000);
+			return this.type.minimumModelSize + ((step) * this.getGrownAge() * 24000);
 		}
-		return this.minimumModelSize + ((step * this.getAgeInTicks()));
+		return this.type.minimumModelSize + ((step * this.getAgeInTicks()));
 	}
 
 	@Override

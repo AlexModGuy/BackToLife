@@ -29,8 +29,6 @@ public class EntityProtoceratops extends EntityLandPrehistoric{
 	public EntityProtoceratops(World world) {
 		super(world, EnumPrehistoricType.PROTOCERATOPS, 1, 2, 8, 25, 0.10000000149011612D, 0.3D);
 		this.setSize(1.9F, 1.7F);
-		this.maximumModelSize = 0.9F;
-		this.minimumModelSize = 0.3F;
 		ANIMATION_EAT = Animation.create(35);
 		ANIMATION_SPEAK = Animation.create(20);
 		ANIMATION_THROWOFF = Animation.create(30);

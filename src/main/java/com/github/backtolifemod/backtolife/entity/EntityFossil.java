@@ -1,5 +1,7 @@
 package com.github.backtolifemod.backtolife.entity;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -22,7 +24,7 @@ public class EntityFossil extends EntityCreature {
 
 	public EnumPrehistoricType type;
 	public int rotation;
-	public int age;
+	public float age;
 
 	private static final DataParameter<Integer> PLASTER = EntityDataManager.<Integer> createKey(EntityVelociraptor.class, DataSerializers.VARINT);
 
@@ -33,7 +35,7 @@ public class EntityFossil extends EntityCreature {
 		}
 
 		rotation = new Random().nextInt(3);
-		age = getAge();
+		age = new Random().nextFloat();
 		this.setSize(type.fossilSize * 1.4F * this.getScale(), (type.fossilSize / 5) * this.getScale());
 	}
 
@@ -60,7 +62,7 @@ public class EntityFossil extends EntityCreature {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("Plaster", this.getPlastered());
 		compound.setInteger("Rotation", this.rotation);
-		compound.setInteger("PrehistoricAge", this.age);
+		compound.setFloat("PrehistoricAge", this.age);
 	}
 
 	@Override
@@ -68,7 +70,7 @@ public class EntityFossil extends EntityCreature {
 		super.readEntityFromNBT(compound);
 		this.setPlastered(compound.getInteger("Plaster"));
 		this.rotation = compound.getInteger("Rotation");
-		this.age = compound.getInteger("PrehistoricAge");
+		this.age = compound.getFloat("PrehistoricAge");
 	}
 
 	public void setPlastered(int plaster) {
@@ -79,37 +81,9 @@ public class EntityFossil extends EntityCreature {
 		return this.dataManager.get(PLASTER).intValue();
 	}
 
-	public Entity invokeClass() {
-		Entity entity = null;
-		if (Entity.class.isAssignableFrom(type.entityClass)) {
-			try {
-				entity = (Entity) type.entityClass.getDeclaredConstructor(World.class).newInstance(this.worldObj);
-			} catch (ReflectiveOperationException e) {
-				e.printStackTrace();
-			}
-		}
-		return entity;
-	}
-
 	public float getScale() {
-		Entity entity = invokeClass();
-		if (entity instanceof EntityPrehistoric) {
-			EntityPrehistoric prehistoric = (EntityPrehistoric) invokeClass();
-			if (prehistoric != null) {
-				float step = (prehistoric.maximumModelSize - prehistoric.minimumModelSize) / ((prehistoric.getGrownAge()) + 1);
-				return prehistoric.minimumModelSize + ((step * age));
-			}
-		}
-		return 0;
-	}
-
-	public int getAge() {
-		Entity entity = invokeClass();
-		if (entity instanceof EntityPrehistoric) {
-			EntityPrehistoric prehistoric = (EntityPrehistoric) invokeClass();
-			return this.getRNG().nextInt(prehistoric.getGrownAge());
-		}
-		return 0;
+		float step = (type.maximumModelSize - type.minimumModelSize);
+		return type.minimumModelSize + ((step * age));
 	}
 
 	public boolean canBeCollidedWith() {

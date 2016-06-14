@@ -35,15 +35,13 @@ import com.google.common.base.Predicate;
 public class EntityTarbosaurus extends EntityLandPrehistoric {
 
 	private int bloodTicks;
-	private static final DataParameter<Boolean> BLOODY = EntityDataManager.<Boolean> createKey(EntityLandPrehistoric.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> BLOODY = EntityDataManager.<Boolean> createKey(EntityTarbosaurus.class, DataSerializers.BOOLEAN);
 	public static Animation ANIMATION_ATTACK;
 	public static Animation ANIMATION_SHAKE;
 
 	public EntityTarbosaurus(World worldIn) {
 		super(worldIn, EnumPrehistoricType.TARBOSAURUS, 1, 15, 10, 160, 0.10000000149011612D, 0.4D);
 		this.setSize(1.9F, 1.7F);
-		this.maximumModelSize = 2.4F;
-		this.minimumModelSize = 0.2F;
 		EntityTarbosaurus.ANIMATION_ATTACK = Animation.create(10);
 		EntityTarbosaurus.ANIMATION_SHAKE = Animation.create(65);
 		EntityPrehistoric.ANIMATION_EAT = Animation.create(20);
@@ -78,7 +76,7 @@ public class EntityTarbosaurus extends EntityLandPrehistoric {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		//this.dataManager.register(BLOODY, Boolean.valueOf(false));
+		this.dataManager.register(BLOODY, Boolean.valueOf(false));
 	}
 
 	@Override

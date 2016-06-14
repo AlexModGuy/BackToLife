@@ -43,8 +43,6 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 	public EntityVelociraptor(World worldIn) {
 		super(worldIn, EnumPrehistoricType.VELOCIRAPTOR, 1, 5, 6, 18, 0.10000000149011612D, 0.4D);
 		this.setSize(1.9F, 1.7F);
-		this.maximumModelSize = 0.4F;
-		this.minimumModelSize = 0.2F;
 		EntityLandPrehistoric.ANIMATION_JUMP = Animation.create(30);
 		EntityVelociraptor.ANIMATION_RIPAPART = Animation.create(20);
 		EntityPrehistoric.ANIMATION_EAT = Animation.create(20);
@@ -81,7 +79,7 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.getDataManager().register(BLOODY, Boolean.valueOf(false));
+		this.dataManager.register(BLOODY, Boolean.valueOf(false));
 	}
 
 	@Override
