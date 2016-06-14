@@ -11,7 +11,7 @@ import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 import fossilsarcheology.api.EnumDiet;
 
 public enum EnumPrehistoricType {
-	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, EnumDiet.CARNIVORE_EGG, 0X392A22, 0XDAC9B9, 1.3F, 0.2F, 0.4F),
+	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, EnumDiet.CARNIVORE_EGG, 0X392A22, 0XDAC9B9, 2.7F, 0.2F, 0.4F),
 	PROTOCERATOPS(EntityProtoceratops.class, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, EnumDiet.HERBIVORE, 0X8D5027, 0XFA7723, 1.2F, 0.3F, 0.9F),
 	TARBOSAURUS(EntityTarbosaurus.class, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL, EnumDiet.CARNIVORE, 0XD8CCA5, 0XAD8D52, 4.5F, 0.2F, 2.4F);
 	public EnumPrehistoricFossilType fossilType;

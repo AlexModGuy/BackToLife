@@ -35,7 +35,7 @@ import com.google.common.base.Predicate;
 public class EntityTarbosaurus extends EntityLandPrehistoric {
 
 	private int bloodTicks;
-	private static final DataParameter<Boolean> BLOODY = EntityDataManager.<Boolean> createKey(EntityTarbosaurus.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> BLOODY = EntityDataManager.<Boolean> createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
 	public static Animation ANIMATION_ATTACK;
 	public static Animation ANIMATION_SHAKE;
 

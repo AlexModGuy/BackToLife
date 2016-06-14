@@ -35,7 +35,7 @@ import com.google.common.base.Predicate;
 public class EntityVelociraptor extends EntityLandPrehistoric {
 
 	private int bloodTicks;
-	private static final DataParameter<Boolean> BLOODY = EntityDataManager.<Boolean> createKey(EntityVelociraptor.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> BLOODY = EntityDataManager.<Boolean> createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
 	public static Animation ANIMATION_RIPAPART;
 	private int attackTime = 0;
 	public boolean isPouncing = false;

@@ -33,7 +33,7 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 	public static Animation ANIMATION_JUMP;
 	public static List<Class<? extends Entity>> obligitate_prey = new ArrayList<Class<? extends Entity>>();
 	public static List<Class<? extends Entity>> obligitate_predators = new ArrayList<Class<? extends Entity>>();
-	private static final DataParameter<Boolean> SLEEPING = EntityDataManager.<Boolean> createKey(EntityLandPrehistoric.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> SLEEPING = EntityDataManager.<Boolean> createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
 
 	public EntityLandPrehistoric(World world, EnumPrehistoricType type, double minimumDamage, double maximumDamage, double minimumHealth, double maximumHealth, double minimumSpeed, double maximumSpeed) {
 		super(world, type, minimumDamage, maximumDamage, minimumHealth, maximumHealth, minimumSpeed, maximumSpeed);
