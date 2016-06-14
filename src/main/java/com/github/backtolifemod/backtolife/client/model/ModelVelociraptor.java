@@ -5,6 +5,7 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
+import com.github.backtolifemod.backtolife.entity.EntityFossil;
 import com.github.backtolifemod.backtolife.entity.living.EntityLandPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
@@ -494,5 +495,10 @@ public class ModelVelociraptor extends ModelPrehistoric {
 			sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
 		}
 	}
-
+	
+	   public void renderFossil(EntityFossil fossil){
+	    	this.Body1.render(0.0625F);
+			this.RightLeg1.render(0.0625F);
+			this.LeftLeg1.render(0.0625F);
+	    }
 }

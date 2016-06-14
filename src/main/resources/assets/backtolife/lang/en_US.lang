@@ -21,6 +21,7 @@ tile.backtolife.fertilization_machine.name=Fertilization Machine
 entity.backtolife.velociraptor.name=Velociraptor
 entity.backtolife.protoceratops.name=Protoceratops
 entity.backtolife.tarbosaurus.name=Tarbosaurus
+entity.backtolife.fossil.name=Fossil
 
 entity.backtolife.hunger=Hunger: 
 entity.backtolife.age=Age: 

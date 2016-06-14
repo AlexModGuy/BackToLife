@@ -81,7 +81,7 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.dataManager.register(BLOODY, Boolean.valueOf(false));
+		this.getDataManager().register(BLOODY, Boolean.valueOf(false));
 	}
 
 	@Override

@@ -1,35 +1,22 @@
 package com.github.backtolifemod.backtolife;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.ilexiconn.llibrary.LLibrary;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderLivingBase;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 import com.github.backtolifemod.backtolife.client.model.ModelProtoceratops;
 import com.github.backtolifemod.backtolife.client.model.ModelTarbosaurus;
 import com.github.backtolifemod.backtolife.client.model.ModelVelociraptor;
 import com.github.backtolifemod.backtolife.client.render.entity.RenderBasicPrehistoric;
+import com.github.backtolifemod.backtolife.client.render.entity.RenderFossil;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderTissueAnalyzer;
 import com.github.backtolifemod.backtolife.core.ModItems;
-import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
+import com.github.backtolifemod.backtolife.entity.EntityFossil;
 import com.github.backtolifemod.backtolife.entity.living.EntityProtoceratops;
 import com.github.backtolifemod.backtolife.entity.living.EntityTarbosaurus;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
@@ -65,6 +52,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTissueAnalyzer.class, new RenderTissueAnalyzer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFertilizationMachine.class, new RenderFertilizationMachine());
+		RenderingRegistry.registerEntityRenderingHandler(EntityFossil.class, new RenderFossil());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVelociraptor.class, new RenderBasicPrehistoric(new ModelVelociraptor(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityProtoceratops.class, new RenderBasicPrehistoric(new ModelProtoceratops(), 0.4F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTarbosaurus.class, new RenderBasicPrehistoric(new ModelTarbosaurus(), 0.8F));
