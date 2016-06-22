@@ -228,7 +228,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
 		getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
-
 	}
 
 	public void updateAttributes() {

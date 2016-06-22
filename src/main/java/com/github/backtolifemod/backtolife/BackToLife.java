@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.github.backtolifemod.backtolife.client.GuiHandler;
 import com.github.backtolifemod.backtolife.core.ModBlocks;
@@ -24,6 +25,7 @@ import com.github.backtolifemod.backtolife.core.ModRecipes;
 import com.github.backtolifemod.backtolife.core.ModSounds;
 import com.github.backtolifemod.backtolife.core.ModVillagers;
 import com.github.backtolifemod.backtolife.message.MessageSetDay;
+import com.github.backtolifemod.backtolife.world.BackToLifeGeneration;
 
 @Mod(modid = BackToLife.MODID, name = BackToLife.NAME, version = BackToLife.VERSION)
 public class BackToLife {
@@ -64,6 +66,7 @@ public class BackToLife {
 		config.load();
 		ModConfig.load(config);
 		config.save();
+        GameRegistry.registerWorldGenerator(new BackToLifeGeneration(), 20);
 		PROXY.preInit();
 	}
 
