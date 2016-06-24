@@ -12,7 +12,7 @@ import fossilsarcheology.api.EnumDiet;
 
 public enum EnumPrehistoricType {
 	VELOCIRAPTOR(EntityVelociraptor.class, EnumPrehistoricTimeType.CRETACEOUS, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.DROMEOSAURID, EnumDiet.CARNIVORE_EGG, 0X392A22, 0XDAC9B9, 2.7F, 0.2F, 0.4F),
-	PROTOCERATOPS(EntityProtoceratops.class, EnumPrehistoricTimeType.CRETACEOUS, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, EnumDiet.HERBIVORE, 0X8D5027, 0XFA7723, 1.2F, 0.3F, 0.9F),
+	PROTOCERATOPS(EntityProtoceratops.class, EnumPrehistoricTimeType.CRETACEOUS, EnumPrehistoricFossilType.HERBIVORE_DINOSAUR, EnumPrehistoricEggType.SMALL_CERATOPSIAN, EnumDiet.HERBIVORE, 0X8D5027, 0XFA7723, 1.5F, 0.3F, 0.9F),
 	TARBOSAURUS(EntityTarbosaurus.class, EnumPrehistoricTimeType.CRETACEOUS, EnumPrehistoricFossilType.CARNIVORE_DINOSAUR, EnumPrehistoricEggType.NORMAL, EnumDiet.CARNIVORE, 0XD8CCA5, 0XAD8D52, 4.5F, 0.2F, 2.4F);
 	public EnumPrehistoricFossilType fossilType;
 	public EnumPrehistoricEggType eggType;
@@ -63,6 +63,9 @@ public enum EnumPrehistoricType {
 
 	public enum EnumPrehistoricFossilType {
 		CARNIVORE_DINOSAUR, HERBIVORE_DINOSAUR, PTEROSAUR;
+	}
+	public enum EnumPrehistoricBonesType {
+		THERAPOD, QUADROPED;
 	}
 	public enum EnumPrehistoricTimeType {
 		CAMBRIAN(0, 5), ORDOVICIAN(5, 10), SILURIAN(10, 15), DEVONIAN(15, 20), CARBONIFEROUS(20, 25), PERMIAN(25, 30), TRIASSIC(30, 35), JURASSIC(35, 40), CRETACEOUS(40, 45), PALEOGENE(45, 50), NEOGENE(50, 55);

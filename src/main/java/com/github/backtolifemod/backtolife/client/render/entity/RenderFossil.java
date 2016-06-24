@@ -32,7 +32,12 @@ public class RenderFossil extends Render<EntityFossil> {
 
 	public void doRender(EntityFossil entity, double x, double y, double z, float entityYaw, float partialTicks){
 		BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-		IBlockState state = Block.getBlockById(entity.blockID).getStateFromMeta(entity.blockMeta);
+		IBlockState state;
+		if(entity.blockID != 0){
+		state = Block.getBlockById(entity.blockID).getStateFromMeta(entity.blockMeta);
+		}else{
+			state = Block.getBlockById(1).getStateFromMeta(0);	
+		}
 		TextureAtlasSprite atlas = dispatcher.getModelForState(state).getParticleTexture();
 		ResourceLocation blockTexture = null;
 		try {

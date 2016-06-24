@@ -21,6 +21,7 @@ import com.github.backtolifemod.backtolife.core.ModBlocks;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType.EnumPrehistoricFossilType;
+import com.github.backtolifemod.backtolife.item.ItemFossilPart;
 
 public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISidedInventory {
 
@@ -212,12 +213,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 	private void makeFossil() {
 		ItemStack stack = this.stacks[0];
 		ItemStack result = null;
-		if (stack != null && stack.getItem() != null) {
-			boolean isCarnivoreFossil = stack.getItem() == ModItems.unknown_fossil_carnivore_dinosaur;
-			boolean isHerbivoreFossil = stack.getItem() == ModItems.unknown_fossil_herbivore_dinosaur;
-			boolean isPterosaurFossil = stack.getItem() == ModItems.unknown_fossil_pterosaur;
-			boolean isAnyFossil = stack.getItem().getUnlocalizedName().contains("fossil") || stack.getItem().getUnlocalizedName().contains("Fossil") || stack.getItem().getUnlocalizedName().contains("FOSSIL");
-			boolean isNondescriptFossil = !isCarnivoreFossil && !isHerbivoreFossil && !isPterosaurFossil && isAnyFossil;
+		if (stack != null && stack.getItem() != null && stack.getItem() instanceof ItemFossilPart) {
 			int chanceInt = random.nextInt(99) + 1;
 			if (chanceInt <= 50) {
 				result = new ItemStack(random.nextBoolean() ? ModItems.dust : ModItems.rocks, random.nextInt(1) + 1);
@@ -226,16 +222,7 @@ public class TileEntityFossilSlicer extends TileEntity implements ITickable, ISi
 			} else if (chanceInt <= 85) {
 				result = new ItemStack(Items.BONE, random.nextInt(1) + 1);
 			} else if (chanceInt <= 95) {
-				EnumPrehistoricType type = null;
-				if (isCarnivoreFossil) {
-					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.CARNIVORE_DINOSAUR);
-				} else if (isHerbivoreFossil) {
-					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.HERBIVORE_DINOSAUR);
-				} else if (isPterosaurFossil) {
-					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.PTEROSAUR);
-				} else {
-					type = EnumPrehistoricType.getOneOfFossilType(EnumPrehistoricFossilType.values()[random.nextInt(EnumPrehistoricFossilType.values().length)]);
-				}
+				EnumPrehistoricType type = EnumPrehistoricType.values()[stack.getMetadata()];
 				result = new ItemStack(ModItems.soft_tissue, 1, type.ordinal());
 			} else {
 				result = new ItemStack(Items.SKULL, 1, random.nextInt(1));

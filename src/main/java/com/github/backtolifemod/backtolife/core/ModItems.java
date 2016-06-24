@@ -1,17 +1,21 @@
 package com.github.backtolifemod.backtolife.core;
 
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import com.github.backtolifemod.backtolife.entity.tile.TileEntityDummySkull;
 import com.github.backtolifemod.backtolife.item.ItemBasic;
-import com.github.backtolifemod.backtolife.item.ItemFossil;
+import com.github.backtolifemod.backtolife.item.ItemFossilPart;
 import com.github.backtolifemod.backtolife.item.ItemPrehistoricEgg;
 import com.github.backtolifemod.backtolife.item.ItemSoftTissue;
 
 public class ModItems {
 
-	public static Item unknown_fossil_carnivore_dinosaur;
-	public static Item unknown_fossil_herbivore_dinosaur;
-	public static Item unknown_fossil_pterosaur;
+	public static Item fossil_skull;
+	public static Item fossil_ribcage;
+	public static Item fossil_foot;
+	public static Item fossil_limb;
+	public static Item fossil_tail;
 	public static Item gear;
 	public static Item dust;
 	public static Item rocks;
@@ -21,9 +25,12 @@ public class ModItems {
 	public static Item magnifying_glass;
 
 	public static void init() {
-		unknown_fossil_carnivore_dinosaur = new ItemFossil("carnivore_dinosaur");
-		unknown_fossil_herbivore_dinosaur = new ItemFossil("herbivore_dinosaur");
-		unknown_fossil_pterosaur = new ItemFossil("pterosaur");
+		GameRegistry.registerTileEntity(TileEntityDummySkull.class, "fossil_skull_item_dummy");
+		fossil_skull = new ItemFossilPart("fossil_skull");
+		fossil_ribcage = new ItemFossilPart("fossil_ribcage");
+		fossil_foot = new ItemFossilPart("fossil_foot");
+		fossil_limb = new ItemFossilPart("fossil_limb");
+		fossil_tail = new ItemFossilPart("fossil_tail");
 		gear = new ItemBasic("gear");
 		dust = new ItemBasic("dust");
 		rocks = new ItemBasic("rocks");

@@ -1,5 +1,7 @@
 package com.github.backtolifemod.backtolife.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -11,7 +13,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,6 +23,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
@@ -35,25 +38,44 @@ public class EntityFossil extends EntityCreature {
 	public int blockMeta;
 
 	private static final DataParameter<Integer> BREAK = EntityDataManager.<Integer> createKey(EntityFossil.class, DataSerializers.VARINT);
-	public static final Block[] BLOCKS = new Block[] { Blocks.STONE, Blocks.STONE, Blocks.STONE, Blocks.STONE, Blocks.SAND, Blocks.SAND, Blocks.GRAVEL, Blocks.DIRT, Blocks.SOUL_SAND };
-	public static final int[] METAS = new int[] { 0, 1, 3, 5, 0, 1, 0, 1, 0 };
+	private List<Block> blocks = new ArrayList<Block>();
 
 	public EntityFossil(World worldIn) {
 		super(worldIn);
+		blocks.add(Blocks.STONE);
+		blocks.add(Blocks.BEDROCK);
+		blocks.add(Blocks.SAND);
+		blocks.add(Blocks.SANDSTONE);
 		if (type == null) {
 			type = EnumPrehistoricType.values()[new Random().nextInt(EnumPrehistoricType.values().length)];
 		}
-		int blockChoice = new Random().nextInt(BLOCKS.length);
 		rotation = new Random().nextInt(3);
 		age = new Random().nextFloat();
-		blockID = Block.getIdFromBlock(BLOCKS[blockChoice]);
-		blockMeta = METAS[blockChoice];
 		this.setSize(type.fossilSize * 1.4F * this.getScale(), (type.fossilSize / 5) * this.getScale());
 	}
 
 	@Override
 	public boolean isAIDisabled() {
 		return true;
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if (blockID == 0) {
+			int i = MathHelper.floor_double(this.posX);
+			int j = MathHelper.floor_double(this.posY) - 1;
+			int k = MathHelper.floor_double(this.posZ);
+			BlockPos blockpos = new BlockPos(i, j, k);
+			int newBlockID = Block.getIdFromBlock(worldObj.getBlockState(blockpos).getBlock());
+			if (blocks.contains(Block.getBlockById(newBlockID))) {
+				this.blockID = newBlockID;
+				this.blockMeta = ((Block) worldObj.getBlockState(blockpos).getBlock()).getMetaFromState(worldObj.getBlockState(blockpos));
+			}else{
+				this.blockID = Block.getIdFromBlock(Blocks.STONE);
+				this.blockMeta = 0;
+			}
+		}
 	}
 
 	@Override

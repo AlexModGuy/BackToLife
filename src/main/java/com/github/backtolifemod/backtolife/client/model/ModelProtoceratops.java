@@ -5,12 +5,13 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
+import com.github.backtolifemod.backtolife.entity.EntityFossil;
 import com.github.backtolifemod.backtolife.entity.living.EntityLandPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityProtoceratops;
 
 public class ModelProtoceratops extends ModelPrehistoric {
-	public AdvancedModelRenderer Body1;
+	public AdvancedModelRenderer Body;
 	public AdvancedModelRenderer LeftLeg1;
 	public AdvancedModelRenderer RightLeg1;
 	public AdvancedModelRenderer Neck;
@@ -94,10 +95,10 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		this.Tail3.setRotationPoint(0.0F, 1.0F, 6.8F);
 		this.Tail3.addBox(-1.0F, -2.0F, -1.0F, 2, 4, 7, 0.0F);
 		this.setRotateAngle(Tail3, -0.091106186954104F, 0.0F, 0.0F);
-		this.Body1 = new AdvancedModelRenderer(this, 50, 0);
-		this.Body1.setRotationPoint(0.0F, 7.0F, 2.4F);
-		this.Body1.addBox(-3.5F, -4.5F, -14.0F, 7, 11, 18, 0.0F);
-		this.setRotateAngle(Body1, 0.18203784098300857F, 0.0F, 0.0F);
+		this.Body = new AdvancedModelRenderer(this, 50, 0);
+		this.Body.setRotationPoint(0.0F, 7.0F, 2.4F);
+		this.Body.addBox(-3.5F, -4.5F, -14.0F, 7, 11, 18, 0.0F);
+		this.setRotateAngle(Body, 0.18203784098300857F, 0.0F, 0.0F);
 		this.UpperBeak = new AdvancedModelRenderer(this, 53, 85);
 		this.UpperBeak.setRotationPoint(0.0F, -4.8F, -2.4F);
 		this.UpperBeak.addBox(-1.0F, -0.1F, 0.0F, 2, 6, 1, 0.0F);
@@ -314,17 +315,17 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		this.RightFrontLeg2.addChild(this.LeftFrontFeet_1);
 		this.Tail3.addChild(this.TailQuills3);
 		this.RightLeg2.addChild(this.RightFeet);
-		this.Body1.addChild(this.LeftFrontLeg1);
+		this.Body.addChild(this.LeftFrontLeg1);
 		this.Head1.addChild(this.RightHorn1);
 		this.LeftFrontLeg1.addChild(this.LeftFrontLeg2);
 		this.Head1.addChild(this.Crest1F);
 		this.LeftFrontLeg2.addChild(this.LeftFrontFeet);
 		this.Head2.addChild(this.LowerJaw1);
-		this.Body1.addChild(this.Body2);
+		this.Body.addChild(this.Body2);
 		this.Crest6M.addChild(this.Crest7M);
 		this.Head1.addChild(this.Head2);
 		this.Tail3.addChild(this.TailSail3);
-		this.Body1.addChild(this.Neck);
+		this.Body.addChild(this.Neck);
 		this.Tail2.addChild(this.TailSail1);
 		this.LowerJaw3.addChild(this.LowerBeak);
 		this.LowerJaw1.addChild(this.LowerJaw4);
@@ -339,7 +340,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		this.UpperJaw2.addChild(this.UpperJaw3);
 		this.Head1.addChild(this.UpperJaw1);
 		this.Crest4F.addChild(this.Crest5F);
-		this.Body1.addChild(this.Tail1);
+		this.Body.addChild(this.Tail1);
 		this.Tail3.addChild(this.TailQuills);
 		this.Gums1.addChild(this.Gums2);
 		this.Tail3.addChild(this.Tail4);
@@ -358,7 +359,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		this.Crest5M.addChild(this.Crest6M);
 		this.RightFrontLeg1.addChild(this.RightFrontLeg2);
 		this.LowerJaw2.addChild(this.LowerJaw3);
-		this.Body1.addChild(this.RightFrontLeg1);
+		this.Body.addChild(this.RightFrontLeg1);
 		this.Crest1M.addChild(this.Crest2M);
 		this.Tail2.addChild(this.TailSail2);
 		this.updateDefaultPose();
@@ -368,7 +369,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
 		animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
-		this.Body1.render(f5);
+		this.Body.render(f5);
 		this.LeftLeg1.render(f5);
 		this.RightLeg1.render(f5);
 	}
@@ -386,7 +387,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		animator.setAnimation(EntityProtoceratops.ANIMATION_THROWOFF);
 		animator.startKeyframe(10);
 		rotate(animator, Neck, -21, 0, 0);
-		rotate(animator, Body1, -56, 0, 0);
+		rotate(animator, Body, -56, 0, 0);
 		rotate(animator, LowerJaw1, 26, 0, 0);
 		rotate(animator, Tail1, 13, 0, 0);
 		rotate(animator, Tail2, 10, 0, 0);
@@ -397,7 +398,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		animator.endKeyframe();
 		animator.startKeyframe(5);
 		rotate(animator, Neck, -21, 0, 0);
-		rotate(animator, Body1, -26, 0, 0);
+		rotate(animator, Body, -26, 0, 0);
 		rotate(animator, LowerJaw1, 26, 0, 0);
 		rotate(animator, Tail1, 13, 0, 0);
 		rotate(animator, Tail2, 10, 0, 0);
@@ -408,7 +409,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		animator.endKeyframe();
 		animator.startKeyframe(5);
 		rotate(animator, Neck, -21, 0, 0);
-		rotate(animator, Body1, -26, 0, 0);
+		rotate(animator, Body, -26, 0, 0);
 		rotate(animator, LowerJaw1, 26, 0, 0);
 		rotate(animator, Tail1, 13, 0, 0);
 		rotate(animator, Tail2, 10, 0, 0);
@@ -419,7 +420,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		animator.endKeyframe();
 		animator.startKeyframe(5);
 		rotate(animator, Neck, -21, 0, 0);
-		rotate(animator, Body1, -26, 0, 0);
+		rotate(animator, Body, -26, 0, 0);
 		rotate(animator, LowerJaw1, 26, 0, 0);
 		rotate(animator, Tail1, 13, 0, 0);
 		rotate(animator, Tail2, 10, 0, 0);
@@ -469,17 +470,17 @@ public class ModelProtoceratops extends ModelPrehistoric {
 		AdvancedModelRenderer[] NECK = new AdvancedModelRenderer[]{Neck, Head1};
 		AdvancedModelRenderer[] TAIL = new AdvancedModelRenderer[]{Tail1, Tail2, Tail3, Tail4};
 		this.faceTarget(f3, f4, 2, NECK);
-		this.bob(Body1, speed_idle, degree_idle * 0.8F, false, entity.ticksExisted, 1);
+		this.bob(Body, speed_idle, degree_idle * 0.8F, false, entity.ticksExisted, 1);
 		this.bob(LeftFrontLeg1, speed_idle, -degree_idle * 0.8F, false, entity.ticksExisted, 1);
 		this.bob(RightFrontLeg1, speed_idle, -degree_idle * 0.8F, false, entity.ticksExisted, 1);
-		this.walk(Body1, speed_idle, degree_idle * 0.05F, false, 0, 0, entity.ticksExisted, 1);
+		this.walk(Body, speed_idle, degree_idle * 0.05F, false, 0, 0, entity.ticksExisted, 1);
 		this.walk(LeftFrontLeg1, speed_idle, -degree_idle * 0.05F, false, 0, 0, entity.ticksExisted, 1);
 		this.walk(RightFrontLeg1, speed_idle, -degree_idle * 0.05F, false, 0, 0, entity.ticksExisted, 1);
 		this.chainWave(TAIL, speed_idle, degree_idle * 0.1F, 0, entity.ticksExisted, 1);
 		this.chainWave(NECK, speed_idle, degree_idle * 0.2F, 4, entity.ticksExisted, 1);
 		this.chainWave(NECK, speed_walk, degree_walk * 0.3F, 4, f, f1);
 		this.chainSwing(TAIL, speed_walk, degree_walk * 0.4F, 1, f, f1);
-		this.bob(Body1, speed_walk, degree_walk * 0.8F, false, f, f1);
+		this.bob(Body, speed_walk, degree_walk * 0.8F, false, f, f1);
 		this.bob(LeftFrontLeg1, speed_walk, -degree_walk * 0.8F, false, f, f1);
 		this.bob(RightFrontLeg1, speed_walk, -degree_walk * 0.8F, false, f, f1);
 		this.walk(RightLeg1, speed_walk, degree_walk * 0.8F, true, 0, 0F, f, f1);
@@ -538,7 +539,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 	        sitAnimationRotation(Tail3, sitProgress, (float)Math.toRadians(10.43D), 0, 0);
 	        sitAnimationRotation(Crest6M, sitProgress, 0, 0, (float)Math.toRadians(13.04D));
 	        sitAnimationRotation(Crest7M, sitProgress, 0, 0, -((float)Math.toRadians(20.87D)));
-	        sitAnimationRotation(Body1, sitProgress, -((float)Math.toRadians(31.3D)), 0, 0);
+	        sitAnimationRotation(Body, sitProgress, -((float)Math.toRadians(31.3D)), 0, 0);
 	        sitAnimationRotation(RightHorn2, sitProgress, 0, (float)Math.toRadians(13.04D), 0);
 	        sitAnimationRotation(LeftHorn2, sitProgress, 0, -((float)Math.toRadians(13.04D)), 0);
 	        sitAnimationRotation(LeftFeet, sitProgress, (float)Math.toRadians(75.65D), 0, (float)Math.toRadians(2.61D));
@@ -546,7 +547,7 @@ public class ModelProtoceratops extends ModelPrehistoric {
 	        sitAnimationRotation(LowerJaw1, sitProgress, (float)Math.toRadians(7.83D), 0, 0);
 	        sitAnimationRotation(RightHorn1, sitProgress, 0, -((float)Math.toRadians(54.78D)), -((float)Math.toRadians(23.48D)));
 	        sitAnimationRotation(Crest1F, sitProgress, (float)Math.toRadians(41.74D), 0, 0);
-	        sitAnimationPos(Body1, sitProgress, 0, 13F, 2.4F);
+	        sitAnimationPos(Body, sitProgress, 0, 13F, 2.4F);
 	        sitAnimationPos(RightLeg1, sitProgress, -3.5F, 13F, 4);
 	        sitAnimationPos(LeftLeg1, sitProgress, 3.5F, 13F, 4);
 
@@ -596,16 +597,78 @@ public class ModelProtoceratops extends ModelPrehistoric {
 	        sitAnimationRotation(Crest4M, sitProgress, 0, 0, (float)Math.toRadians(20.87D));
 	        sitAnimationRotation(Neck, sitProgress, -((float)Math.toRadians(26.09D)), 0, 0);
 	        sitAnimationRotation(RightHorn2, sitProgress, 0, (float)Math.toRadians(13.04D), 0);
-	        sitAnimationRotation(Body1, sitProgress, -((float)Math.toRadians(2.61D)), 0, 0);
+	        sitAnimationRotation(Body, sitProgress, -((float)Math.toRadians(2.61D)), 0, 0);
 	        sitAnimationRotation(Crest6M, sitProgress, 0, 0, (float)Math.toRadians(13.04D));
 	        sitAnimationRotation(UpperJaw3, sitProgress, (float)Math.toRadians(15.48D), 0, 0);
 	        sitAnimationRotation(Crest1F, sitProgress, (float)Math.toRadians(41.74D), 0, 0);
 	        sitAnimationRotation(Crest2M, sitProgress, 0, 0, -((float)Math.toRadians(23.48D)));
 	        sitAnimationRotation(TailQuills, sitProgress, -((float)Math.toRadians(7.83D)), 0, 0);
 	        sitAnimationRotation(RightFrontLeg1, sitProgress, (float)Math.toRadians(75.65D), 0, (float)Math.toRadians(2.61D));
-	        sitAnimationPos(Body1, sitProgress, 0, 13F, 2.4F);
+	        sitAnimationPos(Body, sitProgress, 0, 13F, 2.4F);
 	        sitAnimationPos(RightLeg1, sitProgress, -3.5F, 13F, 4);
 	        sitAnimationPos(LeftLeg1, sitProgress, 3.5F, 13F, 4);
 		}
 	}
+	 public void renderFossil(EntityFossil fossil){
+	    	this.Body.render(0.0625F);
+			this.RightLeg1.render(0.0625F);
+			this.LeftLeg1.render(0.0625F);
+			this.resetToDefaultPose();
+			float sitProgress = 20;
+			this.Body.rotationPointY -= 7;
+			this.RightLeg1.rotationPointY -= 7;
+			this.LeftLeg1.rotationPointY -= 7;
+			sitAnimationRotation(LeftHorn3, sitProgress, 0, (float)Math.toRadians(28.7D), 0);
+	        sitAnimationRotation(Crest5M, sitProgress, 0, 0, (float)Math.toRadians(23.48D));
+	        sitAnimationRotation(LowerBeak, sitProgress, (float)Math.toRadians(20.87D), 0, 0);
+	        sitAnimationRotation(Crest2F, sitProgress, 0, 0, -((float)Math.toRadians(18.26D)));
+	        sitAnimationRotation(Crest4F, sitProgress, 0, 0, (float)Math.toRadians(18.26D));
+	        sitAnimationRotation(Crest4M, sitProgress, 0, 0, (float)Math.toRadians(20.87D));
+	        sitAnimationRotation(LeftFrontLeg2, sitProgress, -((float)Math.toRadians(26.09D)), 0, 0);
+	        sitAnimationRotation(Crest1F, sitProgress, (float)Math.toRadians(41.74D), 0, 0);
+	        sitAnimationRotation(Crest5F, sitProgress, 0, 0, (float)Math.toRadians(26.09D));
+	        sitAnimationRotation(RightHorn1, sitProgress, 0, -((float)Math.toRadians(54.78D)), -((float)Math.toRadians(23.48D)));
+	        sitAnimationRotation(UpperJaw3, sitProgress, (float)Math.toRadians(15.48D), 0, 0);
+	        sitAnimationRotation(RightFeet, sitProgress, (float)Math.toRadians(5.22D), 0, -((float)Math.toRadians(2.61D)));
+	        sitAnimationRotation(LeftLeg1, sitProgress, (float)Math.toRadians(2.61D), 0, (float)Math.toRadians(5.22D));
+	        sitAnimationRotation(Crest3F, sitProgress, 0, 0, -((float)Math.toRadians(26.09D)));
+	        sitAnimationRotation(LeftHorn1, sitProgress, 0, (float)Math.toRadians(54.78D), (float)Math.toRadians(23.48D));
+	        sitAnimationRotation(Body, sitProgress, (float)Math.toRadians(10.43D), 0, 0);
+	        sitAnimationRotation(Body2, sitProgress, -((float)Math.toRadians(5.22D)), 0, 0);
+	        sitAnimationRotation(RightLeg2, sitProgress, (float)Math.toRadians(10.43D), 0, 0);
+	        sitAnimationRotation(LowerJaw4, sitProgress, -((float)Math.toRadians(10.0D)), 0, 0);
+	        sitAnimationRotation(LowerJaw2, sitProgress, (float)Math.toRadians(10.43D), 0, 0);
+	        sitAnimationRotation(Horn, sitProgress, (float)Math.toRadians(15.65D), 0, 0);
+	        sitAnimationRotation(TailQuills3, sitProgress, -((float)Math.toRadians(7.83D)), 0, 0);
+	        sitAnimationRotation(UpperJaw2, sitProgress, -((float)Math.toRadians(10.43D)), 0, 0);
+	        sitAnimationRotation(Tail4, sitProgress, -((float)Math.toRadians(23.48D)), 0, 0);
+	        sitAnimationRotation(Crest2M, sitProgress, 0, 0, -((float)Math.toRadians(23.48D)));
+	        sitAnimationRotation(LowerJaw3, sitProgress, -((float)Math.toRadians(7.83D)), 0, 0);
+	        sitAnimationRotation(LeftFrontLeg1, sitProgress, -((float)Math.toRadians(28.7D)), 0, (float)Math.toRadians(15.65D));
+	        sitAnimationRotation(Tail2, sitProgress, -((float)Math.toRadians(18.26D)), 0, 0);
+	        sitAnimationRotation(LowerJaw1, sitProgress, (float)Math.toRadians(31.3D), 0, 0);
+	        sitAnimationRotation(RightHorn2, sitProgress, 0, (float)Math.toRadians(13.04D), 0);
+	        sitAnimationRotation(TailQuills, sitProgress, -((float)Math.toRadians(7.83D)), 0, 0);
+	        sitAnimationRotation(Tail3, sitProgress, -((float)Math.toRadians(13.04D)), 0, 0);
+	        sitAnimationRotation(UpperBeak, sitProgress, -((float)Math.toRadians(7.43D)), 0, 0);
+	        sitAnimationRotation(RightFrontLeg1, sitProgress, (float)Math.toRadians(13.94D), 0, (float)Math.toRadians(2.61D));
+	        sitAnimationRotation(Tail1, sitProgress, -((float)Math.toRadians(28.7D)), 0, 0);
+	        sitAnimationRotation(Neck, sitProgress, -((float)Math.toRadians(28.7D)), 0, 0);
+	        sitAnimationRotation(LeftFrontFeet_1, sitProgress, 0, 0, -((float)Math.toRadians(2.61D)));
+	        sitAnimationRotation(Crest7M, sitProgress, 0, 0, -((float)Math.toRadians(20.87D)));
+	        sitAnimationRotation(RightLeg1, sitProgress, -((float)Math.toRadians(15.65D)), 0, (float)Math.toRadians(2.61D));
+	        sitAnimationRotation(TailQuills2, sitProgress, -((float)Math.toRadians(7.83D)), 0, -((float)Math.toRadians(2.61D)));
+	        sitAnimationRotation(Crest6M, sitProgress, 0, 0, (float)Math.toRadians(13.04D));
+	        sitAnimationRotation(UpperJaw1, sitProgress, (float)Math.toRadians(13.04D), 0, 0);
+	        sitAnimationRotation(LeftFeet, sitProgress, (float)Math.toRadians(5.22D), 0, (float)Math.toRadians(2.61D));
+	        sitAnimationRotation(Crest3M, sitProgress, 0, 0, -((float)Math.toRadians(13.04D)));
+	        sitAnimationRotation(LeftHorn2, sitProgress, 0, -((float)Math.toRadians(13.04D)), 0);
+	        sitAnimationRotation(LeftFrontFeet, sitProgress, 0, 0, (float)Math.toRadians(2.61D));
+	        sitAnimationRotation(LeftLeg2, sitProgress, (float)Math.toRadians(10.43D), 0, (float)Math.toRadians(10.43D));
+	        sitAnimationRotation(RightFrontLeg2, sitProgress, -((float)Math.toRadians(26.09D)), 0, 0);
+	        sitAnimationRotation(Crest1M, sitProgress, (float)Math.toRadians(46.96D), 0, 0);
+	        sitAnimationRotation(Gums1, sitProgress, -((float)Math.toRadians(15.65D)), 0, 0);
+	        sitAnimationRotation(RightHorn3, sitProgress, 0, -((float)Math.toRadians(28.7D)), 0);
+	        sitAnimationRotation(Head1, sitProgress, -((float)Math.toRadians(13.04D)), 0, 0);
+	 }
 }

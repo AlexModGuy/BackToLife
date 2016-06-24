@@ -11,7 +11,7 @@ import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
 
 public class ModelVelociraptor extends ModelPrehistoric {
-	public AdvancedModelRenderer Body1;
+	public AdvancedModelRenderer Body;
 	public AdvancedModelRenderer RightLeg1;
 	public AdvancedModelRenderer LeftLeg1;
 	public AdvancedModelRenderer Neck;
@@ -123,10 +123,10 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.Neck.setRotationPoint(0.0F, 1.0F, -12.0F);
 		this.Neck.addBox(-2.0F, -10.0F, -2.0F, 4, 12, 6, 0.0F);
 		this.setRotateAngle(Neck, 0.8196066167365365F, 0.0F, 0.0F);
-		this.Body1 = new AdvancedModelRenderer(this, 72, 0);
-		this.Body1.setRotationPoint(0.0F, 8.0F, -3.0F);
-		this.Body1.addBox(-3.0F, -4.0F, -12.0F, 6, 8, 18, 0.0F);
-		this.setRotateAngle(Body1, -0.0911061869541033F, 0.0F, 0.0F);
+		this.Body = new AdvancedModelRenderer(this, 72, 0);
+		this.Body.setRotationPoint(0.0F, 8.0F, -3.0F);
+		this.Body.addBox(-3.0F, -4.0F, -12.0F, 6, 8, 18, 0.0F);
+		this.setRotateAngle(Body, -0.0911061869541033F, 0.0F, 0.0F);
 		this.RightArm1 = new AdvancedModelRenderer(this, 52, 63);
 		this.RightArm1.setRotationPoint(-3.0F, 2.0F, -11.0F);
 		this.RightArm1.addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F);
@@ -244,10 +244,10 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.setRotateAngle(LeftArm2, -2.504198410761464F, 0.0F, 0.0F);
 		this.Head1.addChild(this.HeadFeathers2);
 		this.RightArm2.addChild(this.RightHand);
-		this.Body1.addChild(this.Body2);
+		this.Body.addChild(this.Body2);
 		this.RightFeet.addChild(this.RightClaw1);
 		this.LeftFeet.addChild(this.LeftClaw1);
-		this.Body1.addChild(this.Tail1);
+		this.Body.addChild(this.Tail1);
 		this.LowerJaw2.addChild(this.LowerJaw3);
 		this.LeftLeg1.addChild(this.LeftLeg2);
 		this.LowerJaw1.addChild(this.LowerJaw2);
@@ -256,8 +256,8 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.Neck.addChild(this.HeadFeathers);
 		this.Neck.addChild(this.headPivot);
 		this.headPivot.addChild(this.Head1);
-		this.Body1.addChild(this.Neck);
-		this.Body1.addChild(this.RightArm1);
+		this.Body.addChild(this.Neck);
+		this.Body.addChild(this.RightArm1);
 		this.LeftLeg2.addChild(this.LeftFeet);
 		this.RightArm2.addChild(this.RArmFeathers2);
 		this.Tail1.addChild(this.Tailfeathers1);
@@ -283,7 +283,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.LowerJaw1.addChild(this.Gums);
 		this.Tail1.addChild(this.Tail2);
 		this.UpperJaw2.addChild(this.Teeth2);
-		this.Body1.addChild(this.LeftArm1);
+		this.Body.addChild(this.LeftArm1);
 		this.Tail2.addChild(this.Tail3);
 		this.LeftArm1.addChild(this.LeftArm2);
 		this.updateDefaultPose();
@@ -294,7 +294,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
 		animate((IAnimatedEntity) entity, f, f1, f2, f3, f4, f5);
 		this.RightLeg1.render(f5);
-		this.Body1.render(f5);
+		this.Body.render(f5);
 		this.LeftLeg1.render(f5);
 	}
 
@@ -318,7 +318,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		animator.resetKeyframe(5);
 		animator.setAnimation(EntityLandPrehistoric.ANIMATION_JUMP);
 		animator.startKeyframe(15);
-		rotate(animator, Body1, 13F, 0, 0);
+		rotate(animator, Body, 13F, 0, 0);
 		rotate(animator, Tail1, 23F, 0, 0);
 		rotate(animator, Tail2, 5F, 0, 0);
 		rotate(animator, Tail2, -2F, 0, 0);
@@ -329,7 +329,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		animator.endKeyframe();
 		animator.setStaticKeyframe(5);
 		animator.startKeyframe(5);
-		rotate(animator, Body1, -46F, 0, 0);
+		rotate(animator, Body, -46F, 0, 0);
 		rotate(animator, Tail1, 18F, 0, 0);
 		rotate(animator, LeftLeg1, -65F, -5F, 0);
 		rotate(animator, RightLeg1, -52F, 5F, 0);
@@ -346,7 +346,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		animator.resetKeyframe(5);
 		animator.setAnimation(EntityVelociraptor.ANIMATION_RIPAPART);
 		animator.startKeyframe(5);
-		rotate(animator, Body1, 13F, 0, 0);
+		rotate(animator, Body, 13F, 0, 0);
 		rotate(animator, Tail1, 23F, 0, 0);
 		rotate(animator, Tail2, 5F, 0, 0);
 		rotate(animator, Tail2, -2F, 0, 0);
@@ -358,7 +358,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		rotate(animator, LowerJaw1, 15F, 0, 0);
 		animator.endKeyframe();
 		animator.startKeyframe(5);
-		rotate(animator, Body1, 13F, 0, 0);
+		rotate(animator, Body, 13F, 0, 0);
 		rotate(animator, Tail1, 23F, 0, 0);
 		rotate(animator, Tail2, 5F, 0, 0);
 		rotate(animator, Tail2, -2F, 0, 0);
@@ -383,8 +383,8 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		if(!((EntityVelociraptor)entity).isRiding()){
 			this.faceTarget(f3, f4, 2, NECK);
 		}
-		this.bob(Body1, speed_idle, degree_idle * 0.8F, false, entity.ticksExisted, 1);
-		this.walk(Body1, speed_idle, degree_idle * 0.05F, false, 0, 0, entity.ticksExisted, 1);
+		this.bob(Body, speed_idle, degree_idle * 0.8F, false, entity.ticksExisted, 1);
+		this.walk(Body, speed_idle, degree_idle * 0.05F, false, 0, 0, entity.ticksExisted, 1);
 		this.chainWave(NECK, speed_idle, degree_idle * 0.2F, 4, entity.ticksExisted, 1);
 		this.chainWave(TAIL, speed_idle, degree_idle * 0.1F, 0, entity.ticksExisted, 1);
 		this.walk(RightArm1, speed_idle, degree_idle * 0.2F, false, 0, 0, entity.ticksExisted, 1);
@@ -393,7 +393,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.walk(LeftArm2, speed_idle, degree_idle * 0.25F, true, 0, -0.3F, entity.ticksExisted, 1);
 		this.chainWave(NECK, speed_walk, degree_walk * 0.5F, 4, f, f1);
 		this.chainSwing(TAIL, speed_walk, degree_walk * 0.4F, 1, f, f1);
-		this.bob(Body1, speed_walk, degree_walk * 0.8F, false, f, f1);
+		this.bob(Body, speed_walk, degree_walk * 0.8F, false, f, f1);
 		this.walk(RightArm1, speed_walk, degree_walk * 0.3F, false, 0, 0, f, f1);
 		this.walk(RightArm2, speed_walk, degree_walk * 0.35F, true, 0, -0.3F, f, f1);
 		this.walk(LeftArm1, speed_walk, degree_walk * 0.3F, false, 0, 0, f, f1);
@@ -418,7 +418,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 			sitAnimationRotation(LeftLeg2, progress, (float)Math.toRadians(10.43D), 0, 0);
 			sitAnimationRotation(UpperJaw3, progress, (float)Math.toRadians(18.26D), 0, 0);
 			sitAnimationRotation(Tail3, progress, (float)Math.toRadians(2.61D), 0, 0);
-			sitAnimationRotation(Body1, progress, -((float)Math.toRadians(20.869999999999983D)), 0, 0);
+			sitAnimationRotation(Body, progress, -((float)Math.toRadians(20.869999999999983D)), 0, 0);
 			sitAnimationRotation(LeftLeg1, progress, -((float)Math.toRadians(83.48D)), 0, -((float)Math.toRadians(2.61D)));
 			sitAnimationRotation(UpperJaw2, progress, -((float)Math.toRadians(2.61D)), 0, 0);
 			sitAnimationRotation(LeftArm1, progress, (float)Math.toRadians(101.74D), (float)Math.toRadians(13.04D), 0);
@@ -445,7 +445,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 			sitAnimationRotation(Neck, progress, (float)Math.toRadians(46.96000000000005D), 0, 0);
 			sitAnimationRotation(RightClaw2, progress, (float)Math.toRadians(36.52D), 0, 0);
 			sitAnimationRotation(LeftClaw1, progress, (float)Math.toRadians(23.48D), 0, 0);
-			sitAnimationPos(Body1, progress, 0, 13, 0);
+			sitAnimationPos(Body, progress, 0, 13, 0);
 			sitAnimationPos(RightLeg1, progress, -3, 15F, 1);
 			sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
 		}
@@ -470,7 +470,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 			sitAnimationRotation(LowerJaw3, progress, -((float)Math.toRadians(2.61D)), 0, 0);
 			sitAnimationRotation(RightArm2, progress, -((float)Math.toRadians(143.48D)), 0, 0);
 			sitAnimationRotation(TailFeathers4, progress, -((float)Math.toRadians(5.22D)), 0, 0);
-			sitAnimationRotation(Body1, progress, -((float)Math.toRadians(20.87000000000001D)), 0, 0);
+			sitAnimationRotation(Body, progress, -((float)Math.toRadians(20.87000000000001D)), 0, 0);
 			sitAnimationRotation(RArmFeathers3, progress, -((float)Math.toRadians(60.0D)), 0, 0);
 			sitAnimationRotation(HeadFeathers3, progress, (float)Math.toRadians(2.61D), (float)Math.toRadians(2.61D), -((float)Math.toRadians(2.61D)));
 			sitAnimationRotation(Body2, progress, -((float)Math.toRadians(7.83D)), 0, 0);
@@ -490,14 +490,14 @@ public class ModelVelociraptor extends ModelPrehistoric {
 			sitAnimationRotation(RightHand, progress, (float)Math.toRadians(78.26D), (float)Math.toRadians(10.43D), 0);
 			sitAnimationRotation(LowerJaw1, progress, -((float)Math.toRadians(3.552713678800501E-15D)), 0, 0);
 			sitAnimationRotation(Tail3, progress, (float)Math.toRadians(2.61D), 0, 0);
-			sitAnimationPos(Body1, progress, 0, 13, 0);
+			sitAnimationPos(Body, progress, 0, 13, 0);
 			sitAnimationPos(RightLeg1, progress, -3, 15F, 1);
 			sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
 		}
 	}
 	
 	   public void renderFossil(EntityFossil fossil){
-	    	this.Body1.render(0.0625F);
+	    	this.Body.render(0.0625F);
 			this.RightLeg1.render(0.0625F);
 			this.LeftLeg1.render(0.0625F);
 			this.resetToDefaultPose();
@@ -523,7 +523,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		        sitAnimationRotation(Neck, sitProgress, (float)Math.toRadians(46.96D), (float)Math.toRadians(18.26D), 0);
 		        sitAnimationRotation(LowerJaw3, sitProgress, -((float)Math.toRadians(2.61D)), 0, 0);
 		        sitAnimationRotation(RightFeet, sitProgress, (float)Math.toRadians(135.65D), 0, -((float)Math.toRadians(2.61D)));
-		        sitAnimationRotation(Body1, sitProgress, -((float)Math.toRadians(5.21999999999996D)), 0, 0);
+		        sitAnimationRotation(Body, sitProgress, -((float)Math.toRadians(5.21999999999996D)), 0, 0);
 		        sitAnimationRotation(LeftArm1, sitProgress, (float)Math.toRadians(106.96D), (float)Math.toRadians(18.26D), (float)Math.toRadians(2.61D));
 		        sitAnimationRotation(LeftFeet, sitProgress, (float)Math.toRadians(5.22D), 0, (float)Math.toRadians(2.61D));
 		        sitAnimationRotation(RightLeg2, sitProgress, (float)Math.toRadians(10.43D), 0, 0);

@@ -1,5 +1,7 @@
 package com.github.backtolifemod.backtolife.client.model;
 
+import org.lwjgl.opengl.GL11;
+
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
@@ -240,8 +242,8 @@ public class ModelTarbosaurus extends ModelPrehistoric {
 	}
 
 	public void animate(IAnimatedEntity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		this.resetToDefaultPose();
 		animator.update(entity);
+		this.resetToDefaultPose();
 		setRotationAngles(f, f1, f2, f3, f4, f5, (Entity) entity);
 		animator.setAnimation(EntityLandPrehistoric.ANIMATION_SPEAK);
 		animator.startKeyframe(10);

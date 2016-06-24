@@ -43,14 +43,6 @@ public class BackToLifeGeneration implements IWorldGenerator {
 		int meta = block.getMetaFromState(world.getBlockState(position));
 		EntityFossil fossil = new EntityFossil(world);
 		fossil.setPosition(position.getX(), position.getY() + 1, position.getZ());
-		fossil.type = type;
-		fossil.blockID = Block.getIdFromBlock(Blocks.STONE);
-		for (int i = 0; i < EntityFossil.BLOCKS.length; i++) {
-			if (block == EntityFossil.BLOCKS[i] && meta == EntityFossil.METAS[i]) {
-				fossil.blockID = Block.getIdFromBlock(block);
-				fossil.blockMeta = EntityFossil.METAS[i];
-			}
-		}
 		if (!world.isRemote) {
 			world.spawnEntityInWorld(fossil);
 		}

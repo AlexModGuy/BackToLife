@@ -46,12 +46,12 @@ public class BackToLife {
 
 			@Override
 			public Item getTabIconItem() {
-				return ModItems.unknown_fossil_carnivore_dinosaur;
+				return ModItems.fossil_skull;
 			}
 
 			@Override
 			public int getIconItemDamage() {
-				return 2;
+				return 0;
 			}
 
 		};

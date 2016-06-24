@@ -30,12 +30,8 @@ public class ModVillagers {
 			career.addTrade(1, new EntityVillager.EmeraldForItems(ModItems.dust, new EntityVillager.PriceInfo(20, 30)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(ModItems.rocks, new EntityVillager.PriceInfo(20, 30)));
 			career.addTrade(1, new EntityVillager.EmeraldForItems(Items.GLOWSTONE_DUST, new EntityVillager.PriceInfo(4, 6)));
-			career.addTrade(2, new EntityVillager.EmeraldForItems(ModItems.unknown_fossil_carnivore_dinosaur, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(2, new EntityVillager.EmeraldForItems(ModItems.unknown_fossil_herbivore_dinosaur, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(2, new EntityVillager.EmeraldForItems(ModItems.unknown_fossil_pterosaur, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(3, new EntityVillager.ListItemForEmeralds(ModItems.unknown_fossil_carnivore_dinosaur, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(3, new EntityVillager.ListItemForEmeralds(ModItems.unknown_fossil_herbivore_dinosaur, new EntityVillager.PriceInfo(3, 5)));
-			career.addTrade(3, new EntityVillager.ListItemForEmeralds(ModItems.unknown_fossil_pterosaur, new EntityVillager.PriceInfo(3, 5)));
+			//career.addTrade(2, new EntityVillager.EmeraldForItems(ModItems.fossil_part, new EntityVillager.PriceInfo(3, 5)));
+			//career.addTrade(3, new EntityVillager.ListItemForEmeralds(ModItems.fossil_part, new EntityVillager.PriceInfo(5, 3)));
 			career.addTrade(4, new EntityVillager.ListItemForEmeralds(Item.getItemFromBlock(ModBlocks.fossil_slicer), new EntityVillager.PriceInfo(5, 6)));
 			career.addTrade(4, new EntityVillager.ListItemForEmeralds(Item.getItemFromBlock(ModBlocks.tissue_analyzer), new EntityVillager.PriceInfo(5, 6)));
 		}
