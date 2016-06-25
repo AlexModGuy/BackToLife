@@ -76,6 +76,7 @@ public abstract class RenderDummy extends TileEntitySpecialRenderer {
 					modelPart.render(0.0625F);
 					if (!renderWithChildren) {
 						for (ModelRenderer child : modelPart.childModels) {
+							child.isHidden = true;
 							if (partname.equals("Body")) {
 								Field body2Field = null;
 								try {
@@ -94,12 +95,11 @@ public abstract class RenderDummy extends TileEntitySpecialRenderer {
 									} catch (IllegalAccessException e) {
 										e.printStackTrace();
 									}
-									if (modelBody2 != null) {
+									if (child == modelBody2 && modelBody2 != null) {
 										modelBody2.isHidden = false;
 									}
 								}
 							}
-							child.isHidden = true;
 						}
 					}
 					modelPart.resetToDefaultPose();

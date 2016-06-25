@@ -76,7 +76,14 @@ public class RenderFossil extends Render<EntityFossil> {
 		Render render = this.renderManager.getEntityClassRenderObject(entity.type.entityClass);
 		if(render instanceof RenderLiving){
 			RenderLiving renderLiving = (RenderLiving)render;
-			ModelBase model = renderLiving.getMainModel();
+			ModelBase model = null;
+			try {
+				model = renderLiving.getMainModel().getClass().newInstance();
+			} catch (InstantiationException e1) {
+				e1.printStackTrace();
+			} catch (IllegalAccessException e1) {
+				e1.printStackTrace();
+			}
 			if(model instanceof ModelPrehistoric){
 				float scale = entity.getScale();
 				GL11.glScalef(scale, scale, scale);
