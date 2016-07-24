@@ -181,11 +181,12 @@ public class EntityVelociraptor extends EntityLandPrehistoric {
 
 	@Override
 	public String getTexture() {
-		if (this.isSleeping()) {
+		/*if (this.isSleeping()) {
 			return "backtolife:textures/models/entity/" + this.type.toString().toLowerCase() + (this.isMale() ? "_male" : "_female") + (this.isSleeping() ? "_sleeping" : "");
 		} else {
 			return super.getTexture() + (this.isBloody() ? "_blood" : "");
-		}
+		}*/
+		return super.getTexture();
 	}
 
 	@Override

@@ -112,7 +112,21 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) {
-		return null;
+		Entity entity = null;
+		if (Entity.class.isAssignableFrom(this.getClass())) {
+			try {
+				entity = this.getClass().getDeclaredConstructor(World.class).newInstance(worldObj);
+			} catch (ReflectiveOperationException e) {
+				e.printStackTrace();
+			}
+		}
+		EntityPrehistoric prehistoric = (EntityPrehistoric) entity;
+		prehistoric.setGender(this.getRNG().nextBoolean());
+		prehistoric.updateAttributes();
+		prehistoric.setAgeInDays(0);
+		prehistoric.setHunger(50);
+		prehistoric.setHealth((float)minimumHealth);
+		return prehistoric;
 	}
 
 	@Override
@@ -165,7 +179,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 	}
 
 	public String getTexture() {
-		return "backtolife:textures/models/entity/" + this.type.toString().toLowerCase() + (this.isMale() ? "_male" : "_female");
+		return "backtolife:textures/models/entity/" + this.type.toString().toLowerCase() + (this.isAdult() ? "_adult" : this.isTeen() ? "_teen" : "_baby") + (!this.isBaby() ? (this.isMale() ? "_male" : "_female") : "");
 	}
 
 	@Override
@@ -310,5 +324,17 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 
 	public boolean isMovementCeased() {
 		return false;
+	}
+
+	public boolean isAdult(){
+		return this.getAgeInTicks() / 24000 >= this.getGrownAge();
+	}
+
+	public boolean isBaby(){
+		return this.getAgeInTicks() / 24000 <= this.getGrownAge() / 2;
+	}
+
+	public boolean isTeen(){
+		return !this.isAdult() && !this.isBaby();
 	}
 }

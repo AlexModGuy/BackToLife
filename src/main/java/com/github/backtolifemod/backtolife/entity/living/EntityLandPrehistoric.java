@@ -155,22 +155,14 @@ public abstract class EntityLandPrehistoric extends EntityPrehistoric {
 		boolean sitting = isSitting();
 		if (sitting && sitProgress < 20.0F) {
 			sitProgress += 0.5F;
-			if (sleepProgress != 0)
-				sleepProgress = 0F;
 		} else if (!sitting && sitProgress > 0.0F) {
 			sitProgress -= 0.5F;
-			if (sleepProgress != 0)
-				sleepProgress = 0F;
 		}
 		boolean sleeping = isSleeping();
 		if (sleeping && sleepProgress < 20.0F) {
 			sleepProgress += 0.5F;
-			if (sitProgress != 0)
-				sitProgress = 0F;
 		} else if (!sleeping && sleepProgress > 0.0F) {
 			sleepProgress -= 0.5F;
-			if (sitProgress != 0)
-				sitProgress = 0F;
 		}
 		if (sleeping)
 			sleepingTicks++;

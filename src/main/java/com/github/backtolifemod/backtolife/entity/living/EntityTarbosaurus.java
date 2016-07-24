@@ -165,15 +165,6 @@ public class EntityTarbosaurus extends EntityLandPrehistoric {
 	}
 
 	@Override
-	public String getTexture() {
-		if (this.isSleeping()) {
-			return "backtolife:textures/models/entity/tarbosaurus" + (this.isSleeping() ? "_sleeping" : "");
-		} else {
-			return "backtolife:textures/models/entity/tarbosaurus" + (this.isBloody() ? "_blood" : "");
-		}
-	}
-
-	@Override
 	protected SoundEvent getAmbientSound() {
 		return ModSounds.tarbosaurus_idle;
 	}

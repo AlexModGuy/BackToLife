@@ -1,5 +1,7 @@
 package com.github.backtolifemod.backtolife;
 
+import com.github.backtolifemod.backtolife.client.model.ModelBabyVelociraptor;
+import com.github.backtolifemod.backtolife.client.render.entity.RenderGrowingPrehistoric;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -9,7 +11,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import com.github.backtolifemod.backtolife.client.model.ModelProtoceratops;
 import com.github.backtolifemod.backtolife.client.model.ModelTarbosaurus;
-import com.github.backtolifemod.backtolife.client.model.ModelVelociraptor;
+import com.github.backtolifemod.backtolife.client.model.ModelAdultVelociraptor;
 import com.github.backtolifemod.backtolife.client.render.entity.RenderBasicPrehistoric;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
@@ -41,7 +43,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFossilSlicer.class, new RenderFossilSlicer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTissueAnalyzer.class, new RenderTissueAnalyzer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFertilizationMachine.class, new RenderFertilizationMachine());
-		RenderingRegistry.registerEntityRenderingHandler(EntityVelociraptor.class, new RenderBasicPrehistoric(new ModelVelociraptor(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityVelociraptor.class, new RenderGrowingPrehistoric(new ModelBabyVelociraptor(), new ModelAdultVelociraptor(), new ModelAdultVelociraptor(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityProtoceratops.class, new RenderBasicPrehistoric(new ModelProtoceratops(), 0.4F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTarbosaurus.class, new RenderBasicPrehistoric(new ModelTarbosaurus(), 0.8F));
 	}

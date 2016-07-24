@@ -73,6 +73,10 @@ public class EntityProtoceratops extends EntityLandPrehistoric{
 		}
 	}
 
+	public String getTexture() {
+		return "backtolife:textures/models/entity/" + this.type.toString().toLowerCase() + (this.isMale() ? "_male" : "_female") + (this.isSleeping() ? "_sleeping" : "");
+	}
+
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		if (this.getAnimation() != ANIMATION_ATTACK && this.getAnimation() != ANIMATION_THROWOFF) {
