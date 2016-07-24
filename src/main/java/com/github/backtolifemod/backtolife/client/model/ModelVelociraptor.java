@@ -5,7 +5,6 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
-import com.github.backtolifemod.backtolife.entity.EntityFossil;
 import com.github.backtolifemod.backtolife.entity.living.EntityLandPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
 import com.github.backtolifemod.backtolife.entity.living.EntityVelociraptor;
@@ -495,48 +494,4 @@ public class ModelVelociraptor extends ModelPrehistoric {
 			sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
 		}
 	}
-	
-	   public void renderFossil(EntityFossil fossil){
-	    	this.Body.render(0.0625F);
-			this.RightLeg1.render(0.0625F);
-			this.LeftLeg1.render(0.0625F);
-			{
-				float sitProgress = 20;
-				sitAnimationRotationFossil(UpperJaw2, sitProgress, -((float)Math.toRadians(2.61D)), 0, 0);
-		        sitAnimationRotationFossil(RightArm2, sitProgress, -((float)Math.toRadians(143.48D)), (float)Math.toRadians(13.04D), 0);
-		        sitAnimationRotationFossil(RArmFeathers1, sitProgress, (float)Math.toRadians(15.65D), 0, 0);
-		        sitAnimationRotationFossil(RightHand, sitProgress, (float)Math.toRadians(78.26D), 0, 0);
-		        sitAnimationRotationFossil(HeadFeathers3, sitProgress, (float)Math.toRadians(20.87D), (float)Math.toRadians(2.61D), -((float)Math.toRadians(2.61D)));
-		        sitAnimationRotationFossil(LeftClaw1, sitProgress, (float)Math.toRadians(23.48D), 0, 0);
-		        sitAnimationRotationFossil(LArmFeathers1, sitProgress, (float)Math.toRadians(15.65D), 0, 0);
-		        sitAnimationRotationFossil(LeftLeg2, sitProgress, (float)Math.toRadians(10.43D), 0, (float)Math.toRadians(18.26D));
-		        sitAnimationRotationFossil(LeftLeg1, sitProgress, -((float)Math.toRadians(15.65D)), 0, (float)Math.toRadians(13.04D));
-		        sitAnimationRotationFossil(Tail3, sitProgress, (float)Math.toRadians(31.3D), (float)Math.toRadians(2.61D), 0);
-		        sitAnimationRotationFossil(Gums, sitProgress, -((float)Math.toRadians(18.87D)), 0, 0);
-		        sitAnimationRotationFossil(LeftArm2, sitProgress, -((float)Math.toRadians(143.48D)), 0, 0);
-		        sitAnimationRotationFossil(RightClaw1, sitProgress, (float)Math.toRadians(23.48D), 0, 0);
-		        sitAnimationRotationFossil(RightClaw2, sitProgress, (float)Math.toRadians(36.52D), 0, 0);
-		        sitAnimationRotationFossil(UpperJaw1, sitProgress, (float)Math.toRadians(2.61D), 0, 0);
-		        sitAnimationRotationFossil(UpperJaw3, sitProgress, (float)Math.toRadians(18.26D), 0, 0);
-		        sitAnimationRotationFossil(RArmFeathers3, sitProgress, -((float)Math.toRadians(60.0D)), 0, 0);
-		        sitAnimationRotationFossil(Neck, sitProgress, (float)Math.toRadians(46.96D), (float)Math.toRadians(18.26D), 0);
-		        sitAnimationRotationFossil(LowerJaw3, sitProgress, -((float)Math.toRadians(2.61D)), 0, 0);
-		        sitAnimationRotationFossil(RightFeet, sitProgress, (float)Math.toRadians(135.65D), 0, -((float)Math.toRadians(2.61D)));
-		        sitAnimationRotationFossil(Body, sitProgress, -((float)Math.toRadians(5.21999999999996D)), 0, 0);
-		        sitAnimationRotationFossil(LeftArm1, sitProgress, (float)Math.toRadians(106.96D), (float)Math.toRadians(18.26D), (float)Math.toRadians(2.61D));
-		        sitAnimationRotationFossil(LeftFeet, sitProgress, (float)Math.toRadians(5.22D), 0, (float)Math.toRadians(2.61D));
-		        sitAnimationRotationFossil(RightLeg2, sitProgress, (float)Math.toRadians(10.43D), 0, 0);
-		        sitAnimationRotationFossil(RightLeg1, sitProgress, -((float)Math.toRadians(44.35D)), 0, (float)Math.toRadians(2.61D));
-		        sitAnimationRotationFossil(Body2, sitProgress, -((float)Math.toRadians(7.83D)), 0, 0);
-		        sitAnimationRotationFossil(HeadFeathers2, sitProgress, (float)Math.toRadians(20.87D), -((float)Math.toRadians(2.61D)), (float)Math.toRadians(2.61D));
-		        sitAnimationRotationFossil(LeftHand, sitProgress, (float)Math.toRadians(78.26D), -((float)Math.toRadians(49.57D)), 0);
-		        sitAnimationRotationFossil(HeadFeathers, sitProgress, (float)Math.toRadians(7.83D), 0, 0);
-		        sitAnimationRotationFossil(Tail1, sitProgress, (float)Math.toRadians(18.26D), -((float)Math.toRadians(13.04D)), 0);
-		        sitAnimationRotationFossil(RightArm1, sitProgress, (float)Math.toRadians(75.65D), -((float)Math.toRadians(7.83D)), -((float)Math.toRadians(5.22D)));
-		        sitAnimationRotationFossil(Tail2, sitProgress, (float)Math.toRadians(22.22D), (float)Math.toRadians(7.83D), 0);
-		        sitAnimationRotationFossil(LeftClaw2, sitProgress, (float)Math.toRadians(36.52D), 0, 0);
-		        sitAnimationRotationFossil(LArmFeathers3, sitProgress, -((float)Math.toRadians(60.0D)), 0, 0);
-		        sitAnimationRotationFossil(Head1, sitProgress, -((float)Math.toRadians(120.0D)), -((float)Math.toRadians(15.65D)), (float)Math.toRadians(10.43D));
-			}
-	    }
 }

@@ -4,8 +4,6 @@ import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelBase;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 
-import com.github.backtolifemod.backtolife.entity.EntityFossil;
-
 public class ModelPrehistoric extends AdvancedModelBase{
 
     public void setRotateAngle(AdvancedModelRenderer model, float x, float y, float z) {
@@ -35,6 +33,4 @@ public class ModelPrehistoric extends AdvancedModelBase{
     public void rotate(ModelAnimator animator, AdvancedModelRenderer model, float x, float y, float z){
     	animator.rotate(model, (float)Math.toRadians(x), (float)Math.toRadians(y), (float)Math.toRadians(z));
     }
-    
-    public void renderFossil(EntityFossil fossil){}
 }
