@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "variant=0": {
+      "model": "backtolife:flaming_cliffs_animal_fossil_0"
+    },
+    "variant=1": {
+       "model": "backtolife:flaming_cliffs_animal_fossil_1"
+    },
+    "variant=2": {
+      "model": "backtolife:flaming_cliffs_animal_fossil_2"
+    },
+    "variant=3": {
+      "model": "backtolife:flaming_cliffs_animal_fossil_3"
+    },
+    "variant=4": {
+      "model": "backtolife:flaming_cliffs_animal_fossil_4"
+    },
+    "variant=5": {
+      "model": "backtolife:flaming_cliffs_animal_fossil_5"
+    }
+  }
+}
