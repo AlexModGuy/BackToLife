@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.github.backtolifemod.backtolife.core.ModBlocks;
-import com.github.backtolifemod.backtolife.core.ModVillagers;
+import com.github.backtolifemod.backtolife.core.ModWorld;
 
 public class StructureScientistHouse {
 
@@ -3244,7 +3244,7 @@ public class StructureScientistHouse {
 	public static void makeVillager(World world, BlockPos blockpos) {
 		EntityVillager villager = new EntityVillager(world);
 		villager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(villager)), (IEntityLivingData) null);
-		villager.setProfession(ModVillagers.proffesion);
+		villager.setProfession(ModWorld.SCIENTIST);
 		villager.setLocationAndAngles(blockpos.getX(), blockpos.getY(), blockpos.getZ(), 0, 0);
 		if (!world.isRemote) {
 			world.spawnEntityInWorld(villager);

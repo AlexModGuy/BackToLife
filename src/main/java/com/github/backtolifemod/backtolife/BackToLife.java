@@ -23,7 +23,7 @@ import com.github.backtolifemod.backtolife.core.ModFoods;
 import com.github.backtolifemod.backtolife.core.ModItems;
 import com.github.backtolifemod.backtolife.core.ModRecipes;
 import com.github.backtolifemod.backtolife.core.ModSounds;
-import com.github.backtolifemod.backtolife.core.ModVillagers;
+import com.github.backtolifemod.backtolife.core.ModWorld;
 import com.github.backtolifemod.backtolife.message.MessageSetDay;
 import com.github.backtolifemod.backtolife.world.BackToLifeGeneration;
 
@@ -59,7 +59,7 @@ public class BackToLife {
 		ModBlocks.init();
 		ModRecipes.init();
 		ModEntities.init();
-		ModVillagers.init();
+		ModWorld.init();
 		ModSounds.init();
 		ModFoods.init();
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
