@@ -17,6 +17,8 @@ tile.backtolife.laboratory_light_panel.name=Laboratory Light Panel
 tile.backtolife.fossil_slicer.name=Fossil Slicer
 tile.backtolife.tissue_analyzer.name=Tissue Analyzer
 tile.backtolife.fertilization_machine.name=Fertilization Machine
+tile.backtolife.flaming_cliffs_animal_fossil.name=Flaming Cliffs Animal Fossil
+tile.backtolife.flaming_cliffs_plant_fossil.name=Flaming Cliffs Plant Fossil
 
 entity.backtolife.velociraptor.name=Velociraptor
 entity.backtolife.protoceratops.name=Protoceratops

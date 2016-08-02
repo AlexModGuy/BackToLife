@@ -277,7 +277,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IAnima
 					}
 					this.setHealth(Math.min(this.getMaxHealth(), (int) (this.getHealth() + FoodMappings.instance().getItemFoodAmount(stack.getItem(), type.dietType) / 10)));
 					this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
-					spawnItemCrackParticles(stack.getItem());
+					for(int i = 0; i < 8; i++) {
+						spawnItemCrackParticles(stack.getItem());
+					}
 					this.onEatFood(stack);
 					if (!player.isCreative()) {
 						stack.stackSize--;

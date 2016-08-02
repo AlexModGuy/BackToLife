@@ -11,6 +11,7 @@ public class ModBlocks {
 	public static Block tissue_analyzer;
 	public static Block fertilization_machine;
 	public static Block flaming_cliffs_animal_fossil;
+	public static Block flaming_cliffs_plant_fossil;
 
 	public static void init() {
 		laboratory_block = new BlockLaboratory(false);
@@ -18,6 +19,7 @@ public class ModBlocks {
 		fossil_slicer = new BlockFossilSlicer();
 		tissue_analyzer = new BlockTissueAnalyzer();
 		fertilization_machine = new BlockFertilizationMachine();
-		flaming_cliffs_animal_fossil = new BlockFlamingCliffsAnimalFossil();
+		flaming_cliffs_animal_fossil = new BlockFlamingCliffsFossil(true);
+		flaming_cliffs_plant_fossil = new BlockFlamingCliffsFossil(false);
 	}
 }
