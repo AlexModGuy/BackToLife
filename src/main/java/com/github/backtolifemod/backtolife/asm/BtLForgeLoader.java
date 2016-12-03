@@ -4,15 +4,16 @@ import java.util.Map;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.MCVersion;
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 
+@IFMLLoadingPlugin.Name("backtolife")
 @MCVersion("1.10.2")
-@TransformerExclusions({ "com.github.backtolifemod.backtolife.asm." })
+@IFMLLoadingPlugin.SortingIndex(1001)
+@IFMLLoadingPlugin.TransformerExclusions("com.github.backtolifemod.backtolife.asm")
 public class BtLForgeLoader implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[] { BtLTransformer.class.getCanonicalName() };
+        return new String[] { "com.github.backtolifemod.backtolife.runtime.BtLRuntimeTransformer" };
     }
 
     @Override
