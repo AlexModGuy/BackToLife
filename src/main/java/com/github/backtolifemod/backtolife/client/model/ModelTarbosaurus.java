@@ -411,6 +411,12 @@ public class ModelTarbosaurus extends ModelPrehistoric {
 			sitAnimationPos(Body, sitProgress, 0, 12, -1);
 			sitAnimationPos(RightLeg1, sitProgress, -3, 16, 5);
 			sitAnimationPos(LeftLeg1, sitProgress, 3, 16, 5);
+
+		}
+	}
+	public void renderBone(String bonePart) {
+		if(bonePart.equals("skull")){
+			this.Head1.render(0.625F);
 		}
 	}
 }

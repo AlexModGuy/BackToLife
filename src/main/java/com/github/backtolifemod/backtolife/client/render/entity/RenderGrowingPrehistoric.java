@@ -31,15 +31,15 @@ public class RenderGrowingPrehistoric extends RenderBasicPrehistoric {
 		return new ResourceLocation(entity.getTexture() + ".png");
 	}
 
-	public void setModelForAge(EntityPrehistoric entity){
-		if(entity.isBaby()){
+	public void setModelForAge(EntityPrehistoric entity) {
+		if (entity.isAdult() || entity == null) {
+			this.mainModel = adultModel;
+		}
+		if (entity.isBaby()) {
 			this.mainModel = babyModel;
 		}
-		if(entity.isTeen()){
+		if (entity.isTeen()) {
 			this.mainModel = teenModel;
-		}
-		if(entity.isAdult()){
-			this.mainModel = adultModel;
 		}
 	}
 

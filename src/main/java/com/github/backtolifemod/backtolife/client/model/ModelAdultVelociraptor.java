@@ -514,4 +514,9 @@ public class ModelAdultVelociraptor extends ModelPrehistoric {
 			sitAnimationPos(LeftLeg1, progress, 3, 15F, 1);
 		}
 	}
+	public void renderBone(String bonePart) {
+		if(bonePart.equals("skull")){
+			this.Head1.render(0.625F);
+		}
+	}
 }

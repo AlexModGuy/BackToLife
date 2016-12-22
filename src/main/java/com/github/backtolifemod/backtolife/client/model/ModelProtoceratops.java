@@ -608,4 +608,9 @@ public class ModelProtoceratops extends ModelPrehistoric {
 	        sitAnimationPos(LeftLeg1, sitProgress, 3.5F, 13F, 4);
 		}
 	}
+	public void renderBone(String bonePart) {
+		if(bonePart.equals("skull")){
+			this.Head1.render(0.625F);
+		}
+	}
 }
