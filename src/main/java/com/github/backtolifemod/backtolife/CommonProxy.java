@@ -1,15 +1,17 @@
 package com.github.backtolifemod.backtolife;
 
-import net.minecraft.entity.EntityLivingBase;
+import com.github.backtolifemod.backtolife.event.CommonEvents;
 import net.minecraft.item.Item;
-
-import com.github.backtolifemod.backtolife.entity.living.EntityPrehistoric;
+import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
 
 	public void preInit() {}
 
-	public void init() {}
+	public void init() {
+		MinecraftForge.EVENT_BUS.register(new CommonEvents());
+
+	}
 
 	public void postInit() {}
 

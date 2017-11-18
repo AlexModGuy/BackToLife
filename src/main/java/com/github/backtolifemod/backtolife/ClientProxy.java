@@ -1,23 +1,11 @@
 package com.github.backtolifemod.backtolife;
 
+import com.github.backtolifemod.backtolife.client.model.ModelAdultVelociraptor;
 import com.github.backtolifemod.backtolife.client.model.ModelBabyVelociraptor;
-import com.github.backtolifemod.backtolife.client.render.entity.RenderGrowingPrehistoric;
-import com.github.backtolifemod.backtolife.client.render.tile.item.RenderFossilRibcage;
-import com.github.backtolifemod.backtolife.client.render.tile.item.RenderFossilSkull;
-import com.github.backtolifemod.backtolife.enums.EnumPrehistoricTileEntityType;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-
 import com.github.backtolifemod.backtolife.client.model.ModelProtoceratops;
 import com.github.backtolifemod.backtolife.client.model.ModelTarbosaurus;
-import com.github.backtolifemod.backtolife.client.model.ModelAdultVelociraptor;
 import com.github.backtolifemod.backtolife.client.render.entity.RenderBasicPrehistoric;
+import com.github.backtolifemod.backtolife.client.render.entity.RenderGrowingPrehistoric;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFertilizationMachine;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderFossilSlicer;
 import com.github.backtolifemod.backtolife.client.render.tile.RenderTissueAnalyzer;
@@ -30,9 +18,14 @@ import com.github.backtolifemod.backtolife.entity.tile.TileEntityFossilSlicer;
 import com.github.backtolifemod.backtolife.entity.tile.TileEntityTissueAnalyzer;
 import com.github.backtolifemod.backtolife.enums.EnumPrehistoricType;
 import com.github.backtolifemod.backtolife.event.ClientEvents;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
-	private static ModelResourceLocation dummyLocation = new ModelResourceLocation("skull", "normal");
 
 	@Override
 	public void preInit() {
@@ -40,28 +33,9 @@ public class ClientProxy extends CommonProxy {
 			ModelLoader.setCustomModelResourceLocation(ModItems.soft_tissue, prehistoric.ordinal(), new ModelResourceLocation("backtolife:soft_tissue"));
 			ModelLoader.setCustomModelResourceLocation(ModItems.fossil_cells, prehistoric.ordinal(), new ModelResourceLocation("backtolife:fossil_cells"));
 			ModelLoader.setCustomModelResourceLocation(ModItems.prehistoric_egg, prehistoric.ordinal(), new ModelResourceLocation("backtolife:egg_" + prehistoric.eggType.toString().toLowerCase()));
-			registerBone(ModItems.fossil_skull, 0, prehistoric, dummyLocation);
-			registerBone(ModItems.fossil_ribcage, 1, prehistoric, dummyLocation);
 		}
 	}
 
-	public void registerBone(Item bone, int boneType, EnumPrehistoricType type, ModelResourceLocation model){
-		EnumPrehistoricTileEntityType tetype = EnumPrehistoricTileEntityType.values()[type.ordinal()];
-		if(tetype != null){
-			Class<? extends TileEntity> tile = tetype.skullClasses[boneType];
-			switch(boneType){
-				default:
-					ClientRegistry.bindTileEntitySpecialRenderer(tile, new RenderFossilSkull(tetype.ordinal()));
-					break;
-				case 1:
-					ClientRegistry.bindTileEntitySpecialRenderer(tile, new RenderFossilRibcage(tetype.ordinal()));
-					break;
-			}
-			ForgeHooksClient.registerTESRItemStack(bone, tetype.ordinal(), tile);
-			ModelLoader.setCustomModelResourceLocation(bone, tetype.ordinal(), model);
-		}
-	}
-	
 	@Override
 	public void init() {
 		MinecraftForge.EVENT_BUS.register(new ClientEvents());
